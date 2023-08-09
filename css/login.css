@@ -1,0 +1,147 @@
+body {
+    background-color: #3f3172;
+}
+
+
+
+input {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.username,
+.password,
+.boton {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container {
+    width: 500px;
+    height: 450px;
+    margin-top: 10vh;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: transparent;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+}
+
+.login-container h2 {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.login-container input[type="text"],
+input[type="password"] {
+    margin-top: 15px;
+    width: 350px;
+    height: 50px;
+    border-radius: 30px;
+    color: white;
+    padding: 20px 20px 20px 20px;
+}
+
+
+.login-container input::placeholder {
+
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-container i {
+    color: #fff;
+    transform: translate(-40px);
+}
+
+
+
+
+.boton button {
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+    transition: .4s;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.boton button:hover {
+    transform: scale(1.1);
+    transition: .4s;
+    border: 2px solid#8800ff;
+}
+
+.remember-me {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin: 15px;
+    width: 300px;
+    margin-left: 50px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+
+}
+
+.remember-me input {
+    accent-color: rgb(132, 0, 255);
+}
+
+.remember-me a {
+    color: white;
+}
+
+.link-de-registro p {
+    text-align: center;
+    margin: 15px;
+    width: 300px;
+    color: white;
+    margin-left: 45px;
+}
+
+.link-de-registro a {
+    color: white;
+    padding: 15px;
+}
+
+
+
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+
+    background-color: #351c62;
+}
+
+footer p {
+    color: #ffffffd8;
+}
+
+footer a {
+    color: white;
+}
+
+
