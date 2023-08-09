@@ -19,8 +19,18 @@
 <body>
   <main class="mt-5">
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <!-- formulario de inicio de sesión -->
+      <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form">
+          <label for="username">Usuario:</label>
+          <input type="text" id="username" name="username" required>
+          
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" required>
+          
+          <button type="submit">Ingresar</button>
+        </form>
       </div>
     </div>
   </main>
