@@ -1,10 +1,16 @@
+// // creo una constante para traer el elemento del HTML donde quiero que aparezcan los datos
+const container = document.querySelector(".pb-5.container");
+
+// // creo una constante para traer el elemento del HTML que tengo que eliminar (alerta de función en desarrollo)
+const alert = document.querySelector(".pb-5.container .alert.alert-danger.text-center");
+
 //FUNCION PARA MOSTRAR LA INFO
 function showData(dataArray) {
+  container.innerHTML = `<br> <h1> Productos </h1> <br> <h4> Verás aquí todos los productos de la categoría Autos </h4> <br> <hr>`
     // El for...of itera sobre los elementos del arreglo
     for (const item of dataArray) {
       // En la siguiente línea se utilizan "backticks" para armar el String.
       container.innerHTML += `
-        <p>ID: ${item.id}</p>
         <p>Nombre: ${item.name}</p>
         <p>Precio: ${item.cost} ${item.currency}</p>
         <p>Descripción: ${item.description}</p>
@@ -20,6 +26,7 @@ function showData(dataArray) {
     .then(response => response.json())
     .then(data => {
       const autosArray = data.products; // Asignamos el arreglo de productos del JSON a autosArray
+      alert.remove();
       showData(autosArray);
     })
     .catch(error => {
