@@ -1,7 +1,7 @@
-// // creo una constante para traer el elemento del HTML donde quiero que aparezcan los datos
+// creo una constante para traer el elemento del HTML donde quiero que aparezcan los datos
 const container = document.querySelector(".pb-5.container");
 
-// // creo una constante para traer el elemento del HTML que tengo que eliminar (alerta de función en desarrollo)
+// creo una constante para traer el elemento del HTML que tengo que eliminar (alerta de función en desarrollo)
 const alert = document.querySelector(".pb-5.container .alert.alert-danger.text-center");
 
 //FUNCION PARA MOSTRAR LA INFO
@@ -22,7 +22,7 @@ function showData(dataArray) {
   }
 
   //FUNCION PARA TRAER LA INFO DE LA API PRODUCTOS
-  fetch(PRODUCTS_URL)
+  fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
     .then(response => response.json())
     .then(data => {
       const autosArray = data.products; // Asignamos el arreglo de productos del JSON a autosArray
