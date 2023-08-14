@@ -1,8 +1,16 @@
 body {
-    background-color: #3f3172;
+    background-color: #e0e0e0;
+    animation: backgroundAnimation 4s alternate infinite;
 }
 
-
+@keyframes backgroundAnimation {
+    from { background-color: #ffffff; }
+    to { background-color: #a8a8a8; }
+}
+@keyframes backgroundAnimation2 {
+    from { background-color: #ffffff10; }
+    to { background-color: #00000010; }
+}
 
 input {
     background-color: transparent;
@@ -28,46 +36,43 @@ input {
     height: 450px;
     margin-top: 10vh;
     padding: 30px;
-    border-radius: 20px;
-    background-color: transparent;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
+    border: 1px solid rgba(27, 27, 27, 0.2);
+    border-radius:40px;
+    background: #ff7b00;
+    box-shadow:  -9px 9px 23px #9e4e02c7,
+                9px -9px 23px #ffffff52;
 }
 
 .login-container h2 {
     display: flex;
     justify-content: center;
     color: #fff;
-
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
 
 .login-container input[type="text"],
 input[type="password"] {
+    outline:none;
     margin-top: 15px;
     width: 350px;
     height: 50px;
     border-radius: 30px;
-    color: white;
+    border: 1px solid #05050586;
+    color: rgb(255, 255, 255);
     padding: 20px 20px 20px 20px;
 }
 
 
 .login-container input::placeholder {
-
-    color: #fff;
+    color: #ffffff;
     font-family: 'Poppins', sans-serif;
 }
 
 .login-container i {
-    color: #fff;
+    color: #000000;
     transform: translate(-40px);
 }
-
-
-
 
 .boton button {
     width: 200px;
@@ -75,16 +80,18 @@ input[type="password"] {
     border-radius: 20px;
     color: #ffffff;
     background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color:rgba(0, 0, 0, 0.616);
     transition: .4s;
     font-family: 'Poppins', sans-serif;
-
+    animation: backgroundAnimation2 4s alternate infinite;
 }
 
 .boton button:hover {
-    transform: scale(1.1);
-    transition: .4s;
-    border: 2px solid#8800ff;
+    transform: scale(1.05); 
+    transition: .3s; 
+    border: 2px solid rgba(0, 0, 0, 0.788);
+    color: #000000;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3), 5px -5px 10px rgba(250, 250, 250, 0.3);
 }
 
 .remember-me {
@@ -100,11 +107,14 @@ input[type="password"] {
 }
 
 .remember-me input {
-    accent-color: rgb(132, 0, 255);
+    accent-color: #0b0a0cbd;
 }
 
 .remember-me a {
-    color: white;
+    color: rgb(248, 248, 248);
+}
+.remember-me a:hover {
+    color: rgb(0, 0, 0);
 }
 
 .link-de-registro p {
@@ -120,28 +130,31 @@ input[type="password"] {
     padding: 15px;
 }
 
-
-
-
+.link-de-registro a:hover {
+    color: black; 
+}
 
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50px;
+    height: 40px;
     position: absolute;
     bottom: 0;
-
-    background-color: #351c62;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    background-color: #ff7b00;
 }
 
 footer p {
-    color: #ffffffd8;
+    color: #000000d8;
 }
 
 footer a {
-    color: white;
+    color: rgb(0, 0, 0);
+}
+footer a:hover {
+    color: rgb(230, 230, 230);
 }
 
 
