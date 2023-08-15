@@ -58,7 +58,7 @@ input[type="password"] {
     width: 350px;
     height: 50px;
     border-radius: 30px;
-    border: 1px solid #05050586;
+    border: 1px solid #ffffff;
     color: rgb(255, 255, 255);
     padding: 20px 20px 20px 20px;
 }
@@ -70,7 +70,7 @@ input[type="password"] {
 }
 
 .login-container i {
-    color: #000000;
+    color: #ffffff;
     transform: translate(-40px);
 }
 
@@ -80,7 +80,7 @@ input[type="password"] {
     border-radius: 20px;
     color: #ffffff;
     background-color: transparent;
-    border-color:rgba(0, 0, 0, 0.616);
+    border-color:rgba(255, 255, 255);
     transition: .4s;
     font-family: 'Poppins', sans-serif;
     animation: backgroundAnimation2 4s alternate infinite;
@@ -147,14 +147,14 @@ footer {
 }
 
 footer p {
-    color: #000000d8;
+    color: #ffffffd8;
 }
 
 footer a {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 footer a:hover {
-    color: rgb(230, 230, 230);
+    color: rgb(0, 0, 0);
 }
 
 
