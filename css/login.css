@@ -1,29 +1,21 @@
-body {
-    background-color: #e0e0e0;
-    animation: backgroundAnimation 4s alternate infinite;
-}
-
 @keyframes backgroundAnimation {
     from { background-color: #ffffff; }
     to { background-color: #a8a8a8; }
 }
-@keyframes backgroundAnimation2 {
-    from { background-color: #ffffff10; }
-    to { background-color: #00000010; }
+
+
+body {
+    animation: backgroundAnimation 4s alternate infinite;
 }
+
 
 input {
     background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     font-family: 'Poppins', sans-serif;
 }
 
 
-.container {
-    display: flex;
-    justify-content: center;
-}
-
+.container, 
 .username,
 .password,
 .boton {
@@ -83,7 +75,6 @@ input[type="password"] {
     border-color:rgba(255, 255, 255);
     transition: .4s;
     font-family: 'Poppins', sans-serif;
-    animation: backgroundAnimation2 4s alternate infinite;
 }
 
 .boton button:hover {
@@ -107,7 +98,7 @@ input[type="password"] {
 }
 
 .remember-me input {
-    accent-color: #0b0a0cbd;
+    accent-color: #000000bd;
 }
 
 .remember-me a {
