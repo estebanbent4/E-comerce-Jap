@@ -9,6 +9,11 @@
   font-weight: bold;
 }
 
+#user-username{
+  font-size: 1.05rem;
+  color:orange;
+}
+
 nav a {
   text-decoration: none;
 }

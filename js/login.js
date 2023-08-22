@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         // Guardar autenticación en localStorage
         localStorage.setItem("isAuthenticated", "true");
-  
+
+        // al loguear guardamos en localstore el nombre de usuario
+        localStorage.setItem("username", username); 
+
         // Redireccionar a la página de portada
         window.location.href = "index.html";
       }
