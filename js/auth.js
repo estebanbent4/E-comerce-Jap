@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
        userUsername.textContent = storedUsername;
     }
      loginNavItem.style.display = "none";
-     usernameNavItem.style.display = "block"; 
+     usernameNavItem.style.display = "flex"; 
     } else {
-     loginNavItem.style.display = "block"; 
+     loginNavItem.style.display = "flex"; 
      usernameNavItem.style.display = "none";
     }
  
