@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // cargamos el catID del local store(pauta 2 de la entrega 2)
-  const catName = localStorage.getItem("catID");
+  const catName= localStorage.getItem("catID");
 
   // creo una constante para traer el elemento del HTML donde quiero que aparezcan los datos
   const container = document.querySelector(".pb-5.container");
@@ -24,8 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <hr>
       `;
     }
+
   }
 
+ if(catName == 101){
   //FUNCION PARA TRAER LA INFO DE LA API PRODUCTOS
   fetch("https://japceibal.github.io/emercado-api/cats_products/101.json")
     .then(response => response.json())
@@ -37,5 +39,21 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => {
       console.error("Error trayendo:", error);
     });
+ }
+ 
+ if(catName == 102){
+  //FUNCION PARA TRAER LA INFO DE LA API PRODUCTOS
+  fetch("https://japceibal.github.io/emercado-api/cats_products/102.json")
+    .then(response => response.json())
+    .then(data => {
+      const juguetesArray = data.products; // Asignamos el arreglo de productos del JSON a autosArray
+      alert.remove();
+      showData(juguetesArray);
+    })
+    .catch(error => {
+      console.error("Error trayendo:", error);
+    });
+ }
+  console.log(catName)
 
 });
