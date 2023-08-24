@@ -1,3 +1,33 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+  
+  const usernameNavItem = document.getElementById("username-nav-item");
+  const userUsername = document.getElementById("user-username");
+  const logoutLink = document.getElementById("logout-link");
+
+  if (isAuthenticated) {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      userUsername.textContent = storedUsername;
+    }
+    usernameNavItem.style.display = "flex";
+  } else {
+    usernameNavItem.style.display = "none";
+  }
+
+  logoutLink.addEventListener("click", () => {
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("username");
+    window.location.href = "login.html";
+  });
+
+  if (!isAuthenticated) {
+    window.location.href = "login.html";
+  }
+});
+
+/*
 document.addEventListener("DOMContentLoaded", () => {
     // Verificar si el usuario está autenticado (usando localStorage)
     const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
@@ -36,3 +66,4 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "login.html";
     }
   });
+  */
