@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Limpia el contenedor de productos y muestra los productos ordenados
     containerDeProductos.innerHTML = "";
-    showData({ catName: originalData.catName, products: productosOrdenados });
+    showData({ catName: originalData.catName, products: productosOrdenados});
   });
 
   ordenarAsc.addEventListener("click", function () {
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Limpia el contenedor de productos y muestra los productos ordenados
     containerDeProductos.innerHTML = "";
-    showData({ catName: originalData.catName, products: productosOrdenados }, false);
+    showData({ catName: originalData.catName, products: productosOrdenados});
   });
 
   ordenarDesc.addEventListener("click", function () {
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Limpia el contenedor de productos y muestra los productos ordenados
     containerDeProductos.innerHTML = "";
-    showData({ catName: originalData.catName, products: productosOrdenados }, false);
+    showData({ catName: originalData.catName, products: productosOrdenados});
   });
 
   //FUNCIÓN PARA MOSTRAR LA INFO
