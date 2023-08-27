@@ -12,11 +12,73 @@ document.addEventListener("DOMContentLoaded", function () {
   // creo una constante para traer el elemento del HTML que tengo que eliminar (alerta de función en desarrollo)
   const alert = document.querySelector(".pb-5.container .alert.alert-danger.text-center");
 
+  //FUNCIONALIDAD PARA FILTROS:
+  // Agrega los elementos HTML y el botón para los filtros de precio
+  const precioMinInput = document.getElementById("precio-min");
+  const precioMaxInput = document.getElementById("precio-max");
+  const aplicarFiltroBtn = document.getElementById("aplicar-filtro");
+  const ordenRelevanciaBtn = document.getElementById("orden-relevancia");
+  const ordenarDesc =  document.getElementById("orden-precio-desc")
+  const ordenarAsc =  document.getElementById("orden-precio-asc")
+  let originalData; // Almacenar los datos originales
+
+  aplicarFiltroBtn.addEventListener("click", function () {
+    const precioMin = parseFloat(precioMinInput.value);
+    const precioMax = parseFloat(precioMaxInput.value);
+
+    if (!isNaN(precioMin) && !isNaN(precioMax)) {
+      const productosFiltrados = originalData.products.filter(producto => {
+        return producto.cost >= precioMin && producto.cost <= precioMax;
+      });
+      // Limpia el contenedor de productos y muestra los productos filtrados
+      containerDeProductos.innerHTML = "";
+      showData({ catName: originalData.catName, products: productosFiltrados });
+    }
+  });
+
+  ordenRelevanciaBtn.addEventListener("click", function () {
+    const productosOrdenados = originalData.products.slice().sort((a, b) => {
+      return b.soldCount - a.soldCount;
+    });
+    // Limpia el contenedor de productos y muestra los productos ordenados
+    containerDeProductos.innerHTML = "";
+    showData({ catName: originalData.catName, products: productosOrdenados });
+  });
+
+  ordenarAsc.addEventListener("click", function () {
+    const productosOrdenados = originalData.products.slice().sort((a, b) => {
+      return a.cost - b.cost;
+    });
+    // Limpia el contenedor de productos y muestra los productos ordenados
+    containerDeProductos.innerHTML = "";
+    showData({ catName: originalData.catName, products: productosOrdenados }, false);
+  });
+
+  ordenarDesc.addEventListener("click", function () {
+    const productosOrdenados = originalData.products.slice().sort((a, b) => {
+      return b.cost - a.cost;
+    });
+    // Limpia el contenedor de productos y muestra los productos ordenados
+    containerDeProductos.innerHTML = "";
+    showData({ catName: originalData.catName, products: productosOrdenados }, false);
+  });
+
   //FUNCIÓN PARA MOSTRAR LA INFO
-  function showData(dataArray) {
+  function showData(dataArray, includeCategoryInfo = true) {
     const catName = dataArray.catName;
     console.log(dataArray)
-    container.innerHTML += `<br> <h1> Productos </h1> <br> <h4> Verás aquí todos los productos de la categoría ${catName} </h4> <br> <hr>`
+
+    // se repetia el siguiente texto 
+    if (includeCategoryInfo) {
+      const categoryInfoElement = document.getElementById("category-info");
+      categoryInfoElement.innerHTML = `
+        <br> <h1> Productos </h1>
+        <br> <h4> Verás aquí todos los productos de la categoría ${catName} </h4>
+        <br> <hr>
+      `;
+    }
+    //container.innerHTML += `<br> <h1> Productos </h1> <br> <h4> Verás aquí todos los productos de la categoría ${catName} </h4> <br> <hr>`
+    
     // El for...of itera sobre los elementos del arreglo
     for (const item of dataArray.products) {
 
@@ -56,9 +118,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(data => {
       alert.remove();
+      originalData = data; // Almacenar los datos originales
       showData(data);
     })
     .catch(error => {
       console.error("Error trayendo:", error);
     });
 });
+
