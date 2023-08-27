@@ -193,3 +193,20 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.h4 {
+  text-align: right;
+}
+
+.container-fluid {
+  text-align: right;
+}
+
+.text-muted {
+  margin-block-end: right;;
+}
+
+.productDesc{
+  display: flex;
+  justify-content: right;
+}

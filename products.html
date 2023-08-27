@@ -13,39 +13,194 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <!-- li para el nombre de usuario-->
-          <li class="nav-item" id="username-nav-item">
-            <span class="nav-link" id="user-username"></span>
-            <a class="nav-link" id="logout-link" href="#">Cerrar sesión</a>
-          </li>
-        </ul>
+  <!-- Menu -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">Mi carrito</a>
+        </li>
+      </ul>
+      <div class="row">
+        <div id="user"></div>
+        <div class="dropdown">
+          
+          <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+            <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil </a>
+            <a class="dropdown-item" href="#" onclick="signOut();"><i class="fas fa-sign-out-alt"></i> Salir</a>
+          </div>
+        </div>
       </div>
-    </div>
   </nav>
-  <main class="pb-5 container">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  <!-- Fin Menu -->
+  <div class="text-center p-4">
+    <h2>Productos</h2>
+    <p class="lead">Verás aquí todos los productos del sitio.</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col d-flex justify-content-end">
       </div>
     </div>
-  </main>
+  </div>
+  <div class="row">
+    <div class="list-group" id="cat-list-container">
+    </div>
+  </div>
+  </div>
+         <!-- Botones Filtros -->
+         <div class="row">
+          <div class="col d-flex justify-content-end">
+        <div class="btn-group mb-4" data-toggle="buttons">
+          <label class="btn btn-danger filtrosArticulos" id="sortByPriceAsc">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Menor $
+          </label>
+          <label class="btn btn-danger filtrosArticulos" id="sortByPriceDesc">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Mayor $
+          </label>
+          <label class="btn btn-danger filtrosArticulos" id="sortBySoldCount">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Rel.
+          </label>
+        </div>
+      </div>
+      </div>
+        <!-- Fin Botones Filtros -->
+     <!-- Fin Filtros Min y Max -->
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+      <div class="col-md-5"></div>
+      <div class="col-md-10 col-sm-5 mb-10 container">
+        <div class="row container p-0 m-1">
+          <div class="col-9">
+            <p class="text-right">Cant.</p>
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+          </div>
+          <div class="col-0 p-0 d-inline-flex">
+            <button class="btn btn-outline-danger btn-block" id="rangeFilterCount">Filtrar</button>
+            <button class="btn btn-outline btn-sm" id="clearRangeFilter">Limpiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- Fin Filtros Min y Max -->
+     <!-- Productos -->
+  <div class="container-fluid products">
+    <div class="row" id="lista-productos">
+      <div class="col-sm-6 col-md-4 col-xl-12">
+        <div class="d-xl-flex list-group-item mproduct">
+        <a class="border-right col-xl-3" href="product-info.html"><div class="imgProduct"><img src="img/prod50921_2.jpg"></div></a>
+           <div class="col-xl-9">
+                <div class=" justify-content-between ">
+                <p href="product-info.html"><h4 class="mb-1">Chevrolet Onix Joy</h4></p>
+                  <small class="text-muted">14 Vendidos</small>
+                </div>
+                <div class="productDesc">Generación 2019, variedad de colores. Motor 1.0, ideal para ciudad.</div>
+                <h4 class="container-fluid products">USD 13500</h4>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid products">
+      <div class="row" id="lista-productos">
+        <div class="col-sm-6 col-md-4 col-xl-12">
+          <div class="d-xl-flex list-group-item mproduct">
+          <a class="border-right col-xl-3" href="product-info.html"><div class="imgProduct"><img src="img/prod50922_3.jpg"></div></a>
+              <div class="col-xl-9">
+                  <div class="justify-content-between ">
+                  <p href="product-info.html"><h4 class="mb-1">Fiat Way</h4></p>
+                      <small class="text-muted">14 Vendidos</small>
+                  </div>
+                  <div class="productDesc">La versión de Fiat que brinda confort y a un precio accesible.</div>
+                  <h4 class="container-fluid products">USD 14500</h4>
+                  
+              </div>
+          </div>
+      </div>
+      <div class="container-fluid products">
+        <div class="row" id="lista-productos">
+          <div class="col-sm-6 col-md-4 col-xl-12">
+            <div class="d-xl-flex list-group-item mproduct">
+            <a class="border-right col-xl-3" href="product-info.html"><div class="imgProduct"><img src="img/prod50923_1.jpg"></div></a>
+                <div class="col-xl-9">
+                    <div class="justify-content-between ">
+                    <p href="product-info.html"><h4 class="mb-1">Suzuki Celerio</h4></p>
+                        <small class="text-muted">25 Vendidos</small>
+                    </div>
+                    <div class="productDesc">Un auto que se ha ganado la buena fama por su economía con el combustible.</div>
+                    <h4 class="container-fluid products">USD 12500</h4>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid products">
+          <div class="row" id="lista-productos">
+            <div class="col-sm-6 col-md-4 col-xl-12">
+              <div class="d-xl-flex list-group-item mproduct">
+              <a class="border-right col-xl-3" href="product-info.html"><div class="imgProduct"><img src="img/prod50924_3.jpg"></div></a>
+                  <div class="col-xl-9">
+                      <div class="justify-content-between ">
+                      <p href="product-info.html"><h4 class="mb-1">Peugeot 208</h4></p>
+                          <small class="text-muted">12 Vendidos</small>
+                      </div>
+                      <div class="productDesc">El modelo de auto que se sigue renovando y manteniendo su prestigio en comodidad.</div>
+                      <h4 class="container-fluid products">USD 15200</h4>
+                  </div>
+              </div>
+          </div>
+          <div class="container-fluid products">
+            <div class="row" id="lista-productos">
+              <div class="col-sm-6 col-md-4 col-xl-12">
+                <div class="d-xl-flex list-group-item mproduct">
+                <a class="border-right col-xl-3" href="product-info.html"><div class="imgProduct"><img src="img/prod50925_1.jpg"></div></a>
+                    <div class="col-xl-9">
+                        <div class="justify-content-between ">
+                          <br>
+                        <p href="product-info.html"><h4 class="mb-1">Bugatti Chiron</h4></p>
+                            <small class="text-muted">0 Vendidos</small>
+                        </div>
+                        <div class="productDesc">El mejor hiperdeportivo de mundo. Producción limitada a 500 unidades.</div>
+                        <h4 class="container-fluid products">USD 3500000</h4>
+                        <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  </div>
+    </div>
+    <div class="text-center p-5">
+      <h2 id="prodNoEncontrado"></h2>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="list-group" id="cat-list-container">
+  </div>
+</div>
+</div>
+  <!-- Fin Productos -->
+  
+  </div>
+  <hr class="container">
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
