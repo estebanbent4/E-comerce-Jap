@@ -26,10 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const precioMin = parseFloat(precioMinInput.value);
     const precioMax = parseFloat(precioMaxInput.value);
 
-    if (!isNaN(precioMin) && !isNaN(precioMax)) {
+    // isNaN significa isNotaNumber, es decir, verifica que el dato ingresado sea un numero
+    if (isNaN(precioMin)
+      || isNaN(precioMax) 
+      || precioMinInput.value.trim() === "" 
+      || precioMaxInput.value.trim() === ""
+     // || precioMin>precioMax
+      ){
+      // Mostrar un mensaje de error si falta algún valor o si los valores no son numéricos
+      window.alert("Por favor, ingresa valores numéricos en ambos campos de precio.");
+    } else {
       const productosFiltrados = originalData.products.filter(producto => {
         return producto.cost >= precioMin && producto.cost <= precioMax;
       });
+  
       // Limpia el contenedor de productos y muestra los productos filtrados
       containerDeProductos.innerHTML = "";
       showData({ catName: originalData.catName, products: productosFiltrados });
