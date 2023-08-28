@@ -42,31 +42,66 @@
   <main class="pb-5 container">
     <div class="container">
       <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+       
       </div>
     </div>
 
-  <div id="category-info"></div>
+  <div id="category-info">
+    <div class="container mb-4">
+      <div class="text-center p-4">
+        <h2>Productos</h2>
+        <p class="lead">Verás aquí todos los productos del sitio.</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col d-flex justify-content-end">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="list-group" id="cat-list-container">
+        </div>
+      </div>
+      </div>
+  </div>
 
       <!-- Agregar los elementos para los filtros de precio -->
-  <div class="container mb-4">
-    <label for="precio-min">Precio mínimo:</label>
-    <input type="number" id="precio-min" class="form-control"  inputmode="decimal" pattern="[0-9]*">
-  </div>
-  <div class="container mb-4">
-    <label for="precio-max">Precio máximo:</label>
-    <input type="number" id="precio-max" class="form-control"  inputmode="decimal" pattern="[0-9]*">
-  </div>
-  <div class="container mb-4">
-    <button id="aplicar-filtro" class="btn btn-primary">Aplicar Filtro</button>
-  </div>
+      
+  
 
   <!-- Agregar los botones de orden -->
-  <div class="container mb-4">
-    <button id="orden-precio-asc" class="btn btn-secondary">Precio de menor a mayor</button>
-    <button id="orden-precio-desc" class="btn btn-secondary">Precio de mayor a menor</button>
-    <button id="orden-relevancia" class="btn btn-secondary">Ordenar por Relevancia</button>
+  <div class="row">
+    <div class="col d-flex justify-content-end ">
+  <div class="btn-group mb-4" data-toggle="buttons">
+    <label class="btn btn-dark filtrosArticulos" id="orden-precio-asc">
+      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Menor $
+    </label>
+    <label class="btn btn-dark filtrosArticulos" id="orden-precio-desc">
+      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>Mayor $
+    </label>
+    <label class="btn btn-dark filtrosArticulos" id="orden-relevancia">
+      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Rel.
+    </label>
   </div>
+</div>
+</div>
+<div class="row container">
+  <div class="col-9">
+    <p class="font-weight-normal d-flex justify-content-end">Cant.</p>
+  </div>
+  <div class="col">
+    <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+  </div>
+  <div class="col">
+    <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+  </div>
+  <div class="col-md-1 p-0">
+    <div class="btn-group" role="group">
+      <button class="btn btn-dark btn-block" id="rangeFilterCount">Filtrar</button>
+      <button class="btn  btn-sm btn-dark text-white" id="clearRangeFilter">Limpiar</button>
+    </div>
+  </div>
+</div>
     <div class="container-de-productos"></div>
   </main>
   <footer class="text-muted">

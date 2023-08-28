@@ -14,27 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //FUNCIONALIDAD PARA FILTROS:
   // Agrega los elementos HTML y el botón para los filtros de precio
-  const precioMinInput = document.getElementById("precio-min");
-  const precioMaxInput = document.getElementById("precio-max");
-  const aplicarFiltroBtn = document.getElementById("aplicar-filtro");
   const ordenRelevanciaBtn = document.getElementById("orden-relevancia");
   const ordenarDesc =  document.getElementById("orden-precio-desc")
   const ordenarAsc =  document.getElementById("orden-precio-asc")
   let originalData; // Almacenar los datos originales
 
-  aplicarFiltroBtn.addEventListener("click", function () {
-    const precioMin = parseFloat(precioMinInput.value);
-    const precioMax = parseFloat(precioMaxInput.value);
-
-    if (!isNaN(precioMin) && !isNaN(precioMax)) {
-      const productosFiltrados = originalData.products.filter(producto => {
-        return producto.cost >= precioMin && producto.cost <= precioMax;
-      });
-      // Limpia el contenedor de productos y muestra los productos filtrados
-      containerDeProductos.innerHTML = "";
-      showData({ catName: originalData.catName, products: productosFiltrados });
-    }
-  });
 
   ordenRelevanciaBtn.addEventListener("click", function () {
     const productosOrdenados = originalData.products.slice().sort((a, b) => {
@@ -72,8 +56,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (includeCategoryInfo) {
       const categoryInfoElement = document.getElementById("category-info");
       categoryInfoElement.innerHTML = `
-        <br> <h1> Productos </h1>
-        <br> <h4> Verás aquí todos los productos de la categoría ${catName} </h4>
+        <br> <h1> <div class="container mb-4">
+        <div class="text-center p-4">
+          <h2>Productos</h2>
+          <p class="lead">Verás aquí todos los productos del sitio.</p>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col d-flex justify-content-end">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="list-group" id="cat-list-container">
+          </div>
+        </div>
+        </div> </h1>
+        <br>
         <br> <hr>
       `;
     }
