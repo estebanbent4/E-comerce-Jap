@@ -20,8 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const ordenRelevanciaBtn = document.getElementById("orden-relevancia");
   const ordenarDesc =  document.getElementById("orden-precio-desc")
   const ordenarAsc =  document.getElementById("orden-precio-asc")
+  const buscadorInput = document.getElementById("buscador-productos");
   let originalData; // Almacenar los datos originales
 
+  buscadorInput.addEventListener("input", function () {
+    const searchText = buscadorInput.value.toLowerCase();
+
+    const productosFiltrados = originalData.products.filter(producto => {
+      const titulo = producto.name.toLowerCase();
+      const descripcion = producto.description.toLowerCase();
+      return titulo.includes(searchText) || descripcion.includes(searchText);
+    });
+
+    // Limpia el contenedor de productos y muestra los productos filtrados
+    containerDeProductos.innerHTML = "";
+    showData({ catName: originalData.catName, products: productosFiltrados });
+  });
+  
   aplicarFiltroBtn.addEventListener("click", function () {
     const precioMin = parseFloat(precioMinInput.value);
     const precioMax = parseFloat(precioMaxInput.value);
