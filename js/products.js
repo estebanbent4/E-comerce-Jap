@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function (){  
+  // function ()   estaba en lugar de async cunction 
 
   // cargamos el catID del local store (pauta 2 de la entrega 2)
   const catID = localStorage.getItem("catID");
@@ -161,16 +162,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`
-  //FUNCIÓN PARA TRAER LA INFO DE LA API
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
+    //FUNCIÓN PARA TRAER LA INFO DE LA API
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+  
       alert.remove();
       originalData = data; // Almacenar los datos originales
       showData(data);
-    })
-    .catch(error => {
+    } catch (error) {
       console.error("Error trayendo:", error);
-    });
+    }
+  // //FUNCIÓN PARA TRAER LA INFO DE LA API
+  // fetch(url)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     alert.remove();
+  //     originalData = data; // Almacenar los datos originales
+  //     showData(data);
+  //   })
+  //   .catch(error => {
+  //     console.error("Error trayendo:", error);
+  //   });
 });
 
