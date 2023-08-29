@@ -20,8 +20,37 @@ document.addEventListener("DOMContentLoaded", function () {
   const ordenRelevanciaBtn = document.getElementById("orden-relevancia");
   const ordenarDesc =  document.getElementById("orden-precio-desc")
   const ordenarAsc =  document.getElementById("orden-precio-asc")
+<<<<<<< Updated upstream
   let originalData; // Almacenar los datos originales
+  /*
+  originalData se utiliza como una copia de respaldo de los datos originales obtenidos de la API. 
+  Esto asegura que las operaciones de filtrado, ordenamiento y búsqueda se realicen en copias de los datos, 
+  sin afectar los datos originales. De esta manera, siempre puedes volver a la configuración original si es necesario.
+  */
 
+=======
+  const buscadorInput = document.getElementById("buscador-productos");
+
+
+  let originalData; // Variable para almacenar los datos originales
+
+
+  //Aquí se agrega un evento que escucha cambios en el campo de búsqueda(buscadorInput) cada vez que el usuario ingresa texto en él.  
+  buscadorInput.addEventListener("input", function () {
+    const searchText = buscadorInput.value.toLowerCase(); // Obtiene el valor del campo de búsqueda y lo convierte a minúsculas.
+
+    const productosFiltrados = originalData.products.filter(producto => {
+      const titulo = producto.name.toLowerCase(); 
+      const descripcion = producto.description.toLowerCase();
+      return titulo.includes(searchText) || descripcion.includes(searchText);
+    });
+
+    // Limpia el contenedor de productos y muestra los productos filtrados
+    containerDeProductos.innerHTML = "";
+    showData({ catName: originalData.catName, products: productosFiltrados });
+  });
+  
+>>>>>>> Stashed changes
   aplicarFiltroBtn.addEventListener("click", function () {
     const precioMin = parseFloat(precioMinInput.value);
     const precioMax = parseFloat(precioMaxInput.value);
@@ -33,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       || precioMaxInput.value.trim() === ""
      // || precioMin>precioMax
       ){
-      // Mostrar un mensaje de error si falta algún valor o si los valores no son numéricos
+       //Si no cumplen con los requisitos, se muestra una alerta usando window.alert.
       window.alert("Por favor, ingresa valores numéricos en ambos campos de precio.");
     } else {
       const productosFiltrados = originalData.products.filter(producto => {
@@ -45,6 +74,17 @@ document.addEventListener("DOMContentLoaded", function () {
       showData({ catName: originalData.catName, products: productosFiltrados });
     }
   });
+
+  /*
+  originalData.products.slice(): Aquí se realiza una copia superficial (shallow copy) 
+  del arreglo products contenido en el objeto originalData. Esto se hace utilizando el método slice() sin argumentos.
+  La idea detrás de esto es evitar que se modifiquen los datos originales mientras se realiza el proceso de ordenamiento.
+
+  sort((a, b) => { ... }): Después de crear la copia, se aplica el método sort() al arreglo copiado. 
+  El método sort() permite ordenar los elementos de un arreglo en función de un criterio específico. 
+  En este caso, se utiliza una función de comparación (a, b) => { ... } 
+  que determina cómo se deben comparar los elementos para ordenarlos.
+  */
 
   ordenRelevanciaBtn.addEventListener("click", function () {
     const productosOrdenados = originalData.products.slice().sort((a, b) => {
@@ -87,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <br> <hr>
       `;
     }
+    
     //container.innerHTML += `<br> <h1> Productos </h1> <br> <h4> Verás aquí todos los productos de la categoría ${catName} </h4> <br> <hr>`
     
     // El for...of itera sobre los elementos del arreglo
