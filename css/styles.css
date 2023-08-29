@@ -190,7 +190,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-.container > h1, h4 { 
+#category-info h1, h4 { 
   display: flex; /* Convertimos el título de la página en un texto flexible */
   justify-content: center; /* Centramos el texto horizontalmente */
 }
