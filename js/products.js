@@ -151,3 +151,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+//filtro de precios//
+
