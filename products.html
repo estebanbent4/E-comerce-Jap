@@ -10,6 +10,8 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
+<link rel="stylesheet" href="css/filtros.css">
 </head>
 
 <body>
@@ -49,26 +51,21 @@
   <div id="category-info"></div>
 
   <!-- seccion desafiate-entrega2 -->
-  <input type="search" id="buscador-productos" class="form-control" placeholder="Buscar productos">
+  <input type="search" id="buscador-productos" class="filtros-num-name" placeholder="Buscar productos">
 
   <!-- Agregar los elementos para los filtros de precio -->
-  <div class="container mb-4">
-    <label for="precio-min">Precio mínimo:</label>
-    <input type="number" id="precio-min" class="form-control"  inputmode="decimal" pattern="[0-9]*" step="1">
+  <div>
+    <input type="number" id="precio-min" class="filtros-num-name"  placeholder="Filtrar por precio en U$S"="decimal" pattern="[0-9]*" step="1">
   </div>
-  <div class="container mb-4">
-    <label for="precio-max">Precio máximo:</label>
-    <input type="number" id="precio-max" class="form-control"  inputmode="decimal" pattern="[0-9]*" step="1">
-  </div>
-  <div class="container mb-4">
-    <button id="aplicar-filtro" class="btn btn-primary">Aplicar Filtro</button>
+  <div class="botones">
+    <button id="aplicar-filtro">Aplicar Filtro</button>
   </div>
 
   <!-- Agregar los botones de orden -->
-  <div class="container mb-4">
-    <button id="orden-precio-asc" class="btn btn-secondary">Precio de menor a mayor</button>
-    <button id="orden-precio-desc" class="btn btn-secondary">Precio de mayor a menor</button>
-    <button id="orden-relevancia" class="btn btn-secondary">Ordenar por Relevancia</button>
+  <div class="botones">
+    <button id="orden-precio-asc" >Precio de menor a mayor <i class="fa-solid fa-arrow-down-wide-short"></i></button>
+    <button id="orden-precio-desc" >Precio de mayor a menor <i class="fa-solid fa-arrow-up-wide-short"></i></button>
+    <button id="orden-relevancia" >Productos mas relevantes <i class="fa-solid fa-fire"></i></button>
   </div>
     <div class="container-de-productos"></div>
   </main>
