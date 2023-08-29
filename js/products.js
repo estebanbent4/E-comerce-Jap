@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const ordenRelevanciaBtn = document.getElementById("orden-relevancia");
   const ordenarDesc =  document.getElementById("orden-precio-desc")
   const ordenarAsc =  document.getElementById("orden-precio-asc")
-<<<<<<< Updated upstream
+
   let originalData; // Almacenar los datos originales
   /*
   originalData se utiliza como una copia de respaldo de los datos originales obtenidos de la API. 
@@ -28,11 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
   sin afectar los datos originales. De esta manera, siempre puedes volver a la configuración original si es necesario.
   */
 
-=======
+
   const buscadorInput = document.getElementById("buscador-productos");
-
-
-  let originalData; // Variable para almacenar los datos originales
 
 
   //Aquí se agrega un evento que escucha cambios en el campo de búsqueda(buscadorInput) cada vez que el usuario ingresa texto en él.  
@@ -50,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showData({ catName: originalData.catName, products: productosFiltrados });
   });
   
->>>>>>> Stashed changes
+
   aplicarFiltroBtn.addEventListener("click", function () {
     const precioMin = parseFloat(precioMinInput.value);
     const precioMax = parseFloat(precioMaxInput.value);
