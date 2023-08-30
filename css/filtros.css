@@ -1,20 +1,15 @@
 .filtros-num-name{
-    display:flex;
-    flex-direction: column;
     width: 500px;
-    height: 35px;
-    margin-top: 20px;
+    height: 40px;
     border-radius: 10px;
-    border:1px solid rgb(255, 119, 0);
+    border:1px solid rgb(248, 236, 226);
     outline: none;
 }
+
 .botones button{
-    width: 300px;
     height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: transparent;
-    border: 1px solid rgb(255, 119, 0);
+    background-color: rgb(255, 227, 203);
+    border: 1px solid rgb(247, 239, 232);
     border-radius:10px ;
     transition: all .3s;
 }
@@ -23,5 +18,40 @@
     background-color:rgb(255, 119, 0);
     color: whitesmoke;
     transform: translateY(-5px);
-    
+}
+
+#orden{
+    display: flex; /* Convertimos el div #orden en flexible */
+    justify-content: flex-end; /* Lo alineamos a la derecha */
+}
+
+#orden button{
+    margin-left: 5px; /* Agregamos un margin-left a los botones del div orden para que se separen entre sí (left para no desalinear el costado derecho) */
+    margin-bottom: 10px; /* Agregamos un margin-bottom a los botones del div orden para separarlos del div de abajo */
+}
+
+#filtro-precio{
+    display: flex; /* Convertimos el div #filtro-precio en flexible */
+    justify-content: flex-end; /* Lo alineamos a la derecha */
+}
+
+#filtro-precio input{ 
+    width: 100px; /* Definimos un ancho específico para los input del div #filtro-precio */
+    margin-left: 10px; /* Le ponemos un margin hacia la izquierda para separar los elementos */
+}
+
+#filtro-precio button{ 
+    width: 80px; /* Definimos un ancho específico para los button del div #filtro-precio (filtrar, limpiar) */
+    margin-left: 10px; /* Le ponemos un margin hacia la izquierda para separar los elementos sin desalinear la derecha */
+}
+
+#filtro-precio label{
+    display: flex; /* Convertimos la etiqueta del input precio en flexible */
+    align-items: center; /* La centramos verticalmente */
+}
+
+#buscador-y-filtro{
+    display: flex; /* Convertimos el div buscador-y-filtro en flexible */
+    justify-content: space-between; /* Separamos el contenido del div para que cubra todo el espacio horizontal */
+    margin-bottom: 15px; /* Agregamos un margin inferior para separarlo del div de productos */
 }

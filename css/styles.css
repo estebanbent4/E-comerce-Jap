@@ -202,7 +202,7 @@ a.custom-card:hover {
 }
 
 .container-para-producto {
-  border: 1px solid #ccc9c9; /* Ponemos un borde a los contenedores de los productos */
+  border: 1px solid rgb(252, 214, 181); /* Ponemos un borde a los contenedores de los productos */
   display: flex; /* Convertimos el contenedor en un contenedor flexible */
 }
 
@@ -216,7 +216,7 @@ a.custom-card:hover {
 }
 
 .vendidos {
-  color: #7a7979; /* Ajustamos el color de la fuente para que quede más clarito */
+  color: gray; /* Ajustamos el color de la fuente para que quede más clarito */
   float: right; /* Alineamos para que aparezca a la derecha */
   padding: 10px; /* Establecemos un padding para separar el texto del contenedor donde se encuentra */
 }

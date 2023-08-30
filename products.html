@@ -50,23 +50,28 @@
 
   <div id="category-info"></div>
 
+  <!-- Agregar los botones de orden -->
+  <div class="botones" id="orden">
+    <button id="orden-precio-asc" >Menor precio <i class="fa-solid fa-arrow-down-wide-short"></i></button>
+    <button id="orden-precio-desc" >Mayor precio <i class="fa-solid fa-arrow-up-wide-short"></i></button>
+    <button id="orden-relevancia" >Relevante <i class="fa-solid fa-fire"></i></button>
+  </div>
+
+<div id="buscador-y-filtro">
   <!-- seccion desafiate-entrega2 -->
   <input type="search" id="buscador-productos" class="filtros-num-name" placeholder="Buscar productos">
 
   <!-- Agregar los elementos para los filtros de precio -->
-  <div>
-    <input type="number" id="precio-min" class="filtros-num-name"  placeholder="Filtrar por precio en U$S"="decimal" pattern="[0-9]*" step="1">
+  <div id="filtro-precio">
+    <label for="precio-min">Precio</label>
+    <input type="number" id="precio-min" class="filtros-num-name"  placeholder="Min." inputmode="decimal" pattern="[0-9]*" step="1">
+    <input type="number" id="precio-max" class="filtros-num-name"  placeholder="Máx." inputmode="decimal" pattern="[0-9]*" step="1">
+    <div class="botones">
+      <button id="aplicar-filtro">Filtrar</button><button id="limpiar">Limpiar</button>
+    </div>
   </div>
-  <div class="botones">
-    <button id="aplicar-filtro">Aplicar Filtro</button>
-  </div>
-
-  <!-- Agregar los botones de orden -->
-  <div class="botones">
-    <button id="orden-precio-asc" >Precio de menor a mayor <i class="fa-solid fa-arrow-down-wide-short"></i></button>
-    <button id="orden-precio-desc" >Precio de mayor a menor <i class="fa-solid fa-arrow-up-wide-short"></i></button>
-    <button id="orden-relevancia" >Productos mas relevantes <i class="fa-solid fa-fire"></i></button>
-  </div>
+</div> 
+  
     <div class="container-de-productos"></div>
   </main>
   <footer class="text-muted">
