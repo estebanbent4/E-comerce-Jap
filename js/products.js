@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function (){  
+document.addEventListener("DOMContentLoaded", async function () {
   // function ()   estaba en lugar de async cunction 
 
   // cargamos el catID del local store (pauta 2 de la entrega 2)
@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", async function (){
   // creo una constante para traer el elemento del HTML donde quiero que aparezca la lista de productos
   const containerDeProductos = document.querySelector(".pb-5.container .container-de-productos");
 
-   // creo una constante para traer del HTML el botón "limpiar"
-   const botonLimpiar = document.querySelector("#limpiar");
- 
+  // creo una constante para traer del HTML el botón "limpiar"
+  const botonLimpiar = document.querySelector("#limpiar");
+
   // creo una constante para traer el elemento del HTML que tengo que eliminar (alerta de función en desarrollo)
   const alert = document.querySelector(".pb-5.container .alert.alert-danger.text-center");
 
@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", async function (){
   const precioMaxInput = document.getElementById("precio-max");
   const aplicarFiltroBtn = document.getElementById("aplicar-filtro");
   const ordenRelevanciaBtn = document.getElementById("orden-relevancia");
-  const ordenarDesc =  document.getElementById("orden-precio-desc")
-  const ordenarAsc =  document.getElementById("orden-precio-asc")
+  const ordenarDesc = document.getElementById("orden-precio-desc")
+  const ordenarAsc = document.getElementById("orden-precio-asc")
 
   let originalData; // Almacenar los datos originales
   /*
@@ -33,11 +33,16 @@ document.addEventListener("DOMContentLoaded", async function (){
   */
 
 
-   // Función para el botón limpiar, limpia los campos de input
-   botonLimpiar.addEventListener("click", function () {
+  // Función para el botón limpiar, limpia los campos de input
+  botonLimpiar.addEventListener("click", function () {
     document.querySelector("#precio-min").value = "";
     document.querySelector("#precio-max").value = "";
-});
+
+    //funcionalidad para restablecer los productos
+    containerDeProductos.innerHTML = "";
+    showData({ catName: originalData.catName, products: originalData.products });
+
+  });
 
   const buscadorInput = document.getElementById("buscador-productos");
 
@@ -47,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async function (){
     const searchText = buscadorInput.value.toLowerCase(); // Obtiene el valor del campo de búsqueda y lo convierte a minúsculas.
 
     const productosFiltrados = originalData.products.filter(producto => {
-      const titulo = producto.name.toLowerCase(); 
+      const titulo = producto.name.toLowerCase();
       const descripcion = producto.description.toLowerCase();
       return titulo.includes(searchText) || descripcion.includes(searchText);
     });
@@ -56,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async function (){
     containerDeProductos.innerHTML = "";
     showData({ catName: originalData.catName, products: productosFiltrados });
   });
-  
+
 
   aplicarFiltroBtn.addEventListener("click", function () {
     const precioMin = parseFloat(precioMinInput.value);
@@ -64,18 +69,18 @@ document.addEventListener("DOMContentLoaded", async function (){
 
     // isNaN significa isNotaNumber, es decir, verifica que el dato ingresado sea un numero
     if (isNaN(precioMin)
-      || isNaN(precioMax) 
-      || precioMinInput.value.trim() === "" 
+      || isNaN(precioMax)
+      || precioMinInput.value.trim() === ""
       || precioMaxInput.value.trim() === ""
-     // || precioMin>precioMax
-      ){
-       //Si no cumplen con los requisitos, se muestra una alerta usando window.alert.
+      // || precioMin>precioMax
+    ) {
+      //Si no cumplen con los requisitos, se muestra una alerta usando window.alert.
       window.alert("Por favor, ingresa valores numéricos en ambos campos de precio.");
     } else {
       const productosFiltrados = originalData.products.filter(producto => {
         return producto.cost >= precioMin && producto.cost <= precioMax;
       });
-  
+
       // Limpia el contenedor de productos y muestra los productos filtrados
       containerDeProductos.innerHTML = "";
       showData({ catName: originalData.catName, products: productosFiltrados });
@@ -99,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async function (){
     });
     // Limpia el contenedor de productos y muestra los productos ordenados
     containerDeProductos.innerHTML = "";
-    showData({ catName: originalData.catName, products: productosOrdenados});
+    showData({ catName: originalData.catName, products: productosOrdenados });
   });
 
   ordenarAsc.addEventListener("click", function () {
@@ -108,7 +113,7 @@ document.addEventListener("DOMContentLoaded", async function (){
     });
     // Limpia el contenedor de productos y muestra los productos ordenados
     containerDeProductos.innerHTML = "";
-    showData({ catName: originalData.catName, products: productosOrdenados});
+    showData({ catName: originalData.catName, products: productosOrdenados });
   });
 
   ordenarDesc.addEventListener("click", function () {
@@ -117,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async function (){
     });
     // Limpia el contenedor de productos y muestra los productos ordenados
     containerDeProductos.innerHTML = "";
-    showData({ catName: originalData.catName, products: productosOrdenados});
+    showData({ catName: originalData.catName, products: productosOrdenados });
   });
 
   //FUNCIÓN PARA MOSTRAR LA INFO
@@ -134,9 +139,9 @@ document.addEventListener("DOMContentLoaded", async function (){
         <br> <hr>
       `;
     }
-    
+
     //container.innerHTML += `<br> <h1> Productos </h1> <br> <h4> Verás aquí todos los productos de la categoría ${catName} </h4> <br> <hr>`
-    
+
     // El for...of itera sobre los elementos del arreglo
     for (const item of dataArray.products) {
 
@@ -164,24 +169,24 @@ document.addEventListener("DOMContentLoaded", async function (){
       // En las siguientes líneas agregamos los elementos creados a los container individuales (containerParaProducto)
       containerParaProducto.appendChild(imagenDelProducto);
       containerParaProducto.appendChild(datosDelProducto);
-    
+
       // En esta línea agregamos los containers individuales de los productos al container general de productos
       containerDeProductos.appendChild(containerParaProducto);
     }
   }
 
   const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`
-    //FUNCIÓN PARA TRAER LA INFO DE LA API
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-  
-      alert.remove();
-      originalData = data; // Almacenar los datos originales
-      showData(data);
-    } catch (error) {
-      console.error("Error trayendo:", error);
-    }
+  //FUNCIÓN PARA TRAER LA INFO DE LA API
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    alert.remove();
+    originalData = data; // Almacenar los datos originales
+    showData(data);
+  } catch (error) {
+    console.error("Error trayendo:", error);
+  }
   // //FUNCIÓN PARA TRAER LA INFO DE LA API
   // fetch(url)
   //   .then(response => response.json())
