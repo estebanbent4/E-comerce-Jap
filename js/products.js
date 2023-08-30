@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", async function (){
   // creo una constante para traer el elemento del HTML donde quiero que aparezca la lista de productos
   const containerDeProductos = document.querySelector(".pb-5.container .container-de-productos");
 
+   // creo una constante para traer del HTML el botón "limpiar"
+   const botonLimpiar = document.querySelector("#limpiar");
+ 
   // creo una constante para traer el elemento del HTML que tengo que eliminar (alerta de función en desarrollo)
   const alert = document.querySelector(".pb-5.container .alert.alert-danger.text-center");
 
@@ -29,6 +32,12 @@ document.addEventListener("DOMContentLoaded", async function (){
   sin afectar los datos originales. De esta manera, siempre puedes volver a la configuración original si es necesario.
   */
 
+
+   // Función para el botón limpiar, limpia los campos de input
+   botonLimpiar.addEventListener("click", function () {
+    document.querySelector("#precio-min").value = "";
+    document.querySelector("#precio-max").value = "";
+});
 
   const buscadorInput = document.getElementById("buscador-productos");
 
