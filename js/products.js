@@ -180,8 +180,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   try {
     const response = await fetch(url);
     const data = await response.json();
-
-    alert.remove();
     originalData = data; // Almacenar los datos originales
     showData(data);
   } catch (error) {
