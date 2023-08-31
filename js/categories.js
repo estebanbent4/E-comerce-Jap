@@ -119,6 +119,26 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
+    const buscadorInput = document.getElementById("buscadorInput");
+    const containerDeCategories = document.getElementById("cat-list-container");
+
+
+  //Aquí se agrega un evento que escucha cambios en el campo de búsqueda(buscadorInput) cada vez que el usuario ingresa texto en él.  
+  /* buscadorInput.addEventListener("input", function () {
+    const searchText = buscadorInput.value.toLowerCase(); // Obtiene el valor del campo de búsqueda y lo convierte a minúsculas.
+
+    const categoriesFiltrados = currentCategoriesArray.filter(category => {
+        const titulo = category.name.toLowerCase();
+        const descripcion = categorie.description.toLowerCase();
+        return titulo.includes(searchText) || descripcion.includes(searchText);
+      });
+  
+      // Limpia el contenedor de productos y muestra los productos filtrados
+      containerDeCategories.innerHTML = "";
+      showCategoriesList({ currentCategoriesArray, categories: categoriesFiltrados });
+    });*/
+
+
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
@@ -142,3 +162,4 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
