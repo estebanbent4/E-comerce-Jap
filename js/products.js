@@ -144,11 +144,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // El for...of itera sobre los elementos del arreglo
     for (const item of dataArray.products) {
+      
 
       // En la siguiente línea se crea un elemento div que sirva como contenedor para cada producto
       const containerParaProducto = document.createElement("div");
+      
       // Acá se le agrega la clase datos-del-producto al elemento creado
       containerParaProducto.classList.add("container-para-producto");
+      
 
       // En la siguiente línea se crea un elemento img que sirva para traer las imágenes de cada producto
       const imagenDelProducto = document.createElement("img");
@@ -172,6 +175,49 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       // En esta línea agregamos los containers individuales de los productos al container general de productos
       containerDeProductos.appendChild(containerParaProducto);
+      for (const item of dataArray.products) {
+        // Crear un contenedor para el producto
+        const containerParaProducto = document.createElement("div");
+      
+        // Crear un enlace <a> para el producto
+        const enlaceProducto = document.createElement("a");
+      
+        const clasesLinks = enlaceProducto.classList.add("texto-destacado")
+        // Establecer la URL del enlace usando la propiedad item.link o cualquier otra propiedad que contenga el enlace del producto
+        enlaceProducto.href = "product-info.html"; // Asumiendo que item.link contiene la URL
+      
+        // Agregar los elementos al enlace (imagen y datos)
+        enlaceProducto.appendChild(imagenDelProducto);
+        enlaceProducto.appendChild(datosDelProducto);
+      
+        // Agregar el enlace al contenedor de producto
+        containerParaProducto.appendChild(enlaceProducto);
+      
+        // Agregar el contenedor del producto al contenedor general de productos
+        containerDeProductos.appendChild(containerParaProducto);
+        
+        enlaceProducto.addEventListener("click", function () {
+          // Guarda el ID del producto en el localStorage
+          localStorage.setItem("productoID", item.id);
+          
+        });
+  
+      
+      }
+      // Recuperar el ID del producto seleccionado
+const productoID = localStorage.getItem("productoID");
+
+// Verificar si el productoID existe en el localStorage
+if (productoID) {
+  // El productoID está disponible en el localStorage, puedes usarlo como sea necesario
+  console.log("ID del producto seleccionado:", productoID);
+
+  // Aquí puedes realizar acciones adicionales según el ID del producto
+} else {
+  // El productoID no está en el localStorage o es nulo
+  console.log("No se ha seleccionado ningún producto.");
+}
+      
     }
   }
 
