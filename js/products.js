@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   //FUNCIÓN PARA MOSTRAR LA INFO
   function showData(dataArray, includeCategoryInfo = true) {
     const catName = dataArray.catName;
-    console.log(dataArray)
+    //console.log(dataArray)
 
     // se repetia el siguiente texto 
     if (includeCategoryInfo) {
@@ -178,9 +178,9 @@ document.addEventListener("DOMContentLoaded", async function () {
      containerParaProducto.addEventListener("click", function () {
     // Guardar el identificador del producto en el almacenamiento local
      localStorage.setItem("selectedProductID", item.id);
-      console.log( "product id guardado: " + item.id )
+      console.log( item.id );
     // Redirigir a la página de detalles del producto
-      window.location.href = "product-info.html";
+    window.location.href = "product-info.html";
   });
     }
   }
