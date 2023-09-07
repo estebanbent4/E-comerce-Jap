@@ -173,14 +173,15 @@ document.addEventListener("DOMContentLoaded", async function () {
       // En esta línea agregamos los containers individuales de los productos al container general de productos
       containerDeProductos.appendChild(containerParaProducto);
 
-      //pauta 1 entrega3
-       // En el siguiente bloque, agregamos el evento click a cada contenedor de producto
-     containerParaProducto.addEventListener("click", function () {
+
+    //pauta 1 entrega3
+   // En el siguiente bloque, agregamos el evento click a cada contenedor de producto
+    containerParaProducto.addEventListener("click", function () {
     // Guardar el identificador del producto en el almacenamiento local
-     localStorage.setItem("selectedProductID", item.id);
-      console.log( item.id );
+     localStorage.setItem("ProductoID", item.id);
+      console.log("ProductoID: ", item.id );
     // Redirigir a la página de detalles del producto
-    window.location.href = "product-info.html";
+     window.location.href = "product-info.html";
   });
     }
   }
