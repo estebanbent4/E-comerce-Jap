@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   //FUNCIÓN PARA MOSTRAR LA INFO
   function showData(dataArray, includeCategoryInfo = true) {
     const catName = dataArray.catName;
-    console.log(dataArray)
+    //console.log(dataArray)
 
     // se repetia el siguiente texto 
     if (includeCategoryInfo) {
@@ -164,14 +164,25 @@ document.addEventListener("DOMContentLoaded", async function () {
       datosDelProducto.innerHTML += `
       <span class="texto-destacado"> ${item.name} - ${item.currency} ${item.cost} </span> <span class="vendidos"> ${item.soldCount} vendidos </span>
       <br> ${item.description}
-    `;
-
+    `
+    ;
       // En las siguientes líneas agregamos los elementos creados a los container individuales (containerParaProducto)
       containerParaProducto.appendChild(imagenDelProducto);
       containerParaProducto.appendChild(datosDelProducto);
 
       // En esta línea agregamos los containers individuales de los productos al container general de productos
       containerDeProductos.appendChild(containerParaProducto);
+
+
+    //pauta 1 entrega3
+   // En el siguiente bloque, agregamos el evento click a cada contenedor de producto
+    containerParaProducto.addEventListener("click", function () {
+    // Guardar el identificador del producto en el almacenamiento local
+     localStorage.setItem("ProductoID", item.id);
+      console.log("ProductoID: ", item.id );
+    // Redirigir a la página de detalles del producto
+     window.location.href = "product-info.html";
+  });
     }
   }
 
