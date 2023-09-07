@@ -15,6 +15,11 @@
     color: #007bff; /* Color de precio personalizable */
     margin-bottom: 20px;
   }
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Esto crea columnas automáticas de al menos 200px de ancho */
+    gap: 10px; /* Espacio entre las imágenes */
+  }
   
   .product-image {
     max-width: 100%;
