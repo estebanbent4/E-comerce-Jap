@@ -13,6 +13,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productComments = document.getElementById("product-comments");
 
     function showDataProduct(dataArrayProduct) {
+        /**
+         *        productName.innerHTML = dataArrayProduct.name
+        productPrice.innerHTML = `<hr> <span class="texto-negrita"> Precio </span> <br> ${dataArrayProduct.currency} ${dataArrayProduct.cost}`;
+        productDescription.innerHTML = `<span class="texto-negrita"> Descripción </span> <br> ${dataArrayProduct.description}`;
+        productImages.innerHTML = `<span class="texto-negrita"> Imágenes ilustrativas </span> <br> `
+         */
         productName.innerHTML = dataArrayProduct.name;
         productDescription.innerHTML = dataArrayProduct.description;
         productPrice.innerHTML = dataArrayProduct.cost;
