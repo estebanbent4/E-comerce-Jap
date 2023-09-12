@@ -8,12 +8,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productDescription = document.getElementById("product-description");
     const productPrice = document.getElementById("product-price");
     const productImages = document.getElementById("product-images");
+    const divImages = document.getElementById("div-images");
+
     const productComments = document.getElementById("product-comments");
 
     function showDataProduct(dataArrayProduct) {
-        productName.innerHTML = dataArrayProduct.name;
-        productDescription.innerHTML = dataArrayProduct.description;
-        productPrice.innerHTML = dataArrayProduct.cost;
+        productName.innerHTML = dataArrayProduct.name
+        productPrice.innerHTML = `<hr> <span class="texto-negrita"> Precio </span> <br> ${dataArrayProduct.currency} ${dataArrayProduct.cost}`;
+        productDescription.innerHTML = `<span class="texto-negrita"> Descripción </span> <br> ${dataArrayProduct.description}`;
+        productImages.innerHTML = `<span class="texto-negrita"> Imágenes ilustrativas </span> <br> `
         for (const item of dataArrayProduct.images) {
 
             const imagenDelProducto = document.createElement("img");

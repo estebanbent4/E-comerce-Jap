@@ -1,27 +1,5 @@
 /* Estilos para la información del producto */
 #product-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  #product-description {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  #product-price {
-    font-size: 18px;
-    color: #007bff; /* Color de precio personalizable */
-    margin-bottom: 20px;
-  }
-  
-  .product-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-  }
-  
   /* Estilos para los comentarios */
   .comment {
     border: 1px solid #ddd;
@@ -38,3 +16,41 @@
     font-weight: bold;
   }
   
+  font-family: 'Verdana', serif !important;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#product-price,
+#product-description,
+#product-images {
+  font-size: 18px;
+}
+
+.texto-negrita {
+  font-weight: bold;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los comentarios */
+.comment {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  /* Color de fondo personalizable */
+}
+
+.comment p {
+  margin: 5px 0;
+}
+
+.comment p:first-child {
+  font-weight: bold;
+}
