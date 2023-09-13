@@ -1,30 +1,21 @@
 document.addEventListener("DOMContentLoaded", async function () {
-
     // Cargamos el id del producto desde el local storage
     const productID = localStorage.getItem("ProductoID");
-
-    // Traemos los elementos del HTML 
+    const user = localStorage.getItem("username")
+    // Traemos los elementos del HTML
     const productName = document.getElementById("product-name");
     const productDescription = document.getElementById("product-description");
     const productPrice = document.getElementById("product-price");
     const productImages = document.getElementById("product-images");
     const divImages = document.getElementById("div-images");
-
-    const productComments = document.getElementById("product-comments");
+    const comentariosAnteriores = document.getElementById("comentariosAnteriores");
 
     function showDataProduct(dataArrayProduct) {
-        /**
-         *        productName.innerHTML = dataArrayProduct.name
-        productPrice.innerHTML = `<hr> <span class="texto-negrita"> Precio </span> <br> ${dataArrayProduct.currency} ${dataArrayProduct.cost}`;
-        productDescription.innerHTML = `<span class="texto-negrita"> Descripción </span> <br> ${dataArrayProduct.description}`;
-        productImages.innerHTML = `<span class="texto-negrita"> Imágenes ilustrativas </span> <br> `
-         */
         productName.innerHTML = dataArrayProduct.name;
         productDescription.innerHTML = dataArrayProduct.description;
-        productPrice.innerHTML = dataArrayProduct.cost;
+        productPrice.innerHTML =`Precio: ${dataArrayProduct.cost}`;
 
         for (const item of dataArrayProduct.images) {
-
             const imagenDelProducto = document.createElement("img");
             imagenDelProducto.src = item;
             imagenDelProducto.alt = "Imagen del producto";
@@ -33,23 +24,20 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
     function showComents(dataComents) {
-
+        dataComents.reverse(); // Invierte el orden de los comentarios para agregar los nuevos al principio
         dataComents.forEach(comment => {
             const commentDiv = document.createElement('div');
-
-            // Agrega contenido HTML al div del comentario usando los datos del JSON.
+            commentDiv.className = "comentario";
+    
             commentDiv.innerHTML = `
-                <h3>${comment.user} - ${comment.dateTime} - Calificación: ${comment.score}</h3>
-               
+                <h3>${comment.user} - ${comment.dateTime} - Calificación: ${generarEstrellas(comment.score)}</h3>
                 <p>${comment.description}</p>
-                
             `;
-            // <p>Calificación: ${comment.score}</p>
-            //<p>Fecha y Hora: ${comment.dateTime}</p>
-            // Agrega el div del comentario al contenedor 'productComments'.
-            productComments.appendChild(commentDiv);
+    
+            comentariosAnteriores.insertBefore(commentDiv, comentariosAnteriores.firstChild);
         });
     }
+
 
     try {
         const urlProduct = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
@@ -70,53 +58,58 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
         console.error("Error trayendo datos:", error);
     }
-})
 
-// Agregamos funcionalidad al botón de enviarComentario
-document.getElementById("enviarComentario").addEventListener("click", function () {
-    // Obtener la calificación desde el campo oculto
-    var puntos = document.getElementById("puntosComentario").value;
-    var comentario = document.getElementById("textoComentario").value;
+    document.getElementById("enviarComentario").addEventListener("click", function () {
+        // Obtener la calificación y comentario desde los campos de entrada
+        var puntos = document.getElementById("puntosComentario").value;
+        var comentario = document.getElementById("textoComentario").value;
 
-    // Validar que se haya ingresado un comentario
-    if (comentario.trim() === "") {
-        alert("Por favor, ingresa tu comentario.");
-    } else {
-        // Crear un elemento para mostrar el comentario y la calificación
-        var comentarioElement = document.createElement("div");
-        comentarioElement.className = "comentario";
-        comentarioElement.innerHTML = "<strong>Calificación:</strong> " + puntos + " " + generarEstrellas(puntos) +
-            "<br><strong>Comentario:</strong> " + comentario;
+        // Validar que se haya ingresado un comentario
+        if (comentario.trim() === "") {
+            alert("Por favor, ingresa tu comentario.");
+        } else {
+            // Crear un nuevo comentario y agregarlo al contenedor existente
+            var nuevoComentario = {
+                user: user, // Puedes personalizar el nombre de usuario
+                score: puntos,
+                description: comentario,
+                dateTime: formatDateTime(new Date()) // Fecha y hora actual formateada
 
-        // Agregar el comentario al contenedor de comentarios
-        var comentariosAnteriores = document.getElementById("comentariosAnteriores");
-        comentariosAnteriores.appendChild(comentarioElement);
+            };
 
-        // Limpiar los campos del formulario después de enviar
-        document.getElementById("puntosComentario").value = ""; // Restablecer la calificación a 3
-        document.getElementById("textoComentario").value = ""; // Limpiar el campo de texto
+            // Mostrar el nuevo comentario en el mismo formato que los existentes
+            showComents([nuevoComentario]);
 
-        // Mostrar una alerta (puedes comentar o eliminar esta línea si no deseas la alerta)
-        alert("¡Comentario enviado!");
 
-        // Opcional: puedes agregar lógica adicional aquí, como guardar los comentarios en una base de datos.
+            // Limpiar los campos del formulario después de enviar
+            document.getElementById("puntosComentario").value = ""; // Restablecer la calificación a 3
+            document.getElementById("textoComentario").value = ""; // Limpiar el campo de texto
+
+            // Mostrar una alerta (puedes comentar o eliminar esta línea si no deseas la alerta)
+            alert("¡Comentario enviado!");
+        }
+    });
+
+    // Función para generar estrellas según la calificación
+    function generarEstrellas(calificacion) {
+        var estrellasHTML = "";
+        for (var i = 1; i <= 5; i++) {
+            if (i <= calificacion) {
+                estrellasHTML += '<span class="fa fa-star checked"></span>';
+            } else {
+                estrellasHTML += '<span class="fa fa-star"></span>';
+            }
+        }
+        return estrellasHTML;
+    }
+    function formatDateTime(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Añade un 0 si es necesario
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+    
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 });
-
-// Función para generar estrellas según la calificación
-function generarEstrellas(calificacion) {
-    var estrellasHTML = "";
-    for (var i = 1; i <= 5; i++) {
-        if (i <= calificacion) {
-            estrellasHTML += '<span class="fa fa-star checked"></span>';
-        } else {
-            estrellasHTML += '<span class="fa fa-star"></span>';
-        }
-    }
-    return estrellasHTML;
-}
-
-
-
-
-

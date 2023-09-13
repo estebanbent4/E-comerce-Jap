@@ -1,33 +1,27 @@
 /* Estilos para la información del producto */
+
 #product-name {
-  /* Estilos para los comentarios */
-  .comment {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9; /* Color de fondo personalizable */
-  }
-  
-  .comment p {
-    margin: 5px 0;
-  }
-  
-  .comment p:first-child {
-    font-weight: bold;
-  }
-  
-  font-family: 'Verdana', serif !important;
-  margin: 20px;
+  margin: 30px;
   display: flex;
   justify-content: center;
 }
+h3{
+ font-size: 1.3rem;
+ font-weight: bold;
+}
+#product-price{
+ color: #0056b3;
 
-#product-price,
-#product-description,
-#product-images {
-  font-size: 18px;
 }
 
+#product-description,
+#product-images,
+#comentariosAnteriores {
+  font-size: 18px;
+}
+#comentariosAnteriores {
+  margin-top: 50px;
+}
 .texto-negrita {
   font-weight: bold;
 }
@@ -39,22 +33,10 @@
 }
 
 /* Estilos para los comentarios */
-.comment {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-  /* Color de fondo personalizable */
-}
 
-.comment p {
-  margin: 5px 0;
+h3::first-letter {
+  text-transform: uppercase;
 }
-
-.comment p:first-child {
-  font-weight: bold;
-}
-
 
 
 /* Estilos del formulario */
@@ -131,14 +113,15 @@ input[type="submit"]:hover {
 
 /* Estilos del botón de enviar */
 #enviarComentario {
-  background-color: #007BFF;
-  color: #fff;
+  background-color: orange;
+  color: black;
   border: none;
   padding: 10px 20px;
  }
+ 
 /* Estrellas blancas por defecto */
 
-.form-outline .fa-star {
+.fa-star {
   color: white;
   font-size: 24px;
   cursor: pointer;
@@ -147,6 +130,6 @@ input[type="submit"]:hover {
 
 
 /* Estrellas amarillas cuando se marcan */
-.form-outline .fa-star.checked {
+.fa-star.checked {
   color: orange;
 }
