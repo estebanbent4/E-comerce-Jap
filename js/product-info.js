@@ -72,6 +72,51 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 })
 
+// Agregamos funcionalidad al botón de enviarComentario
+document.getElementById("enviarComentario").addEventListener("click", function () {
+    // Obtener la calificación desde el campo oculto
+    var puntos = document.getElementById("puntosComentario").value;
+    var comentario = document.getElementById("textoComentario").value;
+
+    // Validar que se haya ingresado un comentario
+    if (comentario.trim() === "") {
+        alert("Por favor, ingresa tu comentario.");
+    } else {
+        // Crear un elemento para mostrar el comentario y la calificación
+        var comentarioElement = document.createElement("div");
+        comentarioElement.className = "comentario";
+        comentarioElement.innerHTML = "<strong>Calificación:</strong> " + puntos + " " + generarEstrellas(puntos) +
+            "<br><strong>Comentario:</strong> " + comentario;
+
+        // Agregar el comentario al contenedor de comentarios
+        var comentariosAnteriores = document.getElementById("comentariosAnteriores");
+        comentariosAnteriores.appendChild(comentarioElement);
+
+        // Limpiar los campos del formulario después de enviar
+        document.getElementById("puntosComentario").value = ""; // Restablecer la calificación a 3
+        document.getElementById("textoComentario").value = ""; // Limpiar el campo de texto
+
+        // Mostrar una alerta (puedes comentar o eliminar esta línea si no deseas la alerta)
+        alert("¡Comentario enviado!");
+
+        // Opcional: puedes agregar lógica adicional aquí, como guardar los comentarios en una base de datos.
+    }
+});
+
+// Función para generar estrellas según la calificación
+function generarEstrellas(calificacion) {
+    var estrellasHTML = "";
+    for (var i = 1; i <= 5; i++) {
+        if (i <= calificacion) {
+            estrellasHTML += '<span class="fa fa-star checked"></span>';
+        } else {
+            estrellasHTML += '<span class="fa fa-star"></span>';
+        }
+    }
+    return estrellasHTML;
+}
+
+
 
 
 
