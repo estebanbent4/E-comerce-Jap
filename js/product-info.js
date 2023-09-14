@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productDescription = document.getElementById("product-description");
     const productPrice = document.getElementById("product-price");
     const productImages = document.getElementById("product-images");
+
     const comentariosAnteriores = document.getElementById("comentariosAnteriores");
 
     function showDataProduct(dataArrayProduct) {
@@ -59,28 +60,26 @@ document.addEventListener("DOMContentLoaded", async function () {
         var puntos = document.getElementById("puntosComentario").value;
         var comentario = document.getElementById("textoComentario").value;
 
-        // Validar que no se haya ingresado un comentario vacio o una puntucion vacia o nula
-        if (comentario.trim() === "" || puntos == 0) {
+        // Validar que no se haya ingresado un comentario vacio 
+        if (comentario.trim() === "") {
             alert("Por favor ingrese un comentario válido.");
         } else {
             // Crear un nuevo comentario y agregarlo al contenedor existente
             var nuevoComentario = {
-                user: user, // Puedes personalizar el nombre de usuario
+                user: user, 
                 score: puntos,
                 description: comentario,
-                dateTime: formatDateTime(new Date()) // Fecha y hora actual formateada
+                dateTime: formatDateTime(new Date()) // Fecha y hora actual formateada con la funcion formatDateTime
 
             };
 
-            // Mostrar el nuevo comentario en el mismo formato que los existentes
+            // Mostrar el nuevo comentario en el mismo formato que los existentes usando la funcion showComments
             showComents([nuevoComentario]);
 
-
             // Limpiar los campos del formulario después de enviar
-            document.getElementById("puntosComentario").value = ""; // Restablecer la calificación a 3
+            document.getElementById("puntosComentario").value = 3; // Restablecer la calificación a 3
             document.getElementById("textoComentario").value = ""; // Limpiar el campo de texto
 
-            // Mostrar una alerta (puedes comentar o eliminar esta línea si no deseas la alerta)
             alert("¡Comentario enviado!");
         }
     });
@@ -97,10 +96,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         return estrellasHTML;
     }
-    // Funcion para formatear la fecha
+    // Funcion para formatear la fecha e igualarla al que se carga en los otros comentarios
     function formatDateTime(date) {
         const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Añade un 0 si es necesario
+        const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
