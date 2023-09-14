@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const urlProduct = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
         const urlComent = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
 
-        // Realizamos ambas solicitudes HTTP al mismo tiempo usando Promise.all
+        // Realizamos ambas solicitudes HTTP al mismo tiempo usando Promise.all .
         const [productResponse, commentsResponse] = await Promise.all([
             fetch(urlProduct),
             fetch(urlComent)
