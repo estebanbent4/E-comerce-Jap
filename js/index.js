@@ -38,16 +38,3 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
-/* 
-document.addEventListener("DOMContentLoaded", function() {
-    const categoryElements = document.querySelectorAll(".custom-card[id]");
-
-    categoryElements.forEach(function(element) {
-        element.addEventListener("click", function() {
-            const categoryName = element.getAttribute("id");
-            localStorage.setItem("catID", categoryName);
-            window.location = "products.html";
-        });
-    });
-});
- */
