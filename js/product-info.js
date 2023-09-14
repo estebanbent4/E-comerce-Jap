@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productDescription = document.getElementById("product-description");
     const productPrice = document.getElementById("product-price");
     const productImages = document.getElementById("product-images");
-    const divImages = document.getElementById("div-images");
     const comentariosAnteriores = document.getElementById("comentariosAnteriores");
 
     function showDataProduct(dataArrayProduct) {

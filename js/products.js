@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const catID = localStorage.getItem("catID");
-  const container = document.querySelector(".pb-5.container .container");
+ 
   const containerDeProductos = document.querySelector(".pb-5.container .container-de-productos");
   const botonLimpiar = document.querySelector("#limpiar");
-  const alert = document.querySelector(".pb-5.container .alert.alert-danger.text-center");
 
   //FUNCIONALIDAD PARA FILTROS:
   const precioMinInput = document.getElementById("precio-min");
