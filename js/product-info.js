@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         productName.innerHTML = dataArrayProduct.name;
         productDescription.innerHTML = dataArrayProduct.description;
         productPrice.innerHTML =`Precio: ${dataArrayProduct.cost}`;
-
         for (const item of dataArrayProduct.images) {
             const imagenDelProducto = document.createElement("img");
             imagenDelProducto.src = item;
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         dataComents.forEach(comment => {
             const commentDiv = document.createElement('div');
             commentDiv.className = "comentario";
-    
             commentDiv.innerHTML = `
                 <h3>${comment.user} - ${comment.dateTime} - Calificación: ${generarEstrellas(comment.score)}</h3>
                 <p>${comment.description}</p>
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             comentariosAnteriores.insertBefore(commentDiv, comentariosAnteriores.firstChild);
         });
     }
-
 
     try {
         const urlProduct = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
@@ -48,7 +45,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             fetch(urlProduct),
             fetch(urlComent)
         ]);
-
         const productData = await productResponse.json();
         const commentsData = await commentsResponse.json();
 
@@ -64,9 +60,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         var puntos = document.getElementById("puntosComentario").value;
         var comentario = document.getElementById("textoComentario").value;
 
-        // Validar que se haya ingresado un comentario
-        if (comentario.trim() === "") {
-            alert("Por favor, ingresa tu comentario.");
+        // Validar que no se haya ingresado un comentario vacio o una puntucion vacia o nula
+        if (comentario.trim() === "" || puntos == 0) {
+            alert("Por favor ingrese un comentario válido.");
         } else {
             // Crear un nuevo comentario y agregarlo al contenedor existente
             var nuevoComentario = {
@@ -102,6 +98,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         return estrellasHTML;
     }
+    // Funcion para formatear la fecha
     function formatDateTime(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); // Añade un 0 si es necesario
