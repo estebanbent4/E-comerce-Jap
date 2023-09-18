@@ -63,5 +63,5 @@ h3::first-letter {
 
 /* Estrellas amarillas cuando se marcan */
 .fa-star.checked {
-  color: orange;
+               color: orange;
 }
