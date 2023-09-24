@@ -65,3 +65,33 @@ h3::first-letter {
 .fa-star.checked {
                color: orange;
 }
+
+/* Estilo para productos relacionados */
+.carrusel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: space-between;
+}
+
+#productos-container {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px; 
+  transition: transform 0.3s ease-in-out;
+  align-items: flex-start; 
+}
+
+/* Estilo para cada producto */
+.producto {
+  text-align: center; 
+}
+
+/* Estilo para el nombre del producto */
+.producto h3 {
+  margin-bottom: 10px; 
+}
