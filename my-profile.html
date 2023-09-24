@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
+
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -46,8 +48,16 @@
           </li>
           <!-- li para el nombre de usuario-->
           <li class="nav-item" id="username-nav-item">
-            <span class="nav-link" id="user-username"></span>
-            <a class="nav-link" id="logout-link" href="#">Cerrar sesión</a>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="nav-link" id="user-username"></span>
+              </button>
+                  <ul class="dropdown-menu" id="dropBoton" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="" href="my-profile.html">Perfil</a><i class="fa-solid fa-user"></i></li>
+                    <li><a class="" href="cart.html">Carrito</a><i class="fa-solid fa-cart-shopping"></i></li>
+                    <li><a class="" id="logout-link" href="#">Cerrar sesión</a><i class="fa-solid fa-right-from-bracket"></i></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
