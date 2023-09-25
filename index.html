@@ -30,8 +30,27 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item" id="username-nav-item">
-            <span class="nav-link" id="user-username"></span>
-            <a class="nav-link" id="logout-link" href="#">Cerrar sesión</a>
+
+          
+            
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="nav-link" id="user-username"></span>
+              </button>
+                  <ul class="dropdown-menu" id="dropBoton" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="" href="my-profile.html">Perfil</a><i class="fa-solid fa-user"></i></li>
+                    <li><a class="" href="cart.html">Carrito</a><i class="fa-solid fa-cart-shopping"></i></li>
+                    <li><a class="" id="logout-link" href="#">Cerrar sesión</a><i class="fa-solid fa-right-from-bracket"></i>
+                      <div class="toggle-switch">
+                      <label class="switch-label">
+                        <input type="checkbox" class="checkbox">
+                        <span class="slider"></span>
+                      </label></div>
+                    </li>
+              </ul>
+            </div>
+          
+            
           </li>
         </ul>
       </div>
