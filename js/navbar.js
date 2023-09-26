@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <span class="nav-link" id="user-username">${nombreDeUsuario}</span>
                   </button>
                   <ul class="dropdown-menu" id="dropBoton" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="" href="my-profile.html">Perfil</a><i class="fa-solid fa-user"></i></li>
-                    <li><a class="" href="cart.html">Carrito</a><i class="fa-solid fa-cart-shopping"></i></li>
-                    <li><a class="" id="logout-link" href="login.html">Cerrar sesión</a><i class="fa-solid fa-right-from-bracket"></i></li>
+                    <li><a class="" href="my-profile.html">Perfil</a> <i class="fa-solid fa-user"></i></li>
+                    <li><a class="" href="cart.html">Carrito</a> <i class="fa-solid fa-cart-shopping"></i></li>
+                    <li><a class="" id="logout-link" href="login.html">Cerrar sesión</a>  <i class="fa-solid fa-right-from-bracket"></i></li>
                   </ul>
                 </div>
               </li>

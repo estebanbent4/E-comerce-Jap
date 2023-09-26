@@ -9,13 +9,10 @@
   font-weight: bold;
 }
 
-#user-username{
+#user-username {
   font-size: 1.05rem;
-  color:orange;
-}
-
-nav a {
-  text-decoration: none;
+  color: orange;
+  margin-right: 10px;
 }
 
 .bd-placeholder-img {
@@ -190,33 +187,91 @@ a.custom-card:hover {
   color: orange;
 }
 
-#category-info h1, h4 { 
-  display: flex; /* Convertimos el título de la página en un texto flexible */
-  justify-content: center; /* Centramos el texto horizontalmente */
+#category-info h1,
+h4 {
+  display: flex;
+  /* Convertimos el título de la página en un texto flexible */
+  justify-content: center;
+  /* Centramos el texto horizontalmente */
 }
 
-.imagen-del-producto{
-  max-width: 30%; /* Establecemos un ancho máximo para laS imágenes */
-  border: 1px solid #ccc9c9; /* Les ponemos un borde */
-  margin: 10px; /* Establecemos un margen para separar las imágenes del contenedor donde se encuentran */
+.imagen-del-producto {
+  max-width: 30%;
+  /* Establecemos un ancho máximo para laS imágenes */
+  border: 1px solid #ccc9c9;
+  /* Les ponemos un borde */
+  margin: 10px;
+  /* Establecemos un margen para separar las imágenes del contenedor donde se encuentran */
 }
 
 .container-para-producto {
-  border: 1px solid rgb(252, 214, 181); /* Ponemos un borde a los contenedores de los productos */
-  display: flex; /* Convertimos el contenedor en un contenedor flexible */
+  border: 1px solid rgb(252, 214, 181);
+  /* Ponemos un borde a los contenedores de los productos */
+  display: flex;
+  /* Convertimos el contenedor en un contenedor flexible */
 }
 
 .datos-del-producto {
-  padding: 10px; /* Establecemos un padding para que el texto no quede tan pegado al borde del contenedor */  
-  width: 100%; /* Ajustamos el ancho para que ocupe todo el espacio del container donde se ubica */
+  padding: 10px;
+  /* Establecemos un padding para que el texto no quede tan pegado al borde del contenedor */
+  width: 100%;
+  /* Ajustamos el ancho para que ocupe todo el espacio del container donde se ubica */
 }
 
 .texto-destacado {
-  font-size: 150%; /* Ajustamos el tamaño de la fuente para destacar el nombre y precio del producto */
+  font-size: 150%;
+  /* Ajustamos el tamaño de la fuente para destacar el nombre y precio del producto */
 }
 
 .vendidos {
-  color: gray; /* Ajustamos el color de la fuente para que quede más clarito */
-  float: right; /* Alineamos para que aparezca a la derecha */
-  padding: 10px; /* Establecemos un padding para separar el texto del contenedor donde se encuentra */
+  color: gray;
+  /* Ajustamos el color de la fuente para que quede más clarito */
+  float: right;
+  /* Alineamos para que aparezca a la derecha */
+  padding: 10px;
+  /* Establecemos un padding para separar el texto del contenedor donde se encuentra */
+}
+
+/* ESTILO DE LA BARRA DE NAVEGACIÓN - ENTREGA 4 */
+
+#dropBoton * {
+  height: 40px;
+  transition: all .3s;
+  text-decoration: none;
+  color: #000000;
+  border-radius: 0.25rem;
+}
+
+.dropdown-menu {
+  background-color: rgb(255, 227, 203);
+}
+
+#dropBoton li:hover {
+  background-color: rgb(255, 119, 0);
+  color: whitesmoke;
+  transform: translateY(-5px);
+}
+
+#dropBoton a:hover {
+  color: whitesmoke;
+}
+
+#dropBoton li:last-child {
+  margin-bottom: -15px;
+}
+
+#dropBoton li:first-child {
+  margin-top: -5px;
+}
+
+#dropdownMenuButton1::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 17px;
+}
+
+#navbarNav .navbar-nav {
+  display: flex;
+  align-items: center;
 }
