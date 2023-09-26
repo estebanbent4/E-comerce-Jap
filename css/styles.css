@@ -341,7 +341,7 @@ h4 {
 
 
 .carousel-inner img {
-  max-width: 50%; /* Establece el ancho máximo al 100% para que las imágenes se ajusten al contenedor */
-  height: auto; /* Mantén la relación de aspecto original */
+  max-width: 50%; 
+  height: auto; 
 }
 

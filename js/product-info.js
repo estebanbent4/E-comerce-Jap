@@ -203,6 +203,6 @@ const carousel = document.querySelector("#product-images");
 // Inicializa el carrusel de Bootstrap con un intervalo de tiempo para cambiar automáticamente las imágenes
 const myCarousel = new bootstrap.Carousel(carousel, {
   interval: 2000, // Intervalo en milisegundos 
-  pause: "hover", // Pausa el carrusel cuando el cursor está sobre él (opcional)
+  pause: "hover", // Pausa el carrusel cuando el cursor está sobre él.
 });
 
