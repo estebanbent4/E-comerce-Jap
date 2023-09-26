@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     <li><a class="" href="my-profile.html">Perfil</a> <i class="fa-solid fa-user"></i></li>
                     <li><a class="" href="cart.html">Carrito</a> <i class="fa-solid fa-cart-shopping"></i></li>
                     <li><a class="" id="logout-link" href="login.html">Cerrar sesión</a>  <i class="fa-solid fa-right-from-bracket"></i></li>
+                    <li><div class="toggle-switch">
+                    <label class="switch-label">
+                      <input type="checkbox" class="checkbox">
+                      <span class="slider"></span>
+                    </label></div></li>
                   </ul>
                 </div>
               </li>
