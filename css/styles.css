@@ -275,3 +275,10 @@ h4 {
   display: flex;
   align-items: center;
 }
+
+
+.carousel-inner img {
+  max-width: 50%; /* Establece el ancho máximo al 100% para que las imágenes se ajusten al contenedor */
+  height: auto; /* Mantén la relación de aspecto original */
+}
+
