@@ -90,8 +90,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             imagenProducto.alt = producto.name;
 
             // Agregar el nombre y la imagen al enlace
-            enlaceProducto.appendChild(nombreProducto);
             enlaceProducto.appendChild(imagenProducto);
+            enlaceProducto.appendChild(nombreProducto);
+           
 
             // Agregar el enlace al div del producto
             productoDiv.appendChild(enlaceProducto);
