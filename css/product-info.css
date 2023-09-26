@@ -73,7 +73,7 @@ h3::first-letter {
 .carrusel {
   margin-top: 50px;
   margin-bottom: 20px;
-  width: 100%;
+  width: 95%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -86,16 +86,14 @@ h3::first-letter {
 #productos-container {
   margin-top: 50px;
   display: flex;
-  gap: 20px;
-  transition: transform 0.3s ease-in-out;
   align-items: flex-start;
   overflow-x: scroll; /* Agrega una barra de desplazamiento horizontal */
-  padding-bottom: 20px; /* Espacio para la barra de desplazamiento */
-  max-width: 100%; /* Asegura que el contenido no se desborde */
+  padding-bottom: 10px; /* Espacio para la barra de desplazamiento */
+  max-width: 95%; /* Asegura que el contenido no se desborde */
 }
 
 #productos-container img {
-  max-width: 150%; /* Asegura que las imágenes no superen el ancho del contenedor */
+  max-width: 100%; /* Asegura que las imágenes no superen el ancho del contenedor */
   max-height: 200px; /* Establece la altura máxima de las imágenes (ajusta según tus necesidades) */
 }
 
@@ -103,7 +101,7 @@ h3::first-letter {
 .producto {
   text-align: center;
   flex-shrink: 0; /* Evita que los productos se reduzcan en tamaño */
-  width: calc(33.33% - 20px); /* Establece el ancho de cada producto (ajusta según tus necesidades) */
+  width: calc(33.33% - 20px); /* Establece el ancho de cada producto) */
   margin-right: 20px; /* Espacio entre productos */
 }
 
