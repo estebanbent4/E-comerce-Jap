@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </nav>
     `;
   
-    // Agrega el menú de navegación al elemento con el ID "navbar-container"
+    // Agregaa el menú de navegación al elemento con el ID "navbar-container"
     const navbarContainer = document.getElementById("navbar-container");
     if (navbarContainer) {
       navbarContainer.innerHTML = navbar;
