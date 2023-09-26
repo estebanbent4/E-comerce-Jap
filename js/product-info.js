@@ -2,18 +2,22 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Cargamos el id del producto desde el local storage
     const productID = localStorage.getItem("ProductoID");
     const user = localStorage.getItem("username")
+    const catID = localStorage.getItem("catID");
+
     // Traemos los elementos del HTML
     const productName = document.getElementById("product-name");
     const productDescription = document.getElementById("product-description");
     const productPrice = document.getElementById("product-price");
     const productImages = document.getElementById("product-images");
-
     const comentariosAnteriores = document.getElementById("comentariosAnteriores");
+    const productosContainer = document.getElementById("productos-container");
 
-    function showDataProduct(dataArrayProduct) {
+
+
+/*     function showDataProduct(dataArrayProduct) {
         productName.innerHTML = dataArrayProduct.name;
         productDescription.innerHTML = dataArrayProduct.description;
-        productPrice.innerHTML =`Precio: ${dataArrayProduct.cost}`;
+        productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
         for (const item of dataArrayProduct.images) {
             const imagenDelProducto = document.createElement("img");
             imagenDelProducto.src = item;
@@ -21,7 +25,37 @@ document.addEventListener("DOMContentLoaded", async function () {
             imagenDelProducto.classList.add("imagen-del-producto");
             productImages.appendChild(imagenDelProducto);
         }
-    }
+    } */
+
+//NUEVA FUNCION MODIFICADA PARA APLICAR CARRUSEL
+
+    function showDataProduct(dataArrayProduct) {
+        productName.innerHTML = dataArrayProduct.name;
+        productDescription.innerHTML = dataArrayProduct.description;
+        productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
+        
+        const carouselInner = document.querySelector("#product-images .carousel-inner");
+        carouselInner.innerHTML = ''; // Limpiar cualquier contenido anterior en el carrusel
+      
+        dataArrayProduct.images.forEach((item, index) => {
+          const carouselItem = document.createElement("div");
+          carouselItem.classList.add("carousel-item");
+      
+          const imagenDelProducto = document.createElement("img");
+          imagenDelProducto.src = item;
+          imagenDelProducto.alt = "Imagen del producto";
+          imagenDelProducto.classList.add("d-block", "w-100");
+      
+          // Marcar el primer elemento como activo
+          if (index === 0) {
+            carouselItem.classList.add("active");
+          }
+      
+          carouselItem.appendChild(imagenDelProducto);
+          carouselInner.appendChild(carouselItem);
+        });
+      }
+      
     function showComents(dataComents) {
         dataComents.reverse(); // Invierte el orden de los comentarios para agregar los nuevos al principio
         dataComents.forEach(comment => {
@@ -31,26 +65,76 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <h3>${comment.user} - ${comment.dateTime} - Calificación: ${generarEstrellas(comment.score)}</h3>
                 <p>${comment.description}</p>
             `;
-    
+
             comentariosAnteriores.insertBefore(commentDiv, comentariosAnteriores.firstChild);
         });
     }
 
+    // Función para cargar y mostrar los productos relacionados, entrega 4
+    function showRelatedProducts(productosRelacionados) {
+        productosRelacionados.forEach(producto => {
+            const productoDiv = document.createElement("div");
+            productoDiv.classList.add("producto");
+
+            // Agregar un enlace que englobe tanto el nombre como la imagen del producto
+            const enlaceProducto = document.createElement("a");
+            enlaceProducto.href = `product-info.html?productID=${producto.id}`;
+
+            // Agregar el nombre del producto
+            const nombreProducto = document.createElement("h3");
+            nombreProducto.textContent = producto.name;
+
+            // Agregar la imagen del producto
+            const imagenProducto = document.createElement("img");
+            imagenProducto.src = producto.image;
+            imagenProducto.alt = producto.name;
+
+            // Agregar el nombre y la imagen al enlace
+            enlaceProducto.appendChild(nombreProducto);
+            enlaceProducto.appendChild(imagenProducto);
+
+            // Agregar el enlace al div del producto
+            productoDiv.appendChild(enlaceProducto);
+
+            // Agregar el div del producto al contenedor
+            productosContainer.appendChild(productoDiv);
+
+            // Establecer el ID del producto relacionado en el localStorage
+            enlaceProducto.addEventListener("click", function () {
+                localStorage.setItem("ProductoID", producto.id);
+            });
+        });
+    }
+    
     try {
         const urlProduct = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
         const urlComent = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
+        const urlCategoria = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
-        // Realizamos ambas solicitudes HTTP al mismo tiempo usando Promise.all .
-        const [productResponse, commentsResponse] = await Promise.all([
+        // Realizar las tres solicitudes HTTP al mismo tiempo usando Promise.all
+        const [productResponse, commentsResponse, categoriaResponse] = await Promise.all([
             fetch(urlProduct),
-            fetch(urlComent)
+            fetch(urlComent),
+            fetch(urlCategoria)
         ]);
+
         const productData = await productResponse.json();
         const commentsData = await commentsResponse.json();
+        const categoriaData = await categoriaResponse.json();
 
         // Llamamos a las funciones para mostrar los datos del producto y los comentarios.
         showDataProduct(productData);
         showComents(commentsData);
+
+        // Obtén la lista de productos de la categoría actual
+        const productosCategoriaActual = categoriaData.products;
+
+        // Filtra los productos relacionados excluyendo el producto actual
+        const productosRelacionados = productosCategoriaActual.filter(producto => producto.id !== parseInt(productID));
+
+        // Llamar a la función para mostrar los productos relacionados
+        showRelatedProducts(productosRelacionados);
+
     } catch (error) {
         console.error("Error trayendo datos:", error);
     }
@@ -66,7 +150,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         } else {
             // Crear un nuevo comentario y agregarlo al contenedor existente
             var nuevoComentario = {
-                user: user, 
+                user: user,
                 score: puntos,
                 description: comentario,
                 dateTime: formatDateTime(new Date()) // Fecha y hora actual formateada con la funcion formatDateTime
@@ -104,7 +188,20 @@ document.addEventListener("DOMContentLoaded", async function () {
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
         const seconds = String(date.getSeconds()).padStart(2, '0');
-    
+
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 });
+
+
+//Carrusel
+
+// Obtén la referencia al elemento del carrusel
+const carousel = document.querySelector("#product-images");
+
+// Inicializa el carrusel de Bootstrap con un intervalo de tiempo para cambiar automáticamente las imágenes
+const myCarousel = new bootstrap.Carousel(carousel, {
+  interval: 2000, // Intervalo en milisegundos 
+  pause: "hover", // Pausa el carrusel cuando el cursor está sobre él (opcional)
+});
+

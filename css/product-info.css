@@ -1,4 +1,5 @@
 /* Estilos para la información del producto */
+
 #product-name {
   margin: 30px;
   display: flex;
@@ -14,8 +15,7 @@ h3{
 }
 #product-description,
 #product-images,
-
-#comentariosAnteriores {
+#comentariosAnteriores{
   margin-top: 50px;
 }
 .texto-negrita {
@@ -32,6 +32,7 @@ h3{
 
 h3::first-letter {
   text-transform: uppercase;
+  
 }
 #comentariosAnteriores {
   font-size: 18px;
@@ -43,8 +44,14 @@ h3::first-letter {
   color: black;
   border: none;
   padding: 10px 20px;
+  transition: .3s;
  }
  
+ #enviarComentario:hover{
+  transform: translateY(-5px);
+  transition: .3s;
+  color: white;
+ }
 /* Estrellas blancas por defecto */
 .fa-star {
   color: white;
@@ -56,5 +63,35 @@ h3::first-letter {
 
 /* Estrellas amarillas cuando se marcan */
 .fa-star.checked {
-  color: orange;
+               color: orange;
+}
+
+/* Estilo para productos relacionados */
+.carrusel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: space-between;
+}
+
+#productos-container {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px; 
+  transition: transform 0.3s ease-in-out;
+  align-items: flex-start; 
+}
+
+/* Estilo para cada producto */
+.producto {
+  text-align: center; 
+}
+
+/* Estilo para el nombre del producto */
+.producto h3 {
+  margin-bottom: 10px; 
 }
