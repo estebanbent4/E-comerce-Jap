@@ -220,3 +220,11 @@ a.custom-card:hover {
   float: right; /* Alineamos para que aparezca a la derecha */
   padding: 10px; /* Establecemos un padding para separar el texto del contenedor donde se encuentra */
 }
+
+
+
+.carousel-inner img {
+  max-width: 50%; /* Establece el ancho máximo al 100% para que las imágenes se ajusten al contenedor */
+  height: auto; /* Mantén la relación de aspecto original */
+}
+

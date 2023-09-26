@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-    function showDataProduct(dataArrayProduct) {
+/*     function showDataProduct(dataArrayProduct) {
         productName.innerHTML = dataArrayProduct.name;
         productDescription.innerHTML = dataArrayProduct.description;
         productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
@@ -25,7 +25,37 @@ document.addEventListener("DOMContentLoaded", async function () {
             imagenDelProducto.classList.add("imagen-del-producto");
             productImages.appendChild(imagenDelProducto);
         }
-    }
+    } */
+
+//NUEVA FUNCION MODIFICADA PARA APLICAR CARRUSEL
+
+    function showDataProduct(dataArrayProduct) {
+        productName.innerHTML = dataArrayProduct.name;
+        productDescription.innerHTML = dataArrayProduct.description;
+        productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
+        
+        const carouselInner = document.querySelector("#product-images .carousel-inner");
+        carouselInner.innerHTML = ''; // Limpiar cualquier contenido anterior en el carrusel
+      
+        dataArrayProduct.images.forEach((item, index) => {
+          const carouselItem = document.createElement("div");
+          carouselItem.classList.add("carousel-item");
+      
+          const imagenDelProducto = document.createElement("img");
+          imagenDelProducto.src = item;
+          imagenDelProducto.alt = "Imagen del producto";
+          imagenDelProducto.classList.add("d-block", "w-100");
+      
+          // Marcar el primer elemento como activo
+          if (index === 0) {
+            carouselItem.classList.add("active");
+          }
+      
+          carouselItem.appendChild(imagenDelProducto);
+          carouselInner.appendChild(carouselItem);
+        });
+      }
+      
     function showComents(dataComents) {
         dataComents.reverse(); // Invierte el orden de los comentarios para agregar los nuevos al principio
         dataComents.forEach(comment => {
@@ -162,3 +192,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 });
+
+
+//Carrusel
+
+// Obtén la referencia al elemento del carrusel
+const carousel = document.querySelector("#product-images");
+
+// Inicializa el carrusel de Bootstrap con un intervalo de tiempo para cambiar automáticamente las imágenes
+const myCarousel = new bootstrap.Carousel(carousel, {
+  interval: 2000, // Intervalo en milisegundos 
+  pause: "hover", // Pausa el carrusel cuando el cursor está sobre él (opcional)
+});
+
