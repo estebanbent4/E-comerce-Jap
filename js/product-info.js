@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 document.addEventListener("DOMContentLoaded", async function () {
     // Cargamos el id del producto desde el local storage
     const productID = localStorage.getItem("ProductoID");
@@ -203,5 +204,36 @@ const carousel = document.querySelector("#product-images");
 const myCarousel = new bootstrap.Carousel(carousel, {
   interval: 2000, // Intervalo en milisegundos 
   pause: "hover", // Pausa el carrusel cuando el cursor está sobre él (opcional)
+=======
+var productInfo = {};
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            productInfo = resultObj.data;
+
+            showProductInfo();
+            showImagesProducts();
+        }
+    });
+
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            currentCommentsArray = resultObj.data;
+
+            showComments();
+        }
+    });
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj){ //Llamo al json PRODUCTOS_URL
+        if (resultObj.status === "ok") {
+            product = resultObj.data;
+
+            showRelatedProducts()
+        }
+    });
+
+
+>>>>>>> Stashed changes
 });
 
