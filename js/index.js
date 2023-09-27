@@ -37,4 +37,47 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 109);
         window.location = "products.html"
     });
+
+    // Función para cambiar entre modos y guardar la preferencia en localStorage
+function toggleDarkMode() {
+    const htmlElement = document.documentElement;
+    if (htmlElement.id === 'theme-light')
+   {
+      htmlElement.id = 'theme-dark';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      htmlElement.id = 'theme-light';
+      localStorage.setItem('theme', 'light');
+    }
+  }
+  
+  // Función para cargar la preferencia de tema desde localStorage al cargar la página
+  function loadThemePreference() {
+    const savedTheme = localStorage.getItem('theme');
+   
+   if (savedTheme === 'dark') {
+      document.documentElement.id = 'theme-dark';
+    } else {
+      document.documentElement.id = 'theme-light';
+    }
+  }
+  
+  // Función para cambiar entre modos y guardar la preferencia en localStorage
+  function toggleDarkMode() {
+    const htmlElement = document.documentElement;
+  
+    if (htmlElement.id === 'theme-light') {
+      htmlElement.id = 'theme-dark';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      htmlElement.id = 'theme-light';
+     
+  // Asigna el evento click al elemento que activa el cambio de modo
+  const toggleSwitch = document.querySelector('.toggle-switch');
+  toggleSwitch.addEventListener('click', toggleDarkMode);
+  
+  // Carga la preferencia de tema al cargar la página
+  window.addEventListener('DOMContentLoaded', loadThemePreference);
+    }
+}
 });
