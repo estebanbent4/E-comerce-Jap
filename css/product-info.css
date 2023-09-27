@@ -17,6 +17,7 @@ h3{
 #product-images,
 #comentariosAnteriores{
   margin-top: 50px;
+  font-size: 1rem;
 }
 .texto-negrita {
   font-weight: bold;
@@ -32,10 +33,6 @@ h3{
 
 h3::first-letter {
   text-transform: uppercase;
-  
-}
-#comentariosAnteriores {
-  font-size: 18px;
 }
 
 /* Estilos del botón de enviar */
@@ -94,14 +91,17 @@ h3::first-letter {
 
 #productos-container img {
   max-width: 100%; /* Asegura que las imágenes no superen el ancho del contenedor */
-  max-height: 200px; /* Establece la altura máxima de las imágenes (ajusta según tus necesidades) */
+  max-height: 300px; /* Establece la altura máxima de las imágenes */
 }
-
+#productos-container a{
+  font-size: 1rem;
+  text-decoration: none;
+}
 /* Estilo para cada producto */
 .producto {
   text-align: center;
   flex-shrink: 0; /* Evita que los productos se reduzcan en tamaño */
-  width: calc(33.33% - 20px); /* Establece el ancho de cada producto) */
-  margin-right: 20px; /* Espacio entre productos */
+  width: calc(33.33% - 10px); /* Establece el ancho de cada producto a un 33% del ancho de la pantalla, es decir, muestra maximo 3 productos y para ver mas debes mover el slider */
+  margin-right: 10px; /* Espacio entre productos */
 }
 

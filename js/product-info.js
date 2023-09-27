@@ -14,48 +14,48 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-/*     function showDataProduct(dataArrayProduct) {
-        productName.innerHTML = dataArrayProduct.name;
-        productDescription.innerHTML = dataArrayProduct.description;
-        productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
-        for (const item of dataArrayProduct.images) {
-            const imagenDelProducto = document.createElement("img");
-            imagenDelProducto.src = item;
-            imagenDelProducto.alt = "Imagen del producto";
-            imagenDelProducto.classList.add("imagen-del-producto");
-            productImages.appendChild(imagenDelProducto);
-        }
-    } */
+    /*     function showDataProduct(dataArrayProduct) {
+            productName.innerHTML = dataArrayProduct.name;
+            productDescription.innerHTML = dataArrayProduct.description;
+            productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
+            for (const item of dataArrayProduct.images) {
+                const imagenDelProducto = document.createElement("img");
+                imagenDelProducto.src = item;
+                imagenDelProducto.alt = "Imagen del producto";
+                imagenDelProducto.classList.add("imagen-del-producto");
+                productImages.appendChild(imagenDelProducto);
+            }
+        } */
 
-//NUEVA FUNCION MODIFICADA PARA APLICAR CARRUSEL
+    //NUEVA FUNCION MODIFICADA PARA APLICAR CARRUSEL
 
     function showDataProduct(dataArrayProduct) {
         productName.innerHTML = dataArrayProduct.name;
         productDescription.innerHTML = dataArrayProduct.description;
         productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
-        
+
         const carouselInner = document.querySelector("#product-images .carousel-inner");
         carouselInner.innerHTML = ''; // Limpiar cualquier contenido anterior en el carrusel
-      
+
         dataArrayProduct.images.forEach((item, index) => {
-          const carouselItem = document.createElement("div");
-          carouselItem.classList.add("carousel-item");
-      
-          const imagenDelProducto = document.createElement("img");
-          imagenDelProducto.src = item;
-          imagenDelProducto.alt = "Imagen del producto";
-          imagenDelProducto.classList.add("d-block", "w-100");
-      
-          // Marcar el primer elemento como activo
-          if (index === 0) {
-            carouselItem.classList.add("active");
-          }
-      
-          carouselItem.appendChild(imagenDelProducto);
-          carouselInner.appendChild(carouselItem);
+            const carouselItem = document.createElement("div");
+            carouselItem.classList.add("carousel-item");
+
+            const imagenDelProducto = document.createElement("img");
+            imagenDelProducto.src = item;
+            imagenDelProducto.alt = "Imagen del producto";
+            imagenDelProducto.classList.add("d-block", "w-100");
+
+            // Marcar el primer elemento como activo
+            if (index === 0) {
+                carouselItem.classList.add("active");
+            }
+
+            carouselItem.appendChild(imagenDelProducto);
+            carouselInner.appendChild(carouselItem);
         });
-      }
-      
+    }
+
     function showComents(dataComents) {
         dataComents.reverse(); // Invierte el orden de los comentarios para agregar los nuevos al principio
         dataComents.forEach(comment => {
@@ -70,43 +70,50 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    // Función para cargar y mostrar los productos relacionados, entrega 4
-    function showRelatedProducts(productosRelacionados) {
+    // Función para mostrar los productos relacionados, entrega 4
+function showRelatedProducts(productosRelacionados) {
+
+    // Si no hubiese productos relacionados, cambiamos el titulo por uno que dice "No hay productos relacionados"
+    const tituloProdRel = document.getElementById("h3-prod-rel");
+
+    if (productosRelacionados.length === 0) {
+        tituloProdRel.textContent = "No hay productos relacionados";
+    } else {
         productosRelacionados.forEach(producto => {
             const productoDiv = document.createElement("div");
             productoDiv.classList.add("producto");
 
-            // Agregar un enlace que englobe tanto el nombre como la imagen del producto
+            // Agregamos un enlace que englobe tanto el nombre como la imagen del producto
             const enlaceProducto = document.createElement("a");
             enlaceProducto.href = `product-info.html?productID=${producto.id}`;
 
-            // Agregar el nombre del producto
-            const nombreProducto = document.createElement("h3");
+            // Agregamos el nombre del producto
+            const nombreProducto = document.createElement("p");
             nombreProducto.textContent = producto.name;
 
-            // Agregar la imagen del producto
+            // Agregamos la imagen del producto
             const imagenProducto = document.createElement("img");
             imagenProducto.src = producto.image;
             imagenProducto.alt = producto.name;
 
-            // Agregar el nombre y la imagen al enlace
+            // Agregamos el nombre y la imagen al enlace
             enlaceProducto.appendChild(imagenProducto);
             enlaceProducto.appendChild(nombreProducto);
-           
 
-            // Agregar el enlace al div del producto
+            // Agregamos el enlace al div del producto
             productoDiv.appendChild(enlaceProducto);
 
-            // Agregar el div del producto al contenedor
+            // Agregamos el div del producto al contenedor
             productosContainer.appendChild(productoDiv);
 
-            // Establecer el ID del producto relacionado en el localStorage
+            // Establecemos el ID del producto relacionado en el localStorage
             enlaceProducto.addEventListener("click", function () {
                 localStorage.setItem("ProductoID", producto.id);
             });
         });
     }
-    
+}
+
     try {
         const urlProduct = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
         const urlComent = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
