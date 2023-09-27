@@ -353,3 +353,36 @@ border: 1px solid rgb(255, 140, 0);
   height: auto; 
 }
 
+
+/* Estilo para el contenedor del footer */
+#footer-div {
+  margin-top: 20px;
+ 
+  position: relative; /* Asegura que los elementos hijos estén posicionados relativamente a este contenedor */
+  display: flex;
+  flex-direction: column; /* Alinea los elementos verticalmente */
+  align-items: center; /* Centra verticalmente */
+
+}
+
+/* Estilo para las categorías en el footer*/
+#category-links-container {
+  position: absolute; /* Posición absoluta con respecto al contenedor del footer */
+  top: 0; /* Coloca las categorías en la parte superior del footer */
+  display: flex;
+  flex-wrap: wrap; /* Permite que las categorías se envuelvan a la siguiente línea si no caben en una sola fila */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  gap: 15px;
+}
+
+#category-links-container a:hover {
+  text-decoration: underline;
+}
+
+#category-links-container a {
+  text-decoration: none;
+  color: #000000;
+}
+
+
