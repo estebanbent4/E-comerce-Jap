@@ -37,4 +37,9 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 109);
         window.location = "products.html"
     });
+
+    
+
 });
+
+
