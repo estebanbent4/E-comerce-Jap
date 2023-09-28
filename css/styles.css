@@ -232,6 +232,9 @@ h4 {
   /* Establecemos un padding para separar el texto del contenedor donde se encuentra */
 }
 
+/* boton de dark mode */
+/* todas las confituraciones del mismo */
+
 .toggle-switch {
   position: relative;
   width: 5px;
@@ -240,8 +243,8 @@ h4 {
   --dark: #2c2c2c;
   --link: rgb(27, 129, 112);
   --link-hover: rgb(24, 94, 82);
-  left: 30px;
-  bottom: 8px;
+  left: 35px;
+  top: 10px;
 }
 
 .toggle-switch :hover {
@@ -271,10 +274,8 @@ h4 {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-
 .checkbox:checked ~ .slider {
   background-color: rgb(37, 36, 36);
-
 }
 
 .slider::before {
@@ -301,6 +302,9 @@ h4 {
   box-shadow: none;
 }
 
+  .darkactive{ 
+  background-color: #333 }
+
 
 /* ESTILO DE LA BARRA DE NAVEGACIÓN - ENTREGA 4 */
 
@@ -320,22 +324,15 @@ border: 1px solid rgb(255, 140, 0);
 
 .dropdown-menu {
   background-color: rgb(255, 227, 203);
-}
-
-#dropBoton li:hover {
-  
-  background-color: rgb(255, 119, 0);;
-  color: whitesmoke;
-  transform: translateY(-5px);
-  
-}
-
-#dropBoton a:hover {
-  color: whitesmoke;
+  height: 180px;
 }
 
 #dropBoton li:last-child {
   margin-bottom: -15px;
+}
+
+.hover:hover {
+  background-color: orange;
 }
 
 #dropBoton li:first-child {
