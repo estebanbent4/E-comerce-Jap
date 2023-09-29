@@ -50,13 +50,30 @@ document.addEventListener("DOMContentLoaded", function () {
       navbarContainer.innerHTML = navbar;
     }
     // funcion para cambiar el color de fondo de la pagina //
+
     const darkmode = document.getElementById('darkmode');
     const body = document.body;
-  
-    darkmode.addEventListener("click", () => {
-      body.classList.add("darkactive");
+    let status = false;
+    
+    // Verificar si el modo oscuro está habilitado en el almacenamiento local
+    const savedStatus = localStorage.getItem('status');
+    if (savedStatus === 'true') {
+        status = true;
+        body.classList.add('dark-mode'); // Agrega la clase 'dark-mode' si el modo oscuro está habilitado
+    }
+    
+    darkmode.addEventListener('change', function () {
+        // Invierte el estado y actualiza el almacenamiento local
+        status = !status;
+        localStorage.setItem('status', status);
+    
+        // Aplica o retira la clase 'dark-mode' según el estado
+        if (status) {
+            body.classList.add('dark-mode');
+        } else {
+            body.classList.remove('dark-mode');
+        }
     });
-
-
+    
   });
   
