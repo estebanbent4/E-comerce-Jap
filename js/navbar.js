@@ -77,3 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
   });
   
+// Selecciona todos los elementos <ul> en el documento
+// Selecciona el elemento <ul> que deseas modificar
+

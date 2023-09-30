@@ -306,7 +306,13 @@ h4 {
   background-color: #373737;
 color:white;
 }
+.navbar-nav a:not(#dropdownMenuButton1).nav-link:hover{
+  border-bottom: 4px solid orange;
+  transition: .1s;
+  color: orange;
   
+}
+
 
 /* ESTILO DE LA BARRA DE NAVEGACIÓN - ENTREGA 4 */
 
@@ -315,7 +321,6 @@ background-color: transparent;
 border: 1px solid rgb(255, 140, 0);
 
 }
-
 #dropBoton * {
   height: 40px;
   transition: all .3s;
