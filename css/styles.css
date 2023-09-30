@@ -239,7 +239,7 @@ h4 {
   position: relative;
   width: 5px;
   height: 8px;
-  --light: #bebebe;
+  --light: #ffffff;
   --dark: #2c2c2c;
   --link: rgb(27, 129, 112);
   --link-hover: rgb(24, 94, 82);
@@ -297,13 +297,21 @@ h4 {
   -webkit-transform: translateX(30px);
   -ms-transform: translateX(30px);
   transform: translateX(30px);
-  background-color: rgb(203, 203, 203);
+  background-color: rgb(255, 217, 0);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-  .darkactive{ 
-  background-color: #333 }
+  .dark-mode { 
+  background-color: #373737;
+color:white;
+}
+.navbar-nav a:not(#dropdownMenuButton1).nav-link:hover{
+  border-bottom: 4px solid orange;
+  transition: .1s;
+  color: orange;
+  
+}
 
 
 /* ESTILO DE LA BARRA DE NAVEGACIÓN - ENTREGA 4 */
@@ -313,7 +321,6 @@ background-color: transparent;
 border: 1px solid rgb(255, 140, 0);
 
 }
-
 #dropBoton * {
   height: 40px;
   transition: all .3s;

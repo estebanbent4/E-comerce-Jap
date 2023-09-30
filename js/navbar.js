@@ -50,13 +50,33 @@ document.addEventListener("DOMContentLoaded", function () {
       navbarContainer.innerHTML = navbar;
     }
     // funcion para cambiar el color de fondo de la pagina //
-    const darkmode = document.getElementById('darkmode');
-    const body = document.body;
-  
-    darkmode.addEventListener("click", () => {
-      body.classList.add("darkactive");
+
+    const darkmode = document.getElementById('darkmode'); // creamos una constante que toma el id del boton darkmode
+    const body = document.body; // guardamos en otra variable el body
+    let estadoDeDarkmode = false;
+    
+    // Verificar si el modo oscuro está habilitado en el almacenamiento local
+    const savedStatus = localStorage.getItem('EstadoDeDarkMode');
+    if (savedStatus === 'true') {
+        estadoDeDarkmode = true;
+        body.classList.add('dark-mode'); // Agrega la clase 'dark-mode' si el modo oscuro está habilitado
+    }
+    
+    darkmode.addEventListener('change', function () {
+        // Invierte el estado y actualiza el almacenamiento local
+        estadoDeDarkmode = !estadoDeDarkmode;
+        localStorage.setItem('estadoDarkMode', estadoDeDarkmode);
+    
+        // Aplica o retira la clase 'dark-mode' según el estado
+        if (estadoDeDarkmode) {
+            body.classList.add('dark-mode');
+        } else {
+            body.classList.remove('dark-mode');
+        }
     });
-
-
+    
   });
   
+// Selecciona todos los elementos <ul> en el documento
+// Selecciona el elemento <ul> que deseas modificar
+
