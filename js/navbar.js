@@ -53,22 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const darkmode = document.getElementById('darkmode'); // creamos una constante que toma el id del boton darkmode
     const body = document.body; // guardamos en otra variable el body
-    let estadoDeDarkmode = false;
+    let estadoDarkMode = false;
     
     // Verificar si el modo oscuro está habilitado en el almacenamiento local
-    const savedStatus = localStorage.getItem('EstadoDeDarkMode');
+    const savedStatus = localStorage.getItem('estadoDarkMode');
     if (savedStatus === 'true') {
-        estadoDeDarkmode = true;
+      estadoDarkMode = true;
         body.classList.add('dark-mode'); // Agrega la clase 'dark-mode' si el modo oscuro está habilitado
     }
     
     darkmode.addEventListener('change', function () {
         // Invierte el estado y actualiza el almacenamiento local
-        estadoDeDarkmode = !estadoDeDarkmode;
-        localStorage.setItem('estadoDarkMode', estadoDeDarkmode);
+        estadoDarkMode = !estadoDarkMode;
+        localStorage.setItem('estadoDarkMode', estadoDarkMode);
     
         // Aplica o retira la clase 'dark-mode' según el estado
-        if (estadoDeDarkmode) {
+        if (estadoDarkMode) {
             body.classList.add('dark-mode');
         } else {
             body.classList.remove('dark-mode');
