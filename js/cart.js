@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     const usuarioDePrueba = 25801;
 
+    const urlCarritoUsuario = `https://japceibal.github.io/emercado-api/user_cart/${usuarioDePrueba}.json`
     try {
-        const response = await fetch(CART_INFO_URL + usuarioDePrueba + ".json");
+        const response = await fetch(urlCarritoUsuario);
         const data = await response.json();
         showCartItems(data);
     } catch (error) {
