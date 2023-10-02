@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productImages = document.getElementById("product-images");
     const comentariosAnteriores = document.getElementById("comentariosAnteriores");
     const productosContainer = document.getElementById("productos-container");
+    const productCategory = document.getElementById("product-category");
+    const productSoldCount = document.getElementById("product-soldCount");
 
 
 
@@ -31,16 +33,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     function showDataProduct(dataArrayProduct) {
         productName.innerHTML = dataArrayProduct.name;
-        productDescription.innerHTML = dataArrayProduct.description;
+        productDescription.innerHTML = dataArrayProduct.description + dataArrayProduct.soldCount + dataArrayProduct.category;
+        productCategory.innerHTML = `Categoria: ${dataArrayProduct.category}`;
+        productSoldCount.innerHTML = `Productos vendidos: ${dataArrayProduct.soldCount}`;
         productPrice.innerHTML = `Precio: ${dataArrayProduct.cost}`;
-
         const carouselInner = document.querySelector("#product-images .carousel-inner");
         carouselInner.innerHTML = ''; // Limpiar cualquier contenido anterior en el carrusel
 
         dataArrayProduct.images.forEach((item, index) => {
             const carouselItem = document.createElement("div");
             carouselItem.classList.add("carousel-item");
-
             const imagenDelProducto = document.createElement("img");
             imagenDelProducto.src = item;
             imagenDelProducto.alt = "Imagen del producto";
