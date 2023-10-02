@@ -18,23 +18,29 @@
   <div id="navbar-container"></div>
   <main>
     <h1>Carrito de compras</h1>
+ 
     <table>
       <tr>
-        <th></th>
+          <th></th>
           <th>Nombre</th>
           <th>Costo</th>
           <th>Cantidad</th>
           <th>Subtotal</th>
+          <th></th> <!-- columna para el boton eiminar -->
       </tr>
-      <hr>
       <tr id="cartItem">
-        <td><img id="itemImage" src="" alt=""></td>
+          <td><img id="itemImage" src="" alt=""></td>
           <td id="itemName"></td>
           <td id="itemCost"></td>
           <td><input id="itemQuantity" type="number"></td>
           <td id="itemSubtotal"></td>
       </tr>
   </table>
+  
+  <div id="total-del-carrito">
+    <h4>Total del Carrito: <span id="total-amount">0</span></h4>
+  </div>
+
   </main>
   <footer><div id="footer-div"></div></footer>
   
