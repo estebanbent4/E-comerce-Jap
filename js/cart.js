@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const totalAmountElement = document.getElementById("total-amount");
     let totalDelCarrito = 0;
-    let cartItems = []; 
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     const usuarioDePrueba = 25801;
     const urlCarritoUsuario = `https://japceibal.github.io/emercado-api/user_cart/${usuarioDePrueba}.json`
@@ -21,11 +21,23 @@ document.addEventListener("DOMContentLoaded", async function () {
         totalAmountElement.textContent = totalDelCarrito;
     }
 
+    // Pauta 1
+    // Para agregar productos al carrito se debe llamar a showCartItems() con un array como parametro. 
+    // ejemplo para agregar al carrito: 
+    //const addButton = document.getElementById("agregarProductoBtn");
+    //addButton.addEventListener("click", function () {
+    // const nuevoProducto = {
+        // ...
+    //};
+    //let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    //cartItems.push(nuevoProducto);
+    //localStorage.setItem("cartItems", JSON.stringify(cartItems))
+     
+
     function showCartItems(cartItems) {
         const cartTableBody = document.getElementById("cartTableBody");
 
-        // Limpiar todas las filas existentes de la tabla
-        cartTableBody.innerHTML = "";
+        //cartTableBody.innerHTML = "";
 
         cartItems.forEach((cartItem) => {
             // Crear una nueva fila para el producto
@@ -46,6 +58,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const itemSubtotalElement = newRow.querySelector(".itemSubtotal");
             const deleteButton = newRow.querySelector(".btnEliminar");
 
+            // Pauta 3 
             function updateSubtotal() {
                 let newQuantity = parseInt(itemQuantityElement.value);
 
