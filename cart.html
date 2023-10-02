@@ -18,17 +18,22 @@
   <div id="navbar-container"></div>
   <main>
     <h1>Carrito de compras</h1>
-
-  <table id="cartTableBody">
-    <tr>
-      <th>Imagen</th>
-      <th>Nombre</th>
-      <th>Costo</th>
-      <th>Cantidad</th>
-      <th>Subtotal</th>
-      <th>Acciones</th> <!-- Esta columna es para los botones Eliminar -->
-    </tr>
-  </table>
+    <table>
+      <!-- Encabezados de las columnas -->
+      <tr>
+        <th></th>
+        <th>Nombre</th>
+        <th>Costo</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th></th> <!-- Esta columna es para los botones Eliminar -->
+      </tr>
+    
+      <!-- Cuerpo de la tabla (productos) -->
+      <tbody id="cartTableBody">
+        <!-- Las filas de productos se agregarán aquí dinámicamente con JavaScript -->
+      </tbody>
+    </table>
   <div id="total-del-carrito">
     <h4>Total del Carrito: <span id="total-amount">0</span></h4>
   </div>
