@@ -51,10 +51,10 @@
     }
 #filtro-precio label{
     display: none;
-
+}
     #category-links-container{
         display:flex ;
-        margin: -50px;
+        margin: -10px;
         width: 100%;
         
     }
@@ -64,12 +64,58 @@
         margin: 20px;
         
     }
+    .lead{
+        display:none;
+    
+    }
+    .card-text{
 
-}
+top: -30px;
+left: -20px;
+    }
 .container-de-productos{
     margin-top: 50px;
 }
-
-
+.list-group-item{
+    
+    position: relative;
+    left: 18px;
 }
+.list-group-item p {
+    display: none;
+}
+
+.mb-1{
+    font-size: 15px;
+    
+}
+#orden{
+    
+    margin-right: 45px;
+}
+
+#buscadorInput{
+    width: 100%;
+}
+#rangeFilterCountMax{
+    margin-top: 10px;
+}
+#rangeFilterCountMin{
+    margin-top: 10px;
+}
+
+.list-group{
+    width: 100%;
+    position: relative;
+    right: 20px;
+}
+.btn-primary{
+    position: relative;
+    top: 125px;
+    height: 50%;
+}
+}
+
+
+
 
