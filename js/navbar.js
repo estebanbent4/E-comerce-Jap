@@ -67,7 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
         estadoDarkMode = !estadoDarkMode;
         localStorage.setItem('estadoDarkMode', estadoDarkMode);
     
+
         // Aplica o retira la clase 'dark-mode' según el estado
+
+ 
+
         if (estadoDarkMode) {
             body.classList.add('dark-mode');
         } else {

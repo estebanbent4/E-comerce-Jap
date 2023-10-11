@@ -1,0 +1,75 @@
+
+@media (max-width: 768px) {
+    #imagen-principal {
+        display: none;
+    }
+    #orden-precio-asc, i{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        padding-left: 5px;
+    }
+    #orden-precio-desc, i{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+    }
+    #orden-relevancia, i{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+    }
+    #buscador-productos{
+       width: 100%;
+       margin-bottom: 20px;
+       margin-top: 20px;
+    }
+
+    #buscador-y-filtro{
+        display: flex;
+        flex-direction: column;
+    }
+    .botones{
+        display: flex;
+        margin-right: 8px;
+    }
+    #filtro-precio{
+        display: flex;
+        margin: auto;
+        align-items: center;
+        flex-direction: column;
+        width: 20px;
+    }
+    #precio-max{
+        margin-top: 10px;
+    }
+    #filtro-precio button{
+        margin-top: 10px;
+    }
+#filtro-precio label{
+    display: none;
+
+    #category-links-container{
+        display:flex ;
+        margin: -50px;
+        width: 100%;
+        
+    }
+    .container p{
+        position: relative;
+        bottom: -100px;
+        margin: 20px;
+        
+    }
+
+}
+.container-de-productos{
+    margin-top: 50px;
+}
+
+
+}
+

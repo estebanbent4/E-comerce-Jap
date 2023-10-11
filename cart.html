@@ -9,27 +9,89 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/cart.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
   <link rel="icon" type="image/icon" href="img/Captura.JPG">
+<link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
   <div id="navbar-container"></div>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <h1>Carrito de compras</h1>
+    <table>
+      <!-- Encabezados de las columnas -->
+      <tr>
+        <th></th>
+        <th>Nombre</th>
+        <th>Costo</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th></th> <!-- Esta columna es para los botones Eliminar -->
+      </tr>
+
+      <!-- Cuerpo de la tabla (productos) -->
+      <tbody id="cartTableBody">
+        <!-- Las filas de productos se agregarán aquí dinámicamente con JavaScript -->
+      </tbody>
+    </table>
+    <hr>
+
+    <div id="total-del-carrito">
+      <h4>Total del Carrito: <span id="total-amount">0</span></h4>
+    </div> <br>
+
+    <!-- Comienzo entrega 5, pauta 2 -->
+
+    <div>
+      <form id="tipo-envio">
+        <h4>Tipo de envío</h4>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-premium"
+            value="premium">
+          <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-express"
+            value="express">
+          <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-standard"
+            value="standard">
+          <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
+      </form>
+    </div> <br>
+
+    <form id="direccion-envio">
+      <h4>Dirección de envío</h4>
+      <div class="form row">
+        <div class="form-group col-md-4">
+          <label for="calle">Calle</label>
+          <input type="text" class="form-control" id="form-envio-calle" placeholder="Nombre de calle">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="numero">Número</label>
+          <input type="number" class="form-control" name="form-envio-numero" id="input-numero"
+            placeholder="Número de calle">
+        </div>
       </div>
-    </div>
+      <div class="form row">
+        <div class="form-group col-md-4">
+          <label for="input-esquina">Esquina</label>
+          <input type="text" class="form-control" id="form-envio-esquina" placeholder="Nombre de calle">
+        </div>
+      </div>
+    </form>
+
+    <!-- Fin entrega 5, pauta 2 -->
+
   </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
+
+  <footer>
+    <div id="footer-div"></div>
   </footer>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -38,11 +100,13 @@
       <div></div>
     </div>
   </div>
+  <script src="js/footer.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/navbar.js"></script>
+
 </body>
 
 </html>

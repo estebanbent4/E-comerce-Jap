@@ -1,0 +1,53 @@
+/* CSS carrito */
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+hr {
+    color: orange;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: none;
+    /* Elimina el borde de la tabla */
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    border: none;
+    /* Elimina el borde de las celdas */
+}
+
+table img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#total-del-carrito {
+    position: absolute;
+    right: 50px;
+    border: solid 1px orange;
+    padding: 10px;
+    margin: 10px;
+}
+
+.btnEliminar {
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    transition: .3s;
+}
+
+.btnEliminar:hover {
+    transform: translateY(-5px);
+    transition: .3s;
+    color: white;
+}
