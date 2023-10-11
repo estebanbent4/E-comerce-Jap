@@ -23,10 +23,40 @@
         font-size: 13px;
     }
     #buscador-productos{
-       display: flex;
-       margin: auto;
+       width: 100%;
+       margin-bottom: 20px;
+       margin-top: 20px;
     }
+    #buscador-y-filtro{
+        display: flex;
+        flex-direction: column;
+    }
+    .botones{
+        display: flex;
+        margin-right: 8px;
+    }
+    #filtro-precio{
+        display: flex;
+        margin: auto;
+        align-items: center;
+        flex-direction: column;
+        width: 20px;
+    }
+    #precio-max{
+        margin-top: 10px;
+    }
+    #filtro-precio button{
+        margin-top: 10px;
+    }
+#filtro-precio label{
+    display: none;
+}
+.container-de-productos{
+    margin-top: 50px;
 }
 
-precio-min
+
+}
+
+
 precio-max
