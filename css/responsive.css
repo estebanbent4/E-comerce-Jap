@@ -1,0 +1,32 @@
+
+@media (max-width: 768px) {
+    #imagen-principal {
+        display: none;
+    }
+    #orden-precio-asc, i{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        padding-left: 5px;
+    }
+    #orden-precio-desc, i{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+    }
+    #orden-relevancia, i{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+    }
+    #buscador-productos{
+       display: flex;
+       margin: auto;
+    }
+}
+
+precio-min
+precio-max
