@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="container">
             <!-- Contenedor para las categorías -->
             <div id="category-links-container" class="mb-3"></div>
-            <p>En este sitio esta trabajando el equipo cinco del grupo 279 de DW y forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
+            <p id="p-footer">En este sitio esta trabajando el equipo cinco del grupo 279 de DW y forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
             <p class="float-end">
             <a href="#">Volver arriba</a>
         </p>
