@@ -32,7 +32,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     //let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     //cartItems.push(nuevoProducto);
     //localStorage.setItem("cartItems", JSON.stringify(cartItems))
-     
+
+
+
+
+
 
     function showCartItems(cartItems) {
         const cartTableBody = document.getElementById("cartTableBody");
