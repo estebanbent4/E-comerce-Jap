@@ -215,3 +215,51 @@ const myCarousel = new bootstrap.Carousel(carousel, {
   pause: "hover", // Pausa el carrusel cuando el cursor está sobre él.
 });
 
+
+
+//Funcion para agregar el producto al localStorage
+document.addEventListener("DOMContentLoaded", function () {
+    const agregarAlCarritoBtn = document.getElementById("agregar-al-carrito-btn");
+
+    agregarAlCarritoBtn.addEventListener("click", async function () {
+        // Obtener el ID del producto desde alguna fuente, en este caso, desde localStorage
+        const productID = localStorage.getItem("ProductoID");
+
+        // Realizar una solicitud fetch para obtener la información del producto
+        const productInfoUrl = `https://japceibal.github.io/emercado-api/products/${productID}.json`; // Reemplaza con la URL correcta de tu API
+        try {
+            const response = await fetch(productInfoUrl);
+            if (!response.ok) {
+                throw new Error(`Error al obtener la información del producto: ${response.status}`);
+            }
+
+            const productData = await response.json();
+
+            // Crear un objeto que representa el producto con la información obtenida
+            const product = {
+                id: productID,
+                name: productData.name,
+                description: productData.description,
+                price: parseFloat(productData.cost),
+                image: productData.images,
+                quantity: 1 // Puedes establecer la cantidad inicial a 1 o cualquier otro valor predeterminado
+            };
+
+
+            // Obtener el array de productos del localStorage o inicializar uno nuevo si no existe
+            let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            // Agregar el producto al array
+            cartItems.push(product);
+
+            // Guardar el array actualizado en el localStorage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+            // Mostrar una alerta para informar al usuario que el producto se ha agregado al carrito
+            alert(`${product.name} se ha agregado al carrito!`);
+        } catch (error) {
+            console.error("Error al obtener la información del producto:", error);
+        }
+    });
+});
+
