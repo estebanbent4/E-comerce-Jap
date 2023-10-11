@@ -27,6 +27,7 @@
        margin-bottom: 20px;
        margin-top: 20px;
     }
+
     #buscador-y-filtro{
         display: flex;
         flex-direction: column;
@@ -50,6 +51,20 @@
     }
 #filtro-precio label{
     display: none;
+
+    #category-links-container{
+        display:flex ;
+        margin: -50px;
+        width: 100%;
+        
+    }
+    .container p{
+        position: relative;
+        bottom: -100px;
+        margin: 20px;
+        
+    }
+
 }
 .container-de-productos{
     margin-top: 50px;
@@ -58,5 +73,3 @@
 
 }
 
-
-precio-max
