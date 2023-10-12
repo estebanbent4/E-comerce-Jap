@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 id: productID,
                 name: productData.name,
                 description: productData.description,
-                cost: productData.cost,
+                unitCost: productData.cost, // lo tenía como cost: productData.cost,
                 image: productData.images[0],
                 count: 1,
                 currency: productData.currency

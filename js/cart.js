@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         newRow.innerHTML = `
             <td><img src="${cartItem.image}" alt="${cartItem.name}"></td>
             <td>${cartItem.name}</td>
-            <td>${cartItem.currency } ${cartItem.cost || cartItem.unitCost}</td>
+            <td>${cartItem.currency } ${cartItem.unitCost}</td>
             <td><input type="number" class="itemQuantity" value="${cartItem.count}" min="1"></td>
-            <td>${cartItem.currency } <span class="itemSubtotal">${cartItem.cost|| cartItem.unitCost * cartItem.count}</span></td>
+            <td>${cartItem.currency } <span class="itemSubtotal">${cartItem.unitCost * cartItem.count}</span></td>
             <td><button class="btnEliminar">Eliminar</button></td>
         `;
 
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 itemQuantityElement.value = 1;
             }
 
-            const newSubtotal = newQuantity * cartItem.cost || cartItem.unitCost;
+            const newSubtotal = newQuantity * cartItem.unitCost;
             itemSubtotalElement.textContent = `${newSubtotal}`;
 
             cartItem.count = newQuantity;
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
           deleteButton.addEventListener("click", () => {
             newRow.remove();
-            totalDelCarrito -= cartItem.cost || cartItem.unitCost * cartItem.count;
+            totalDelCarrito -= cartItem.unitCost * cartItem.count;
             totalAmountElement.textContent = totalDelCarrito;
 
             const index = cartItems.indexOf(cartItem);
@@ -88,12 +88,27 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Actualizar el total del carrito al cargar la página
     updateTotal();
     
-    // Función para actualizar el total del carrito
     function updateTotal() {
-        totalDelCarrito = cartItems.reduce((total, item) => {
-            const itemCost = item.cost || item.unitCost || 0; // Tomar "cost" si existe, de lo contrario, tomar "unitCost" o 0 si no hay ninguno = dolor de cabeza
-            return total + itemCost * item.count;
-        }, 0);
-        totalAmountElement.textContent = totalDelCarrito;
+        let totalUSD = 0;
+        let totalUYU = 0;
+    
+        cartItems.forEach((item) => {
+            const itemCost = item.unitCost || 0;
+            const subtotal = itemCost * item.count;
+    
+            if (item.currency === "USD") {
+                totalUSD += subtotal;
+            } else if (item.currency === "UYU") {
+                totalUYU += subtotal;
+            }
+        });
+    
+        const totalUSDString = totalUSD !== 0 ? `USD: ${totalUSD}` : "";
+        const totalUYUString = totalUYU !== 0 ? `UYU: ${totalUYU}` : "";
+        const totalCarritoEsCero = totalUYU === 0 && totalUSD === 0 ?  "0" : "";
+
+        // Mostrar los totales por separado en elementos HTML solo si no son cero
+        totalAmountElement.textContent = `${totalUSDString} ${totalUYUString} ${totalCarritoEsCero}`;
     }
+  
 });
