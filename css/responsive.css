@@ -114,6 +114,12 @@ left: -20px;
     top: 125px;
     height: 50%;
 }
+#cartTableBody table, thead, tbody, td, tr{
+    display: block;
+}
+#total-del-carrito{
+    position:static;
+}
 }
 
 
