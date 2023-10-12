@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const catID = localStorage.getItem("catID");
- 
+
   const containerDeProductos = document.querySelector(".pb-5.container .container-de-productos");
   const botonLimpiar = document.querySelector("#limpiar");
 
@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   const buscadorInput = document.getElementById("buscador-productos");
 
 
-  
+
   buscadorInput.addEventListener("input", function () {
-    const searchText = buscadorInput.value.toLowerCase(); 
+    const searchText = buscadorInput.value.toLowerCase();
 
     const productosFiltrados = originalData.products.filter(producto => {
       const titulo = producto.name.toLowerCase();
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
   function showData(dataArray, includeCategoryInfo = true) {
     const catName = dataArray.catName;
-   
+
     if (includeCategoryInfo) {
       const categoryInfoElement = document.getElementById("category-info");
       categoryInfoElement.innerHTML = `
@@ -104,50 +104,18 @@ document.addEventListener("DOMContentLoaded", async function () {
       <span class="texto-destacado"> ${item.name} - ${item.currency} ${item.cost} </span> <span class="vendidos"> ${item.soldCount} vendidos </span>
       <br> ${item.description}
     `;
-//Boton de agregar al carrito
-    const addToCartButton = document.createElement("button");
-    addToCartButton.textContent = "Agregar al Carrito";
-    addToCartButton.classList.add("btn", "btn-primary");
-    addToCartButton.addEventListener("click", function(event) {
-    event.stopPropagation();
-    addToCart(item.id);
-    })
-
-
       containerParaProducto.appendChild(imagenDelProducto);
       containerParaProducto.appendChild(datosDelProducto);
-      containerParaProducto.appendChild(addToCartButton);
       containerDeProductos.appendChild(containerParaProducto);
-      
-      function addToCart(productId) {
-        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    
-        const existingCartItem = cartItems.find(item => item.id === productId);
-    
-        if (existingCartItem) {
-          existingCartItem.count++;
-        } else {
-          const newCartItem = {
-            id: productId,
-            count: 1,
-            // ... (otras propiedades del producto que puedas necesitar)
-          };
-          cartItems.push(newCartItem);
-        }
-    
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-        alert("Producto agregado al carrito.");
-      }
 
-
-    //pauta 1 entrega3
-    containerParaProducto.addEventListener("click", function () {
-    // Guardar el identificador del producto en el almacenamiento local
-     localStorage.setItem("ProductoID", item.id);
-      console.log("ProductoID: ", item.id );
-    // Redirigir a la página de detalles del producto
-     window.location.href = "product-info.html";
-  });
+      //pauta 1 entrega3
+      containerParaProducto.addEventListener("click", function () {
+        // Guardar el identificador del producto en el almacenamiento local
+        localStorage.setItem("ProductoID", item.id);
+        console.log("ProductoID: ", item.id);
+        // Redirigir a la página de detalles del producto
+        window.location.href = "product-info.html";
+      });
     }
   }
 
@@ -155,11 +123,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    originalData = data; 
+    originalData = data;
     showData(data);
   } catch (error) {
     console.error("Error trayendo:", error);
   }
- 
+
 });
 

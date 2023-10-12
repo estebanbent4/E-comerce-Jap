@@ -73,48 +73,48 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     // Función para mostrar los productos relacionados, entrega 4
-function showRelatedProducts(productosRelacionados) {
+    function showRelatedProducts(productosRelacionados) {
 
-    // Si no hubiese productos relacionados, cambiamos el titulo por uno que dice "No hay productos relacionados"
-    const tituloProdRel = document.getElementById("h3-prod-rel");
+        // Si no hubiese productos relacionados, cambiamos el titulo por uno que dice "No hay productos relacionados"
+        const tituloProdRel = document.getElementById("h3-prod-rel");
 
-    if (productosRelacionados.length === 0) {
-        tituloProdRel.textContent = "No hay productos relacionados";
-    } else {
-        productosRelacionados.forEach(producto => {
-            const productoDiv = document.createElement("div");
-            productoDiv.classList.add("producto");
+        if (productosRelacionados.length === 0) {
+            tituloProdRel.textContent = "No hay productos relacionados";
+        } else {
+            productosRelacionados.forEach(producto => {
+                const productoDiv = document.createElement("div");
+                productoDiv.classList.add("producto");
 
-            // Agregamos un enlace que englobe tanto el nombre como la imagen del producto
-            const enlaceProducto = document.createElement("a");
-            enlaceProducto.href = `product-info.html?productID=${producto.id}`;
+                // Agregamos un enlace que englobe tanto el nombre como la imagen del producto
+                const enlaceProducto = document.createElement("a");
+                enlaceProducto.href = `product-info.html?productID=${producto.id}`;
 
-            // Agregamos el nombre del producto
-            const nombreProducto = document.createElement("p");
-            nombreProducto.textContent = producto.name;
+                // Agregamos el nombre del producto
+                const nombreProducto = document.createElement("p");
+                nombreProducto.textContent = producto.name;
 
-            // Agregamos la imagen del producto
-            const imagenProducto = document.createElement("img");
-            imagenProducto.src = producto.image;
-            imagenProducto.alt = producto.name;
+                // Agregamos la imagen del producto
+                const imagenProducto = document.createElement("img");
+                imagenProducto.src = producto.image;
+                imagenProducto.alt = producto.name;
 
-            // Agregamos el nombre y la imagen al enlace
-            enlaceProducto.appendChild(imagenProducto);
-            enlaceProducto.appendChild(nombreProducto);
+                // Agregamos el nombre y la imagen al enlace
+                enlaceProducto.appendChild(imagenProducto);
+                enlaceProducto.appendChild(nombreProducto);
 
-            // Agregamos el enlace al div del producto
-            productoDiv.appendChild(enlaceProducto);
+                // Agregamos el enlace al div del producto
+                productoDiv.appendChild(enlaceProducto);
 
-            // Agregamos el div del producto al contenedor
-            productosContainer.appendChild(productoDiv);
+                // Agregamos el div del producto al contenedor
+                productosContainer.appendChild(productoDiv);
 
-            // Establecemos el ID del producto relacionado en el localStorage
-            enlaceProducto.addEventListener("click", function () {
-                localStorage.setItem("ProductoID", producto.id);
+                // Establecemos el ID del producto relacionado en el localStorage
+                enlaceProducto.addEventListener("click", function () {
+                    localStorage.setItem("ProductoID", producto.id);
+                });
             });
-        });
+        }
     }
-}
 
     try {
         const urlProduct = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
@@ -201,32 +201,31 @@ function showRelatedProducts(productosRelacionados) {
 
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
-});
-
-
-//Carrusel
-
-// Obtén la referencia al elemento del carrusel
-const carousel = document.querySelector("#product-images");
-
-// Inicializa el carrusel de Bootstrap con un intervalo de tiempo para cambiar automáticamente las imágenes
-const myCarousel = new bootstrap.Carousel(carousel, {
-  interval: 2000, // Intervalo en milisegundos 
-  pause: "hover", // Pausa el carrusel cuando el cursor está sobre él.
-});
 
 
 
-//Funcion para agregar el producto al localStorage
-document.addEventListener("DOMContentLoaded", function () {
+    //Carrusel
+
+    // Obtén la referencia al elemento del carrusel
+    const carousel = document.querySelector("#product-images");
+
+    // Inicializa el carrusel de Bootstrap con un intervalo de tiempo para cambiar automáticamente las imágenes
+    const myCarousel = new bootstrap.Carousel(carousel, {
+        interval: 2000, // Intervalo en milisegundos 
+        pause: "hover", // Pausa el carrusel cuando el cursor está sobre él.
+    });
+
+
+
+    //Funcion para agregar el producto al localStorage
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
     const agregarAlCarritoBtn = document.getElementById("agregar-al-carrito-btn");
 
     agregarAlCarritoBtn.addEventListener("click", async function () {
-        // Obtener el ID del producto desde alguna fuente, en este caso, desde localStorage
-        const productID = localStorage.getItem("ProductoID");
-
-        // Realizar una solicitud fetch para obtener la información del producto
-        const productInfoUrl = `https://japceibal.github.io/emercado-api/products/${productID}.json`; // Reemplaza con la URL correcta de tu API
+    
+       
+        const productInfoUrl = `https://japceibal.github.io/emercado-api/products/${productID}.json`; 
         try {
             const response = await fetch(productInfoUrl);
             if (!response.ok) {
@@ -240,14 +239,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 id: productID,
                 name: productData.name,
                 description: productData.description,
-                price: parseFloat(productData.cost),
-                image: productData.images,
-                quantity: 1 // Puedes establecer la cantidad inicial a 1 o cualquier otro valor predeterminado
+                cost: productData.cost,
+                image: productData.images[0],
+                count: 1,
+                currency: productData.currency
+
             };
 
 
             // Obtener el array de productos del localStorage o inicializar uno nuevo si no existe
-            let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
 
             // Agregar el producto al array
             cartItems.push(product);
@@ -262,4 +263,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-

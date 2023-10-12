@@ -23,7 +23,7 @@ h3::first-letter {
 }
 
 /* Estilos del botón de enviar */
-#enviarComentario {
+#enviarComentario, #agregar-al-carrito-btn {
   background-color: orange;
   color: black;
   border: none;
