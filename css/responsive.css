@@ -109,7 +109,7 @@ left: -20px;
     position: relative;
     right: 20px;
 }
-.btn-primary{
+.btn .btn-primary .btn-lg{
     position: relative;
     top: 125px;
     height: 50%;
@@ -120,6 +120,7 @@ left: -20px;
 #total-del-carrito{
     position:static;
 }
+
 }
 
 
