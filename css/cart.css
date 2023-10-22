@@ -30,14 +30,6 @@ table img {
     max-height: 100px;
 }
 
-#total-del-carrito {
-    position: absolute;
-    right: 50px;
-    border: solid 1px orange;
-    padding: 10px;
-    margin: 10px;
-}
-
 .btnEliminar {
     background-color: orange;
     color: black;
@@ -50,4 +42,13 @@ table img {
     transform: translateY(-5px);
     transition: .3s;
     color: white;
+}
+
+th {
+    border-bottom: 5px;
+    color: black;
+}
+
+#total-del-carrito p {
+    opacity: 75%;
 }
