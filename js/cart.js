@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let subtotalDelCarrito = 0;
     let totalFinal = 0;
     let costoEnvio = 0;
-    let subTotalFinal =0;
+    let subTotalFinal = 0;
     let cartItems = JSON.parse(localStorage.getItem("cartItems"));
     let valorDolar = 38.8 // Este es un valor predeterminado que se ajusta con la info del Fetch
     let peogeotYaAgregado = false;
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Llamada a la función para actualizar el subtotal del carrito al cargar la página
     updateSubTotal();
 
-    
+
 
 
     // Actualizar el subtotal
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const envioPremium = document.getElementById("form-tipo-envio-premium");
     const envioExpress = document.getElementById("form-tipo-envio-express");
     const envioStandard = document.getElementById("form-tipo-envio-standard");
-    
+
     function updateCostoEnvio() {
 
         if (envioPremium.checked) {
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             costoEnvio = Math.round(subTotalFinal * 0.07);
         } else if (envioStandard.checked) {
             costoEnvio = Math.round(subTotalFinal * 0.05);
-        }else if (totalFinal == 0){
+        } else if (totalFinal == 0) {
             costoEnvio = 0;
         }
         // Mostrar el costo
@@ -179,13 +179,46 @@ document.addEventListener("DOMContentLoaded", async function () {
     function updateTotal() {
         updateCostoEnvio()
         totalFinal = costoEnvio + subTotalFinal;
-        console.log("totalFinal:" +totalFinal +"subTotalFinal:"+ subTotalFinal);
-        
+        console.log("totalFinal:" + totalFinal + "subTotalFinal:" + subTotalFinal);
+
         // Mostrar total final
-        totalAmountElement.textContent = `USD ${totalFinal}`;        
+        totalAmountElement.textContent = `USD ${totalFinal}`;
     }
 
     updateTotal();
+
+
+    //pauta 3- entrega 6
+    // validaciones antes de compra
+    const confirmarCompraBtn = document.getElementById("confirmarCompraBtn")
+    confirmarCompraBtn.addEventListener("click", function () {
+        // Obtener los valores de los campos
+        var calle = document.getElementById('form-envio-calle').value;
+        var numero = document.getElementById('input-numero').value;
+        var esquina = document.getElementById('form-envio-esquina').value;
+        var formaEnvio = document.querySelector('input[name="input-tipo-envio"]:checked');
+
+        // Realizar las validaciones
+        if (!calle || !numero || !esquina) {
+            alert('Los campos de dirección no pueden estar vacíos. Por favor, ingréselos.');
+            return;
+        }
+
+        if (!formaEnvio) {
+            alert('Debe seleccionar una forma de envío.');
+            return;
+        }
+
+        // FALTAN AGREGAR LAS CONFIRMACIONES DEL TIPO DE PAGO
+
+
+        // Limpiar los campos del formulario después de la confirmación
+        document.getElementById('direccion-envio').reset();
+        document.getElementById('tipo-envio').reset();
+
+        // Mostrar un mensaje de éxito (puedes personalizar esto según tus necesidades)
+        alert('Compra confirmada. Gracias por tu compra!');
+    })
 
 
 });
