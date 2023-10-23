@@ -52,3 +52,7 @@ th {
 #total-del-carrito p {
     opacity: 75%;
 }
+#valorDolar{
+    margin-top: 20px;
+    font-size: 0.6rem;
+}

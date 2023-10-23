@@ -5,18 +5,22 @@ document.addEventListener("DOMContentLoaded", async function () {
     const cartTableBody = document.getElementById("cartTableBody");
     let totalDelCarrito = 0;
     let subtotalDelCarrito = 0;
+    let totalFinal = 0;
+    let costoEnvio = 0;
+    let subTotalFinal =0;
     let cartItems = JSON.parse(localStorage.getItem("cartItems"));
     let valorDolar = 38.8 // Este es un valor predeterminado que se ajusta con la info del Fetch
     let peogeotYaAgregado = false;
     const usuarioDePrueba = 25801;
     const urlCarritoUsuario = `https://japceibal.github.io/emercado-api/user_cart/${usuarioDePrueba}.json`;
     const urlCotizacionesBROU = `https://cotizaciones-brou-v2-e449.fly.dev/currency/latest`
-
+    const valorDolarP = document.getElementById("valorDolar")
     // Fetch para traer cotización del dólar actualizada
     try {
         const response = await fetch(urlCotizacionesBROU);
         const currencyData = await response.json();
         valorDolar = currencyData.rates.USD.buy;
+        valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
         console.log(valorDolar);
     } catch (error) {
         console.error("Error trayendo:", error);
@@ -78,6 +82,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             cartItem.count = newQuantity;
             updateSubTotal(); // Actualizar el subTotal del carrito cuando cambia la cantidad
+            updateTotal()
         }
 
         deleteButton.addEventListener("click", () => {
@@ -93,6 +98,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
             updateSubTotal(); // Actualizar el total del carrito al eliminar un producto
+            updateTotal()
         });
 
         itemQuantityElement.addEventListener("input", updateSubtotal);
@@ -135,15 +141,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     const envioPremium = document.getElementById("form-tipo-envio-premium");
     const envioExpress = document.getElementById("form-tipo-envio-express");
     const envioStandard = document.getElementById("form-tipo-envio-standard");
-    let costoEnvio = 0;
-
+    
     function updateCostoEnvio() {
+
         if (envioPremium.checked) {
             costoEnvio = Math.round(subTotalFinal * 0.15);
         } else if (envioExpress.checked) {
             costoEnvio = Math.round(subTotalFinal * 0.07);
         } else if (envioStandard.checked) {
             costoEnvio = Math.round(subTotalFinal * 0.05);
+        }else if (totalFinal == 0){
+            costoEnvio = 0;
         }
         // Mostrar el costo
         shippingCostElement.textContent = `USD ${costoEnvio}`;
@@ -169,12 +177,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     //  Función para actualizar el total del carrito 
     function updateTotal() {
-        let totalFinal = 0;
+        updateCostoEnvio()
         totalFinal = costoEnvio + subTotalFinal;
-        console.log(totalFinal);
-
+        console.log("totalFinal:" +totalFinal +"subTotalFinal:"+ subTotalFinal);
+        
         // Mostrar total final
-        totalAmountElement.textContent = `USD ${totalFinal}`;
+        totalAmountElement.textContent = `USD ${totalFinal}`;        
     }
 
     updateTotal();
