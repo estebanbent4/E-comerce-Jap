@@ -113,179 +113,131 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // inicio de la pauta 6 entrega 2 //
    
-    function addPaymentMethod() {
-    
-    }
+    const tarjeta = document.querySelector('#tarjeta'),
+	  btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
+	  formulario = document.querySelector('#formulario-tarjeta'),
+	  numeroTarjeta = document.querySelector('#tarjeta .numero'),
+	  nombreTarjeta = document.querySelector('#tarjeta .nombre'),
+	  logoMarca = document.querySelector('#logo-marca'),
+	  firma = document.querySelector('#tarjeta .firma p'),
+	  mesExpiracion = document.querySelector('#tarjeta .mes'),
+	  yearExpiracion = document.querySelector('#tarjeta .year');
+	  ccv = document.querySelector('#tarjeta .ccv');
 
-    function showAlert(){
-
-
-    
-
-      let alert = `
-      
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Felicitaciones!</strong> `+mensaje.msg+`
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>`
-
-    document.getElementById("alert").innerHTML  = alert;
-      
- 
+// * Volteamos la tarjeta para mostrar el frente.
+const mostrarFrente = () => {
+	if(tarjeta.classList.contains('active')){
+		tarjeta.classList.remove('active');
+	}
 }
 
-      // Inicializa los modales de Bootstrap
-    var myModal = new bootstrap.Modal(document.getElementById("modalMetodoPago"));
+// * Rotacion de la tarjeta
+tarjeta.addEventListener('click', () => {
+	tarjeta.classList.toggle('active');
+});
 
-    function validateForm(){
- 
-        let texto = document.getElementById("tipoPago").outerText;
-        
-        if(texto === "No se selecciono metodo de pago"){
-            document.getElementById("validacionMetodoPago").style.display= "block"
-        }else{
-    
-            let tipoPago =  document.getElementById("tipoPago").outerText;
-    
-            if (tipoPago === "Tarjeta de Credito") {
-    
-                let resultNumeroTarjeta = document.getElementById("resultNumeroTarjeta");
-                let resultnombreTitular = document.getElementById("resultnombreTitular");
-                let resultnombreMonthYear = document.getElementById("resultnombreMonthYear");
-                let resultModalCvc = document.getElementById("resultModalCvc");
-            
-                    if (resultNumeroTarjeta.value != "" && resultnombreTitular.value != "" && resultnombreMonthYear.value != "" && resultModalCvc.value != "") {
-                    showAlert();
-                    }else{
-                        document.getElementById("alert").innerHTML = `<p>Atencion! falta ingresar datos de la tarjeta decredito</p>`
-                    }
-            }else{
-    
-                let resultModalnumeroCuenta = document.getElementById("resultModalnumeroCuenta");
-                let resultnombreTitular = document.getElementById("resultnombreTitular");
-    
-                if (resultModalnumeroCuenta.value != "" && resultnombreTitular.value != "") {
-                    showAlert();
-                    }else{
-                        document.getElementById("alert").innerHTML = `<p>Atencion! falta ingresar datos de la tarjeta decredito</p>`
-                    }
-            }
-    
-        }
-        
-    }
+// * Boton de abrir formulario
+btnAbrirFormulario.addEventListener('click', () => {
+	btnAbrirFormulario.classList.toggle('active');
+	formulario.classList.toggle('active');
+});
 
+// * Select del mes generado dinamicamente.
+for(let i = 1; i <= 12; i++){
+	let opcion = document.createElement('option');
+	opcion.value = i;
+	opcion.innerText = i;
+	formulario.selectMes.appendChild(opcion);
+}
 
-    
-    function insertPaymentMethod( b ) {
-        
-        document.getElementById("validacionMetodoPago").style.display= "none"
-        let nombreTitular;
-        let numeroTarjeta;
-        let monthYear;
-        let cvc ;
-        let numeroCuenta;
-        let idButton = b.id;
-        let cardwrapper;
-    
-        let data;
-    
-        if (idButton === "completarTarjeta") {
-            nombreTitular = document.getElementById("modalName").value;
-            numeroTarjeta = document.getElementById("modalNumberCard").value;
-            monthYear = document.getElementById("modalMonthYear").value;
-            cvc = document.getElementById("modalCvc").value;
-            cardwrapper = document.getElementById("wrapper");
-            newcardwrapper = cardwrapper.innerHTML
-            
-    
-            data = `
-            
-            <h5 class="mb-2" id="tipoPago">Tarjeta de Credito</h5>
-            
-            <div class="card-body">
-    
-            <div class='card-wrapper' id="newCardWrapper"></div>
-    
-            
-              <div class="row mt-5">
-                <div class="form-group col-sm-6">
-                <label for="resultNumeroTarjeta">Numero</label>
-                  <input class="form-control form-control-rounded" id="resultNumeroTarjeta" placeholder="Numero de Tarjeta"
-                    type="text" name="number" value="`+ numeroTarjeta +`" required readonly>
-                </div>
-                <div class="form-group col-sm-6">
-                <label for="resultnombreTitular">Nombre</label>
-                  <input class="form-control form-control-rounded" id="resultnombreTitular" placeholder="Nombre Titular"
-                    type="text" name="name" value="`+ nombreTitular +`" required readonly/>
-                </div>
-                <div class="form-group col-sm-3">
-                <label for="resultnombreMonthYear">MM/YY</label>
-                  <input class="form-control form-control-rounded" placeholder="MM/YY" type="text"
-                    name="expiry" id="resultnombreMonthYear" value="`+ monthYear +`" required readonly/>
-                </div>
-                <div class="form-group col-sm-3">
-                  <label for="resultnombreTitular">CVC</label>
-                  <input class="form-control form-control-rounded" id="resultModalCvc" placeholder="CVC" type="text"
-                    name="cvc" value="`+ cvc +`" required readonly/>
-                </div>
-              </div>
-            
-            </div>
-            
-            <div id="alerta"></div>`
-    
-            document.getElementById("contMetodoEnvio").innerHTML = data;
-    
-            document.getElementById("newCardWrapper").innerHTML = newcardwrapper;
-            
-        } else {
-    
-            nombreTitular = document.getElementById("modalNameAcount").value;
-            numeroCuenta = document.getElementById("modalNumberAcount").value;
-    
-            data = `
-            
-            <div class="card-body">
-               <h3 class="text-center" id="tipoPago"><i class="fas fa-university"></i> Datos Cuenta bancaria </h3>
-               <div class="row">
-                 <div class="form-group col-sm-6">
-                 <label for="resultnombreTitular">Nombre Cuenta</label>
-                   <input class="form-control form-control-rounded" placeholder="Nombre"
-                     type="text" name="text" id="resultnombreTitular" value="`+ nombreTitular +`" required readonly>
-                 </div>
-                 <div class="form-group col-sm-6">
-                 <label for="resultModalnumeroCuenta">Numero Cuenta</label>
-                   <input class="form-control form-control-rounded" placeholder="Numero de Cuenta"
-                     type="number" name="name" id="resultModalnumeroCuenta" value="`+ numeroCuenta +`" readonly required>
-                </div>
-            </div>
-    
-            <div id="alerta"></div>`
-            
-            document.getElementById("contMetodoEnvio").innerHTML = data;
-        }
-    
-    }
-    
-    function showcard() {
-        
-        var card = new Card({
-            form: 'form',
-            container: '.card-wrapper',
-      
-            placeholders: {
-              number: '**** **** **** ****',
-              name: 'Nombre Apellido',
-              expiry: '**/**',
-              cvc: '***'
-            }
-          });
-    
-     
-    }
+// * Select del año generado dinamicamente.
+const yearActual = new Date().getFullYear();
+for(let i = yearActual; i <= yearActual + 8; i++){
+	let opcion = document.createElement('option');
+	opcion.value = i;
+	opcion.innerText = i;
+	formulario.selectYear.appendChild(opcion);
+}
+
+// * Input numero de tarjeta
+formulario.inputNumero.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.inputNumero.value = valorInput
+	// Eliminamos espacios en blanco
+	.replace(/\s/g, '')
+	// Eliminar las letras
+	.replace(/\D/g, '')
+	// Ponemos espacio cada cuatro numeros
+	.replace(/([0-9]{4})/g, '$1 ')
+	// Elimina el ultimo espaciado
+	.trim();
+
+	numeroTarjeta.textContent = valorInput;
+
+	if(valorInput == ''){
+		numeroTarjeta.textContent = '#### #### #### ####';
+
+		logoMarca.innerHTML = '';
+	}
+
+	if(valorInput[0] == 4){
+		logoMarca.innerHTML = '';
+		const imagen = document.createElement('img');
+		imagen.src = 'img/logos/visa.png';
+		logoMarca.appendChild(imagen);
+	} else if(valorInput[0] == 5){
+		logoMarca.innerHTML = '';
+		const imagen = document.createElement('img');
+		imagen.src = 'img/logos/mastercard.png';
+		logoMarca.appendChild(imagen);
+	}
+
+	// Volteamos la tarjeta para que el usuario vea el frente.
+	mostrarFrente();
+});
+
+// * Input nombre de tarjeta
+formulario.inputNombre.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
+	nombreTarjeta.textContent = valorInput;
+	firma.textContent = valorInput;
+
+	if(valorInput == ''){
+		nombreTarjeta.textContent = 'Jhon Doe';
+	}
+
+	mostrarFrente();
+});
+
+// * Select mes
+formulario.selectMes.addEventListener('change', (e) => {
+	mesExpiracion.textContent = e.target.value;
+	mostrarFrente();
+});
+
+// * Select Año
+formulario.selectYear.addEventListener('change', (e) => {
+	yearExpiracion.textContent = e.target.value.slice(2);
+	mostrarFrente();
+});
+
+// * CCV
+formulario.inputCCV.addEventListener('keyup', () => {
+	if(!tarjeta.classList.contains('active')){
+		tarjeta.classList.toggle('active');
+	}
+
+	formulario.inputCCV.value = formulario.inputCCV.value
+	// Eliminar los espacios
+	.replace(/\s/g, '')
+	// Eliminar las letras
+	.replace(/\D/g, '');
+
+	ccv.textContent = formulario.inputCCV.value;
+});
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
