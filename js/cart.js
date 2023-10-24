@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     const urlCarritoUsuario = `https://japceibal.github.io/emercado-api/user_cart/${usuarioDePrueba}.json`;
     const urlCotizacionesBROU = `https://cotizaciones-brou-v2-e449.fly.dev/currency/latest`
     const valorDolarP = document.getElementById("valorDolar")
+    const nombreUsuario = document.getElementById("nombUsuario")
+    const nombreUsuarioGuardado = localStorage.getItem("username")
+    nombreUsuario.textContent = nombreUsuarioGuardado.toString();
     // Fetch para traer cotización del dólar actualizada
     try {
         const response = await fetch(urlCotizacionesBROU);
@@ -192,32 +195,48 @@ document.addEventListener("DOMContentLoaded", async function () {
     // validaciones antes de compra
     const confirmarCompraBtn = document.getElementById("confirmarCompraBtn")
     confirmarCompraBtn.addEventListener("click", function () {
-        // Obtener los valores de los campos
-        var calle = document.getElementById('form-envio-calle').value;
-        var numero = document.getElementById('input-numero').value;
-        var esquina = document.getElementById('form-envio-esquina').value;
+
+        var calle = document.getElementById('form-envio-calle');
+        var numero = document.getElementById('input-numero');
+        var esquina = document.getElementById('form-envio-esquina');
         var formaEnvio = document.querySelector('input[name="input-tipo-envio"]:checked');
 
-        // Realizar las validaciones
-        if (!calle || !numero || !esquina) {
-            alert('Los campos de dirección no pueden estar vacíos. Por favor, ingréselos.');
+        if (!calle.value) {
+            calle.classList.add('is-invalid');
             return;
+        } else {
+            calle.classList.remove('is-invalid');
+        }
+
+        if (!numero.value) {
+            numero.classList.add('is-invalid');
+            return;
+        } else {
+            numero.classList.remove('is-invalid');
+        }
+
+        if (!esquina.value) {
+            esquina.classList.add('is-invalid');
+            return;
+        } else {
+            esquina.classList.remove('is-invalid');
         }
 
         if (!formaEnvio) {
             alert('Debe seleccionar una forma de envío.');
             return;
         }
+        // Mostrar un mensaje de éxito (puedes personalizar esto según tus necesidades)
+        alert('Compra confirmada. Gracias por tu compra!');
 
-        // FALTAN AGREGAR LAS CONFIRMACIONES DEL TIPO DE PAGO
-
+        //FALTA AGREGAR VALIDACION DE TIPO DE PAGO
+    
 
         // Limpiar los campos del formulario después de la confirmación
         document.getElementById('direccion-envio').reset();
         document.getElementById('tipo-envio').reset();
 
-        // Mostrar un mensaje de éxito (puedes personalizar esto según tus necesidades)
-        alert('Compra confirmada. Gracias por tu compra!');
+       
     })
 
 
