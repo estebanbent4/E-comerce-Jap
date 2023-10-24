@@ -215,51 +215,50 @@ document.addEventListener("DOMContentLoaded", async function () {
         pause: "hover", // Pausa el carrusel cuando el cursor está sobre él.
     });
 
-
-
-    //Funcion para agregar el producto al localStorage
     const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     const agregarAlCarritoBtn = document.getElementById("agregar-al-carrito-btn");
-
-    agregarAlCarritoBtn.addEventListener("click", async function () {
     
-       
+    agregarAlCarritoBtn.addEventListener("click", async function () {
         const productInfoUrl = `https://japceibal.github.io/emercado-api/products/${productID}.json`; 
         try {
             const response = await fetch(productInfoUrl);
             if (!response.ok) {
                 throw new Error(`Error al obtener la información del producto: ${response.status}`);
             }
-
+    
             const productData = await response.json();
-
+    
             // Crear un objeto que representa el producto con la información obtenida
             const product = {
                 id: productID,
                 name: productData.name,
                 description: productData.description,
-                unitCost: productData.cost, // lo tenía como cost: productData.cost,
+                unitCost: productData.cost,
                 image: productData.images[0],
-                count: 1,
-                currency: productData.currency
-
+                currency: productData.currency,
             };
-
-
-            // Obtener el array de productos del localStorage o inicializar uno nuevo si no existe
-
-
-            // Agregar el producto al array
-            cartItems.push(product);
-
+            
+            // Verificar si el producto ya existe en el carrito
+            const existingProduct = cartItems.find(item => item.id === product.id);
+    
+            if (existingProduct) {
+                // Si el producto ya está en el carrito, incrementar la cantidad en 1
+                existingProduct.count++;
+            } else {
+                // Si el producto no está en el carrito, agregarlo
+                product.count = 1; // Inicializar la cantidad en 1
+                cartItems.push(product);
+            }
+    
             // Guardar el array actualizado en el localStorage
             localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
+    
             // Mostrar una alerta para informar al usuario que el producto se ha agregado al carrito
             alert(`${product.name} se ha agregado al carrito!`);
         } catch (error) {
             console.error("Error al obtener la información del producto:", error);
         }
     });
+    
 });

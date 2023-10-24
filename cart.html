@@ -1,172 +1,160 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>eMercado - Todo lo que busques está aquí</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/cart.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/242a8f5c81.js"
-      crossorigin="anonymous" defer></script>
-    <link rel="icon" type="image/icon" href="img/Captura.JPG">
-    <link rel="stylesheet" href="css/responsive.css">
-  </head>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/cart.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
+  <link rel="icon" type="image/icon" href="img/Captura.JPG">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
 
-  <body>
-    <div id="navbar-container"></div>
-    <main class="pb-5">
+<body>
+  <div id="navbar-container"></div>
+  <main class="pb-5">
 
-      <div class="text-center p-4">
-        <h2>Carrito de compras</h2>
-      </div>
+    <div class="text-center p-4">
+      <h2>Carrito de <span id="nombUsuario"></span></h2>
+    </div>
 
-      <div class="container">
-        <p class="lead">Artículos a comprar</p>
-        <table>
-          <!-- Encabezados de las columnas -->
-          <tr id="table-header">
-            <th></th>
-            <th>Nombre</th>
-            <th>Costo</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-            <th></th> <!-- Esta columna es para los botones Eliminar -->
+    <div class="container">
+      <p class="lead">Artículos a comprar</p>
+      <table>
+        <!-- Encabezados de las columnas -->
+        <tr id="table-header">
+          <th></th>
+          <th>Nombre</th>
+          <th>Costo</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+          <th></th> <!-- Esta columna es para los botones Eliminar -->
 
-          </tr>
+        </tr>
 
-          <!-- Cuerpo de la tabla (productos) -->
-          <tbody id="cartTableBody">
+        <!-- Cuerpo de la tabla (productos) -->
+        <tbody id="cartTableBody">
 
-            <!-- Las filas de productos se agregarán aquí dinámicamente con JavaScript -->
-          </tbody>
+          <!-- Las filas de productos se agregarán aquí dinámicamente con JavaScript -->
+        </tbody>
 
-        </table>
-
-        <hr>
-
-        <!-- Comienzo entrega 5, pauta 2 -->
-
-        <div>
-          <form id="tipo-envio">
-            <h4>Tipo de envío</h4>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"
-                name="input-tipo-envio"
-                id="form-tipo-envio-premium"
-                value="premium">
-              <label class="form-check-label" for="premium">Premium 2 a 5 días
-                (15%)</label>
+      </table>
+      <hr/>
+      <h4>Costos</h4>
+      <div class="list-group" id="total-del-carrito">
+        <div class="list-group-item d-flex gap-3 py-3">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-1">Subtotal</h6>
+              <p class="mb-0 opa">Calculado en base a costos unitarios y cantidades.</p>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"
-                name="input-tipo-envio"
-                id="form-tipo-envio-express"
-                value="express">
-              <label class="form-check-label" for="express">Express 5 a 8 días
-                (7%)</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"
-                name="input-tipo-envio"
-                id="form-tipo-envio-standard"
-                value="standard">
-              <label class="form-check-label" for="standard">Standard 12 a 15
-                días
-                (5%)</label>
-            </form>
-          </div> <br>
-
-          <form id="direccion-envio">
-            <h4>Dirección de envío</h4>
-            <div class="form row">
-              <div class="form-group col-md-4">
-                <label for="calle">Calle</label>
-                <input type="text" class="form-control" id="form-envio-calle"
-                  placeholder="Nombre de calle">
-              </div>
-              <div class="form-group col-md-3">
-                <label for="numero">Número</label>
-                <input type="number" class="form-control"
-                  name="form-envio-numero"
-                  id="input-numero"
-                  placeholder="Número de calle">
-              </div>
-            </div>
-            <div class="form row">
-              <div class="form-group col-md-4">
-                <label for="input-esquina">Esquina</label>
-                <input type="text" class="form-control" id="form-envio-esquina"
-                  placeholder="Nombre de calle">
-              </div>
-            </div>
-          </form>
-
-          <!-- Fin entrega 5, pauta 2 -->
-
-          <!-- Comienzo entrega 6, pauta 1 -->
-          
-          <br>
-          <h4>Costos</h4>
-          <div class="list-group" id="total-del-carrito">
-            <div class="list-group-item d-flex gap-3 py-3">
-              <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                  <h6 class="mb-1">Subtotal</h6>
-                  <p class="mb-0 opa">Calculado en base a costos unitarios y cantidades.</p>
-                </div>
-                <span class="text-nowrap" id="subtotal-amount">0</span>
-              </div>
-            </div>
-            <div class="list-group-item d-flex gap-3 py-3">
-              <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                  <h6 class="mb-1">Costo de envío:</h6>
-                  <p class="mb-0">Según el tipo de envío.</p>
-                </div>
-                <span id="shipping-cost">0</span>
-              </div>
-            </div>
-            <div class="list-group-item d-flex gap-3 py-3">
-              <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                  <h6 class="mb-1">Total</h6>
-                </div>
-                <span class="fw-bold" id="total-amount">0</span>
-              </div>
-            </div>
-          </div>
-
-    
-          <!-- Fin entrega 6, pauta 1 -->
-          <p id="valorDolar" ></p>
-        </main>
-
-        <footer>
-          <div id="footer-div"></div>
-        </footer>
-
-        <div id="spinner-wrapper">
-          <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <span class="text-nowrap" id="subtotal-amount">0</span>
           </div>
         </div>
-        <script src="js/footer.js"></script>
-        <script src="js/auth.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/init.js"></script>
-        <script src="js/cart.js"></script>
-        <script src="js/navbar.js"></script>
+        <div class="list-group-item d-flex gap-3 py-3">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-1">Costo de envío:</h6>
+              <p class="mb-0">Según el tipo de envío.</p>
+            </div>
+            <span id="shipping-cost">0</span>
+          </div>
+        </div>
+        <div class="list-group-item d-flex gap-3 py-3">
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div>
+              <h6 class="mb-1">Total</h6>
+            </div>
+            <span class="fw-bold" id="total-amount">0</span>
+          </div>
+        </div>
+      </div>
 
-      </body>
 
-    </html>
+      <!-- Fin entrega 6, pauta 1 -->
+      <p id="valorDolar"></p>
+      <hr/>
+     
+      <div id="tipo-envio">
+        <h4>Tipo de envío</h4>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-premium"
+                value="premium">
+            <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-express"
+                value="express">
+            <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-standard"
+                value="standard">
+            <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
+        </div>
+    </div>
+    <br/>
+    <form id="direccion-envio">
+        <h4>Dirección de envío</h4>
+        <div class="form row">
+            <div class="form-group col-md-4">
+                <label for="calle">Calle</label>
+                <input type="text" class="form-control" id="form-envio-calle" placeholder="Nombre de calle">
+                <div class="invalid-feedback">Por favor, ingrese la calle.</div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="numero">Número</label>
+                <input type="number" class="form-control" name="form-envio-numero" id="input-numero"
+                    placeholder="Número de calle">
+                <div class="invalid-feedback">Por favor, ingrese el número de calle.</div>
+            </div>
+        </div>
+        <div class="form row">
+            <div class="form-group col-md-4">
+                <label for="input-esquina">Esquina</label>
+                <input type="text" class="form-control" id="form-envio-esquina" placeholder="Nombre de calle">
+                <div class="invalid-feedback">Por favor, ingrese la esquina.</div>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <button id="confirmarCompraBtn">Confirmar Compra</button>
+    
+
+      <!-- Fin entrega 5, pauta 2 -->
+
+      <!-- Comienzo entrega 6, pauta 1 -->
+
+      <br>
+      
+
+  
+  </main>
+
+  <footer>
+    <div id="footer-div"></div>
+  </footer>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/footer.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/navbar.js"></script>
+
+</body>
+
+</html>

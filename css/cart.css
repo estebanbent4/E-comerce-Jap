@@ -52,7 +52,25 @@ th {
 #total-del-carrito p {
     opacity: 75%;
 }
-#valorDolar{
+
+#valorDolar {
     margin-top: 20px;
     font-size: 0.6rem;
+}
+
+
+#confirmarCompraBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: orange;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#confirmarCompraBtn:hover {
+    background-color: #45a049;
 }
