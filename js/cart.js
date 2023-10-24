@@ -113,10 +113,31 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // inicio de la pauta 6 entrega 2 //
    
-   
+    function addPaymentMethod() {
+    
+    }
+
+    function showAlert(){
+
+
+    
+
+      let alert = `
+      
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Felicitaciones!</strong> `+mensaje.msg+`
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>`
+
+    document.getElementById("alert").innerHTML  = alert;
+      
+ 
+}
 
       // Inicializa los modales de Bootstrap
-var myModal = new bootstrap.Modal(document.getElementById("modalMetodoPago"));
+    var myModal = new bootstrap.Modal(document.getElementById("modalMetodoPago"));
 
     function validateForm(){
  
@@ -155,6 +176,8 @@ var myModal = new bootstrap.Modal(document.getElementById("modalMetodoPago"));
         }
         
     }
+
+
     
     function insertPaymentMethod( b ) {
         
@@ -264,23 +287,35 @@ var myModal = new bootstrap.Modal(document.getElementById("modalMetodoPago"));
      
     }
 
-    function () {
-        'use strict';
-        window.addEventListener('load', function () {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function(e){
+
+  getJSONData("https://japceibal.github.io/emercado-api/cart/buy.json").then(function(resultObj){ //Llamo al json de los productos para agregar al carrito
+      if (resultObj.status === "ok") {
+          cart = resultObj.data;
+
+          showProductsCart();
+          subTotalProduct();
+          modifyPurchaseData();
+          shipping();
+          
+          
       }
+  });
+
+  getJSONData(CART_BUY_URL).then(function(resultObj){ 
+      if (resultObj.status === "ok") {
+          mensaje = resultObj.data;
+
+      }
+  });
+
+
+  showcard();
+});
+
     // fin de la entrega 6 pauta 2 //
 
 });

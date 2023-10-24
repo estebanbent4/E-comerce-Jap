@@ -88,23 +88,24 @@
 
     <!-- Fin entrega 5, pauta 2 -->
     
-    <!-- comiendoza de entrega 5 pauta 2 -->
+    <!-- comienzo de entrega 6 pauta 2 -->
 
-    <!-- Info Carrito -->
-    <hr class="mb-4">
-    <div class="d-flex justify-content-md-center">
-      <div class="mt-5 p-3 border" id="infoCarrito">
-        <div class="order-md-1">
-          <h4 class="text-center mb-3">Información del la Compra</h4>
-
-          <form class="needs-validation" id="sell-info" novalidate>
+  
+            <hr class="mb-4">
             <h4 class="mb-3">Metodo de pago</h4>
             <div class="algo" id="contMetodoEnvio">
               <p id="tipoPago">No se selecciono metodo de pago</p>
             </div>
-            <a type="button" id="seleccionarMetodo" class="text-primary" data-toggle="modal" data-target="#modalMetodoPago">
-              Seleccionar metodo de pago
-            </a>
+            <div class="invalidFeed" id="validacionMetodoPago">Falta ingresar metodo de pago.</div>
+            <div>
+              <!-- Button trigger modalMetodoPago -->
+              <a type="button" class="text-primary" data-toggle="modal" data-target="#modalMetodoPago">
+                Seleccionar metodo de pago
+              </a>
+              <hr class="mb-4">
+            </div>
+
+
               <!-- modalMetodoPago -->
               <div class="modal fade" id="modalMetodoPago" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,7 +134,33 @@
                            
                             <div class="card-body">
 
-                              <div class='card-wrapper' id="wrapper"></div>
+                              <div class="card-wrapper" id="wrapper" data-jp-card-initialized="true">
+                                <div class="jp-card-container"><div class="jp-card jp-card-unknown">
+                                  <div class="jp-card-front"><div class="jp-card-logo jp-card-elo">
+                                    <div class="e"></div><div class="l"></div><div class="o"></div>
+                                  </div><div class="jp-card-logo jp-card-visa"></div>
+                                  <div class="jp-card-logo jp-card-mastercard"></div>
+                                  <div class="jp-card-logo jp-card-maestro"></div>
+                                  <div class="jp-card-logo jp-card-amex"></div>
+                                  <div class="jp-card-logo jp-card-discover"></div>
+                                  <div class="jp-card-logo jp-card-dinersclub"></div>
+                                  <div class="jp-card-logo jp-card-dankort">
+                                    <div class="dk"><div class="d"></div>
+                                    <div class="k"></div>
+                                  </div>
+                                </div>
+                                <div class="jp-card-lower"><div class="jp-card-shiny">
+
+                                </div><div class="jp-card-cvc jp-card-display jp-card-valid"></div>
+                                <div class="jp-card-number jp-card-display jp-card-invalid"></div>
+                                <div class="jp-card-name jp-card-display jp-card-valid"></div>
+                                <div class="jp-card-expiry jp-card-display jp-card-invalid" data-before="month/year" data-after="valid thru">
+
+                                </div></div></div><div class="jp-card-back">
+                                  <div class="jp-card-bar"></div>
+                                  <div class="jp-card-cvc jp-card-display jp-card-valid"></div>
+                                  <div class="jp-card-shiny"></div></div></div></div></div>
+
 
                               <form class="needs-validation">
                                 <div class="row mt-5">
@@ -198,7 +225,12 @@
                     </div>
                   </div>
                 </div>
-              
+<<<<<<< Updated upstream
+=======
+              </div>
+              <!-- Fin modalMetodoPago -->
+            </div>
+>>>>>>> Stashed changes
           </form>
         </div>
       </div>
@@ -237,7 +269,7 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/navbar.js"></script>
-  <script src="js/card.min.js"></script>
+  <script src="js/card.js"></script>
 
 </body>
 
