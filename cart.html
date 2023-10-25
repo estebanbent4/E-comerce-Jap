@@ -11,10 +11,12 @@
   <link href="css/cart.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
   <link rel="icon" type="image/icon" href="img/Captura.JPG">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/estilos.css">  
 
-<link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -89,100 +91,129 @@
     <!-- Fin entrega 5, pauta 2 -->
     
     <!-- comienzo de entrega 6 pauta 2 -->
+    <br>
+    <!-- Button trigger modalMetodoPago -->
+    <hr class="mb-4">
+            <h4 class="mb-3">Metodo de pago</h4>
+            <div class="algo" id="contMetodoEnvio">
+              <p id="tipoPago">No se selecciono metodo de pago</p>
+            </div>
+              
+              <a type="button" class="text-primary" data-toggle="modal" data-target="#modalMetodoPago">
+                Seleccionar metodo de pago
+              </a>
+              <!-- modalMetodoPago -->
+              <div class="modal fade" id="modalMetodoPago" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Seleccione un metodo de pago</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="contenedor">
 
-    <div class="contenedor">
+                        <!-- Tarjeta -->
+                        <section class="tarjeta" id="tarjeta">
+                          <div class="delantera">
+                            <div class="logo-marca" id="logo-marca">
+                               <img src="img/visa.png" alt="">
+                               
+                            </div>
+                            <img src="img/chip-tarjeta.png" class="chip" alt="">
+                            <div class="datos">
+                              <div class="grupo" id="numero">
+                                <p class="label">Número Tarjeta</p>
+                                <p class="numero">#### #### #### ####</p>
+                              </div>
+                              <div class="flexbox">
+                                <div class="grupo" id="nombre">
+                                  <p class="label">Nombre Tarjeta</p>
+                                  <p class="nombre"></p>
+                                </div>
+                    
+                                <div class="grupo" id="expiracion">
+                                  <p class="label">Expiracion</p>
+                                  <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    
+                          <div class="trasera">
+                            <div class="barra-magnetica"></div>
+                            <div class="datos">
+                              <div class="grupo" id="firma">
+                                <p class="label">Firma</p>
+                                <div class="firma"><p></p></div>
+                              </div>
+                              <div class="grupo" id="ccv">
+                                <p class="label">CCV</p>
+                                <p class="ccv"></p>
+                              </div>
+                            </div>
+                            <p class="leyenda">El uso de esta tarjeta se rige por los terminos y condiciones que se estipulan en la solicitud de emision y contrato para su uso.</p>
+                            <a href="#" class="link-banco">www.bancojap.com</a>
+                          </div>
+                        </section>
+                    
+                        <!-- Contenedor Boton Abrir Formulario -->
+                        <div class="contenedor-btn">
+                          <button class="btn-abrir-formulario" id="btn-abrir-formulario">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                        
+                        <!-- Formulario -->
+                        <form action="" id="formulario-tarjeta" class="formulario-tarjeta active">
+                          <div class="grupo">
+                            <label for="inputNumero">Número Tarjeta</label>
+                            <input type="text" id="inputNumero" maxlength="19" autocomplete="off" value="55555">
+                          </div>
+                          <div class="grupo">
+                            <label for="inputNombre">Nombre</label>
+                            <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+                          </div>
+                          <div class="flexbox">
+                            <div class="grupo expira">
+                              <label for="selectMes">Expiracion</label>
+                              <div class="flexbox">
+                                <div class="grupo-select">
+                                  <select name="mes" id="selectMes">
+                                    <option disabled selected>Mes</option>
+                                  </select>
+                                  <i class="fas fa-angle-down"></i>
+                                </div>
+                                <div class="grupo-select">
+                                  <select name="year" id="selectYear">
+                                    <option disabled selected>Año</option>
+                                  </select>
+                                  <i class="fas fa-angle-down"></i>
+                                </div>
+                              </div>
+                            </div>
+                    
+                            <div class="grupo ccv">
+                              <label for="inputCCV">CCV</label>
+                              <input type="text" id="inputCCV" maxlength="3">
+                            </div>
+                          </div>
+                          <button type="submit" class="btn-enviar">Enviar</button>
+                        </form>
+                      </div>
+                    
+                      <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+                      <script src="js/main.js"></script>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-      <!-- Tarjeta -->
-      <section class="tarjeta" id="tarjeta">
-        <div class="delantera">
-          <div class="logo-marca" id="logo-marca">
-            <!-- <img src="img/logos/visa.png" alt=""> -->
-          </div>
-          <img src="img/chip-tarjeta.png" class="chip" alt="">
-          <div class="datos">
-            <div class="grupo" id="numero">
-              <p class="label">Número Tarjeta</p>
-              <p class="numero">#### #### #### ####</p>
-            </div>
-            <div class="flexbox">
-              <div class="grupo" id="nombre">
-                <p class="label">Nombre Tarjeta</p>
-                <p class="nombre">Jhon Doe</p>
-              </div>
-  
-              <div class="grupo" id="expiracion">
-                <p class="label">Expiracion</p>
-                <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="trasera">
-          <div class="barra-magnetica"></div>
-          <div class="datos">
-            <div class="grupo" id="firma">
-              <p class="label">Firma</p>
-              <div class="firma"><p></p></div>
-            </div>
-            <div class="grupo" id="ccv">
-              <p class="label">CCV</p>
-              <p class="ccv"></p>
-            </div>
-          </div>
-          <p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem, voluptates illo.</p>
-          <a href="#" class="link-banco">www.tubanco.com</a>
-        </div>
-      </section>
-  
-      <!-- Contenedor Boton Abrir Formulario -->
-      <div class="contenedor-btn">
-        <button class="btn-abrir-formulario" id="btn-abrir-formulario">
-          <i class="fas fa-plus"></i>
-        </button>
-      </div>
-  
-      <!-- Formulario -->
-      <form action="" id="formulario-tarjeta" class="formulario-tarjeta">
-        <div class="grupo">
-          <label for="inputNumero">Número Tarjeta</label>
-          <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
-        </div>
-        <div class="grupo">
-          <label for="inputNombre">Nombre</label>
-          <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
-        </div>
-        <div class="flexbox">
-          <div class="grupo expira">
-            <label for="selectMes">Expiracion</label>
-            <div class="flexbox">
-              <div class="grupo-select">
-                <select name="mes" id="selectMes">
-                  <option disabled selected>Mes</option>
-                </select>
-                <i class="fas fa-angle-down"></i>
-              </div>
-              <div class="grupo-select">
-                <select name="year" id="selectYear">
-                  <option disabled selected>Año</option>
-                </select>
-                <i class="fas fa-angle-down"></i>
-              </div>
-            </div>
-          </div>
-  
-          <div class="grupo ccv">
-            <label for="inputCCV">CCV</label>
-            <input type="text" id="inputCCV" maxlength="3">
-          </div>
-        </div>
-        <button type="submit" class="btn-enviar">Enviar</button>
-      </form>
-    </div>
-  
-    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-  
+
   <!-- jQuery (asegúrate de que sea la versión adecuada) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

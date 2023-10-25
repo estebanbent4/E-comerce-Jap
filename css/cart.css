@@ -83,7 +83,7 @@ table img {
 
 .tarjeta .delantera {
 	width: 100%;
-	background: url(../img/bg-tarjeta/bg-tarjeta-02.jpg);
+	background: url(../img/tarjeta.jpg);
 	background-size: cover;
 }
 
@@ -127,7 +127,7 @@ table img {
 
 /* ---------- Tarjeta Trasera ----------*/
 .trasera {
-	background: url(../img/bg-tarjeta/bg-tarjeta-02.jpg);
+	background: url(../img/tarjeta2.jpg);
 	background-size: cover;
 	position: absolute;
 	top: 0;
@@ -293,20 +293,16 @@ table img {
 	position: relative;
 }
 
-.formulario-tarjeta select {
-	-webkit-appearance: none;
-}
-
 .formulario-tarjeta .grupo-select i {
 	position: absolute;
-	color: #CED6E0;
+	color: #696969;
 	top: 18px;
 	right: 15px;
 	transition: .3s ease all;
 }
 
 .formulario-tarjeta .grupo-select:hover i {
-	color: #93bfed;
+	color: #007bff;
 }
 
 .formulario-tarjeta .btn-enviar {
@@ -314,11 +310,11 @@ table img {
 	padding: 10px;
 	font-size: 22px;
 	color: #fff;
-	background: #2364d2;
-	box-shadow: 2px 2px 10px 0px rgba(0,85,212,0.4);
+	background: #656565;
+	box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4);
 	cursor: pointer;
 }
 
 .formulario-tarjeta .btn-enviar:hover {
-	background: #1850b1;
+	background: #000000;
 }
