@@ -110,9 +110,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Llamada a la función para actualizar el subtotal del carrito al cargar la página
     updateSubTotal();
 
-
-
-
     // Actualizar el subtotal
     function updateSubTotal() {
         let totalUSD = 0;
@@ -155,28 +152,33 @@ document.addEventListener("DOMContentLoaded", async function () {
             costoEnvio = Math.round(subTotalFinal * 0.05);
         } else if (totalFinal == 0) {
             costoEnvio = 0;
+        } else if (!envioExpress.checked && !envioPremium.checked && !envioStandard.checked) {
+            costoEnvio = 0;
         }
         // Mostrar el costo
         shippingCostElement.textContent = `USD ${costoEnvio}`;
     }
 
-    // 
-    envioPremium.addEventListener("change", function () {
-        updateCostoEnvio();
-        updateTotal();
+    // Permite deseleccionar los radio buttons clickeando sobre ellos
+    // y actualiza el costo de envío y el total
+    let radios = document.querySelectorAll("[type='radio']");
+    radios.forEach((x) => {
+        x.dataset.val = x.checked; // Guarda el estado del radio button dentro del elemento
+        x.addEventListener('click', (e) => {
+            let element = e.target;
+            if (element.dataset.val == 'false') {
+                element.dataset.val = 'true';
+                element.checked = true;
+                updateCostoEnvio();
+                updateTotal();
+            } else {
+                element.dataset.val = 'false';
+                element.checked = false;
+                updateCostoEnvio();
+                updateTotal();
+            }
+        }, true);
     });
-
-    envioExpress.addEventListener("change", function () {
-        updateCostoEnvio();
-        updateTotal();
-    });
-
-    envioStandard.addEventListener("change", function () {
-        updateCostoEnvio();
-        updateTotal();
-    });
-
-    updateCostoEnvio();
 
     //  Función para actualizar el total del carrito 
     function updateTotal() {
@@ -230,13 +232,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         alert('Compra confirmada. Gracias por tu compra!');
 
         //FALTA AGREGAR VALIDACION DE TIPO DE PAGO
-    
+
 
         // Limpiar los campos del formulario después de la confirmación
         document.getElementById('direccion-envio').reset();
         document.getElementById('tipo-envio').reset();
 
-       
+
     })
 
 
