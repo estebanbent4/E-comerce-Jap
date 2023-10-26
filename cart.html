@@ -200,6 +200,30 @@
 <!-- Bootstrap JS (asegúrate de que sea la versión adecuada) -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script>
+  // Función para insertar el método de pago y cerrar el modal
+  function insertPaymentMethod(button) {
+    var modalNumberCard = document.getElementById('modalNumberCard').value;
+    var modalName = document.getElementById('modalName').value;
+    var modalMonthYear = document.getElementById('modalMonthYear').value;
+    var modalCvc = document.getElementById('modalCvc').value;
+
+    var tipoPago = document.getElementById('tipoPago');
+
+    // Aquí puedes validar los datos si es necesario
+
+    // Actualiza el contenido de tipoPago con los datos ingresados
+    tipoPago.innerHTML = "Tarjeta de crédito: " + modalNumberCard + " - " + modalName + " - " + modalMonthYear + " - " + modalCvc;
+
+    // Cierra el modal
+    $(button).closest('.modal').modal('hide');
+
+    console.log("Función insertPaymentMethod ejecutada"); // Llama a la función y muestra un mensaje en la consola
+  }
+</script>
+
+
+
 <!-- fin de la entrega 6 pauta 2 -->
    
   </main>
@@ -223,6 +247,7 @@
   <script src="js/cart.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/card.js"></script>
+
 
 </body>
 
