@@ -123,8 +123,62 @@ left: -20px;
 #table-header{
     display: none;
 }
+
+/* login */
+
+
+.login-container{
+width: 70vw;
+height: 75vh;
+
+}
+#password,#username{
+width: 100%;
+}
+
+.remember-me{
+    display: flex;
+   margin: auto;
+    width: 90%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
 }
 
 
+#footer-login p{
+    display: none;
+}
+#footer-login {
+    display: none;
+    
+}
+#text-muted-log{
+    display: none;
+    
+    
+}
 
+.link-de-registro{
+    margin-top: 20px;
+    font-size: 13px;
+    position: relative;
+    bottom:200px ;
+    right: 7vw;
 
+}
+.boton button{
+    height: 40px;
+    width: 60vw;
+    margin-top: 40px;
+}
+
+#i-log{
+    position: relative;
+    bottom: 38px;
+    left: 260px;
+}
+}
