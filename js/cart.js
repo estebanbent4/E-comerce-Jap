@@ -192,6 +192,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         totalAmountElement.textContent = `USD ${totalFinal}`;
     }
 
+
+   
+})
+
     updateTotal();
 
 

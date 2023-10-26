@@ -44,6 +44,8 @@ table img {
     color: white;
 }
 
+
+
 th {
     border-bottom: 5px;
     color: black;
@@ -74,3 +76,4 @@ th {
 #confirmarCompraBtn:hover {
     background-color: #45a049;
 }
+
