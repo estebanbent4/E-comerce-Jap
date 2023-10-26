@@ -91,8 +91,8 @@
     <!-- Fin entrega 5, pauta 2 -->
     
     <!-- comienzo de entrega 6 pauta 2 -->
-    <br>
     <!-- Button trigger modalMetodoPago -->
+    
     <hr class="mb-4">
             <h4 class="mb-3">Metodo de pago</h4>
             <div class="algo" id="contMetodoEnvio">
@@ -114,105 +114,85 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <div class="contenedor">
+                      <div class="accordion" id="accordionExample">
+                        <div class="card">
+                          <div class="card-header" id="headingOne">
+                            <h2 class="mb-0 text-center">
+                              <button class="btn btn-link text-info" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-credit-card"></i> Tarjeta de credito
+                              </button>
+                            </h2>
+                          </div>
 
-                        <!-- Tarjeta -->
-                        <section class="tarjeta" id="tarjeta">
-                          <div class="delantera">
-                            <div class="logo-marca" id="logo-marca">
-                               <img src="img/visa.png" alt="">
-                               
-                            </div>
-                            <img src="img/chip-tarjeta.png" class="chip" alt="">
-                            <div class="datos">
-                              <div class="grupo" id="numero">
-                                <p class="label">Número Tarjeta</p>
-                                <p class="numero">#### #### #### ####</p>
-                              </div>
-                              <div class="flexbox">
-                                <div class="grupo" id="nombre">
-                                  <p class="label">Nombre Tarjeta</p>
-                                  <p class="nombre"></p>
+                          <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                           
+                            <div class="card-body">
+
+                              <div class='card-wrapper' id="wrapper"></div>
+
+                              <form class="needs-validation">
+                                <div class="row mt-5">
+                                  <div class="form-group col-sm-6">
+                                    <input class="form-control form-control-rounded" id="modalNumberCard"
+                                      placeholder="Numero de Tarjeta" type="text" name="number" required>
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                    <input class="form-control form-control-rounded" id="modalName"
+                                      placeholder="Nombre Titular" type="text" name="name" required />
+                                  </div>
+                                  <div class="form-group col-sm-3">
+                                    <input class="form-control form-control-rounded" id="modalMonthYear"
+                                      placeholder="MM/YY" type="text" name="expiry" required />
+                                  </div>
+                                  <div class="form-group col-sm-3">
+                                    <input class="form-control form-control-rounded" id="modalCvc" placeholder="CVC"
+                                      type="text" name="cvc" required />
+                                  </div>
+                                  <button class="btn btn-outline-info btn-block margin-top-none" id="completarTarjeta"
+                                    type="submit" data-dismiss="modal" onclick="insertPaymentMethod(this)">Completar</button>
                                 </div>
-                    
-                                <div class="grupo" id="expiracion">
-                                  <p class="label">Expiracion</p>
-                                  <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
-                                </div>
-                              </div>
+                              </form>
                             </div>
                           </div>
-                    
-                          <div class="trasera">
-                            <div class="barra-magnetica"></div>
-                            <div class="datos">
-                              <div class="grupo" id="firma">
-                                <p class="label">Firma</p>
-                                <div class="firma"><p></p></div>
-                              </div>
-                              <div class="grupo" id="ccv">
-                                <p class="label">CCV</p>
-                                <p class="ccv"></p>
-                              </div>
-                            </div>
-                            <p class="leyenda">El uso de esta tarjeta se rige por los terminos y condiciones que se estipulan en la solicitud de emision y contrato para su uso.</p>
-                            <a href="#" class="link-banco">www.bancojap.com</a>
-                          </div>
-                        </section>
-                    
-                        <!-- Contenedor Boton Abrir Formulario -->
-                        <div class="contenedor-btn">
-                          <button class="btn-abrir-formulario" id="btn-abrir-formulario">
-                            <i class="fas fa-plus"></i>
-                          </button>
                         </div>
-                        
-                        <!-- Formulario -->
-                        <form action="" id="formulario-tarjeta" class="formulario-tarjeta active">
-                          <div class="grupo">
-                            <label for="inputNumero">Número Tarjeta</label>
-                            <input type="text" id="inputNumero" maxlength="19" autocomplete="off" value="55555">
+                        <div class="card">
+                          <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0 text-center text-info">
+                              <button class="btn btn-link text-info collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fas fa-university"></i> Trasnferencia Bancaria
+                              </button>
+                            </h2>
                           </div>
-                          <div class="grupo">
-                            <label for="inputNombre">Nombre</label>
-                            <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
-                          </div>
-                          <div class="flexbox">
-                            <div class="grupo expira">
-                              <label for="selectMes">Expiracion</label>
-                              <div class="flexbox">
-                                <div class="grupo-select">
-                                  <select name="mes" id="selectMes">
-                                    <option disabled selected>Mes</option>
-                                  </select>
-                                  <i class="fas fa-angle-down"></i>
+                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                              <h3 class="text-center">Datos Cuenta bancaria </h3>
+                              <div class="row">
+                                <div class="form-group col-sm-6">
+                                  <input class="form-control form-control-rounded" id="modalNameAcount"
+                                    placeholder="Nombre" type="text" name="name" required>
                                 </div>
-                                <div class="grupo-select">
-                                  <select name="year" id="selectYear">
-                                    <option disabled selected>Año</option>
-                                  </select>
-                                  <i class="fas fa-angle-down"></i>
+                                <div class="form-group col-sm-6">
+                                  <input class="form-control form-control-rounded" id="modalNumberAcount"
+                                    placeholder="Numero de Cuenta" type="text" name="number" required />
+                                </div>
+                                <div class="col-sm-6">
+                                  <button class="btn btn-outline-info btn-block margin-top-none" id="completarCuenta"
+                                    type="submit" data-dismiss="modal"
+                                    onclick="insertPaymentMethod(this)">Completar</button>
                                 </div>
                               </div>
                             </div>
-                    
-                            <div class="grupo ccv">
-                              <label for="inputCCV">CCV</label>
-                              <input type="text" id="inputCCV" maxlength="3">
-                            </div>
                           </div>
-                          <button type="submit" class="btn-enviar">Enviar</button>
-                        </form>
+                        </div>
                       </div>
-                    
-                      <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-                      <script src="js/main.js"></script>
-                    
                     </div>
                   </div>
                 </div>
               </div>
-
 
   <!-- jQuery (asegúrate de que sea la versión adecuada) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

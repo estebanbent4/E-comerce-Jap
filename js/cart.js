@@ -111,36 +111,15 @@ document.addEventListener("DOMContentLoaded", async function () {
         totalAmountElement.textContent = `${totalUSDString} ${totalUYUString} ${totalCarritoEsCero}`;
     }
 
-    // inicio de la pauta 6 entrega 2 //
+    /* inicio de la pauta 6 entrega 2 //
    
     const tarjeta = document.querySelector('#tarjeta'),
-    btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
-    formulario = document.querySelector('#formulario-tarjeta'),
     numeroTarjeta = document.querySelector('#tarjeta .numero'),
     nombreTarjeta = document.querySelector('#tarjeta .nombre'),
-    logoMarca = document.querySelector('#logo-marca'),
-    firma = document.querySelector('#tarjeta .firma p'),
     mesExpiracion = document.querySelector('#tarjeta .mes'),
     yearExpiracion = document.querySelector('#tarjeta .year');
     ccv = document.querySelector('#tarjeta .ccv');
 
-// * Volteamos la tarjeta para mostrar el frente.
-const mostrarFrente = () => {
-  if(tarjeta.classList.contains('active')){
-      tarjeta.classList.remove('active');
-  }
-}
-
-// * Rotacion de la tarjeta
-tarjeta.addEventListener('click', () => {
-  tarjeta.classList.toggle('active');
-});
-
-// * Boton de abrir formulario
-btnAbrirFormulario.addEventListener('click', () => {
-  btnAbrirFormulario.classList.toggle('active');
-  formulario.classList.toggle('active');
-});
 
 // * Select del mes generado dinamicamente.
 for(let i = 1; i <= 12; i++){
@@ -197,7 +176,7 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
   mostrarFrente();
 });
 
-// * Input nombre de tarjeta
+ Input nombre de tarjeta
 formulario.inputNombre.addEventListener('keyup', (e) => {
   let valorInput = e.target.value;
 
@@ -210,34 +189,58 @@ formulario.inputNombre.addEventListener('keyup', (e) => {
   }
 
   mostrarFrente();
-});
+*/
 
-// * Select mes
-formulario.selectMes.addEventListener('change', (e) => {
-  mesExpiracion.textContent = e.target.value;
-  mostrarFrente();
-});
+// funcion para que queden guardados los datos de la tarjeta 
 
-// * Select Año
-formulario.selectYear.addEventListener('change', (e) => {
-  yearExpiracion.textContent = e.target.value.slice(2);
-  mostrarFrente();
-});
+function insertPaymentMethod(b) {
+    document.getElementById("validacionMetodoPago").style.display = "none";
+    let idButton = b.id;
 
-// * CCV
-formulario.inputCCV.addEventListener('keyup', () => {
-  if(!tarjeta.classList.contains('active')){
-      tarjeta.classList.toggle('active');
-  }
+    if (idButton === "completarTarjeta") {
+        // Obtén los valores de los campos del modal
+        let nombreTitular = document.getElementById("modalName").value;
+        let numeroTarjeta = document.getElementById("modalNumberCard").value;
+        let monthYear = document.getElementById("modalMonthYear").value;
+        let cvc = document.getElementById("modalCvc").value;
 
-  formulario.inputCCV.value = formulario.inputCCV.value
-  // Eliminar los espacios
-  .replace(/\s/g, '')
-  // Eliminar las letras
-  .replace(/\D/g, '');
+        // Llena los campos del formulario con los valores obtenidos del modal
+        document.getElementById("inputNumero").value = numeroTarjeta;
+        document.getElementById("inputNombre").value = nombreTitular;
+        document.getElementById("selectMes").value = monthYear;
+        document.getElementById("inputCCV").value = cvc;
+    } else if (idButton === "completarCuenta") {
+        // Obtén los valores de los campos del modal de transferencia bancaria
+        let nombreTitular = document.getElementById("modalNameAcount").value;
+        let numeroCuenta = document.getElementById("modalNumberAcount").value;
 
-  ccv.textContent = formulario.inputCCV.value;
-});
+        // Llena los campos del formulario con los valores obtenidos del modal de transferencia bancaria
+        document.getElementById("resultnombreTitular").value = nombreTitular;
+        document.getElementById("resultModalnumeroCuenta").value = numeroCuenta;
+    }
+
+    // Cierra el modal
+    $('#modalMetodoPago').modal('hide');
+}
+
+
+
+function showcard() {
+    
+    var card = new Card({
+        form: 'form',
+        container: '.card-wrapper',
+  
+        placeholders: {
+          number: '**** **** **** ****',
+          name: 'Nombre Apellido',
+          expiry: '**/**',
+          cvc: '***'
+        }
+      });
+
+ 
+}
 
 
 
