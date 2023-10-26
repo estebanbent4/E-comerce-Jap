@@ -94,142 +94,133 @@
     <!-- Button trigger modalMetodoPago -->
     
     <hr class="mb-4">
-            <h4 class="mb-3">Metodo de pago</h4>
-            <div class="algo" id="contMetodoEnvio">
-              <p id="tipoPago">No se selecciono metodo de pago</p>
-            </div>
-              
-              <a type="button" class="text-primary" data-toggle="modal" data-target="#modalMetodoPago">
-                Seleccionar metodo de pago
-              </a>
-              <!-- modalMetodoPago -->
-              <div class="modal fade" id="modalMetodoPago" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Seleccione un metodo de pago</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <h4 class="mb-3">Metodo de pago</h4>
+    <div class="algo" id="contMetodoEnvio">
+        <p id="tipoPago">No se selecciono metodo de pago</p>
+    </div>
+
+    <a type="button" class="text-primary" data-toggle="modal" data-target="#modalMetodoPago">
+        Seleccionar metodo de pago
+    </a>
+    <!-- modalMetodoPago -->
+    <div class="modal fade" id="modalMetodoPago" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Seleccione un metodo de pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="accordion" id="accordionExample">
-                        <div class="card">
-                          <div class="card-header" id="headingOne">
-                            <h2 class="mb-0 text-center">
-                              <button class="btn btn-link text-info" type="button" data-toggle="collapse"
-                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <i class="fas fa-credit-card"></i> Tarjeta de credito
-                              </button>
-                            </h2>
-                          </div>
-
-                          <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                            data-parent="#accordionExample">
-                           
-                            <div class="card-body">
-
-                              <div class='card-wrapper' id="wrapper"></div>
-
-                              <form class="needs-validation">
-                                <div class="row mt-5">
-                                  <div class="form-group col-sm-6">
-                                    <input class="form-control form-control-rounded" id="modalNumberCard"
-                                      placeholder="Numero de Tarjeta" type="number" name="number" maxlength="16" required>
-                                  </div>
-                                  <div class="form-group col-sm-6">
-                                    <input class="form-control form-control-rounded" id="modalName"
-                                      placeholder="Nombre Titular" type="text" name="name" maxlength="20" required />
-                                  </div>
-                                  <div class="form-group col-sm-3">
-                                    <input class="form-control form-control-rounded" id="modalMonthYear"
-                                      placeholder="MM/YY" type="text" name="expiry"  maxlength="4" required/>
-                                  </div>
-                                  <div class="form-group col-sm-3">
-                                    <input class="form-control form-control-rounded" id="modalCvc" placeholder="CVC"
-                                      type="text" name="cvc" maxlength="3" required/>
-                                  </div>
-                                  <button class="btn btn-outline-info btn-block margin-top-none" id="completarTarjeta"
-                                    type="submit" data-dismiss="modal" onclick="insertPaymentMethod(this)">Completar</button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0 text-center text-info">
-                              <button class="btn btn-link text-info collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fas fa-university"></i> Trasnferencia Bancaria
-                              </button>
-                            </h2>
-                          </div>
-                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                              <h3 class="text-center">Datos Cuenta bancaria </h3>
-                              <div class="row">
-                                <div class="form-group col-sm-6">
-                                  <input class="form-control form-control-rounded" id="modalNameAcount"
-                                    placeholder="Nombre" type="text" name="name" maxlength="20" required />
-                                </div>
-                                <div class="form-group col-sm-6">
-                                  <input class="form-control form-control-rounded" id="modalNumberAcount"
-                                    placeholder="Numero de Cuenta" type="text" name="number" maxlength="16" required />
-                                </div>
-                                <div class="col-sm-6">
-                                  <button class="btn btn-outline-info btn-block margin-top-none" id="completarCuenta"
-                                    type="submit" data-dismiss="modal"
-                                    onclick="insertPaymentMethod(this)">Completar</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    </button>
                 </div>
-              </div>
+                <div class="modal-body">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0 text-center">
+                                    <button class="btn btn-link text-info" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <i class="fas fa-credit-card"></i> Tarjeta de credito
+                                    </button>
+                                </h2>
+                            </div>
 
-  <!-- jQuery (asegúrate de que sea la versión adecuada) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
 
-<!-- Bootstrap JS (asegúrate de que sea la versión adecuada) -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                                <div class="card-body">
+                                    <div class='card-wrapper' id="wrapper"></div>
+                                    <form class="needs-validation">
+                                        <div class="row mt-5">
+                                            <div class="form-group col-sm-6">
+                                                <input class="form-control form-control-rounded" id="modalNumberCard"
+                                                    placeholder="Numero de Tarjeta" type="number" name="number" maxlength="16" required>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <input class="form-control form-control-rounded" id="modalName"
+                                                    placeholder="Nombre Titular" type="text" name="name" maxlength="20" required />
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <input class="form-control form-control-rounded" id="modalMonthYear"
+                                                    placeholder="MM/YY" type="date" name="expiry" required />
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <input class="form-control form-control-rounded" id="modalCvc" placeholder="CVC"
+                                                    type="number" name="cvc"  maxlength="3" required />
+                                            </div>
+                                            <button class="btn btn-outline-info btn-block margin-top-none"
+                                                id="completarTarjeta" type="submit" data-dismiss="modal"
+                                                onclick="insertPaymentMethod(this, 'tarjeta')">Completar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0 text-center text-info">
+                                    <button class="btn btn-link text-info collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <i class="fas fa-university"></i> Trasnferencia Bancaria
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <h3 class="text-center">Datos Cuenta bancaria </h3>
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <input class="form-control form-control-rounded" id="modalNameAcount"
+                                                placeholder="Nombre" type="text" name="name" maxlength="20" required>
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <input class="form-control form-control-rounded" id="modalNumberAcount"
+                                                placeholder="Numero de Cuenta" type="number" name="number" maxlength="16" required />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button class="btn btn-outline-info btn-block margin-top-none"
+                                                id="completarCuenta" type="submit" data-dismiss="modal"
+                                                onclick="insertPaymentMethod(this, 'transferencia')">Completar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- jQuery (asegúrate de que sea la versión adecuada) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Bootstrap JS (asegúrate de que sea la versión adecuada) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-   <!-- Función para insertar el método de pago y cerrar el modal -->
-<script>
-  document.getElementById("validacionMetodoPago").style.display= "none"
+    <script>
+        // Función para insertar el método de pago y cerrar el modal
+        function insertPaymentMethod(button, method) {
+            var tipoPago = document.getElementById('tipoPago');
 
-  function insertPaymentMethod(button) {
-    
-    var modalNumberCard = document.getElementById('modalNumberCard').value;
-    var modalName = document.getElementById('modalName').value;
-    var modalMonthYear = document.getElementById('modalMonthYear').value;
-    var modalCvc = document.getElementById('modalCvc').value;
-    var modalNumberAcount = document.getElementById("modalNumberAcount").value;
-    var modalNameAcount = document.getElementById("modalNameAcount").value;
+            if (method === 'tarjeta') {
+                var modalNumberCard = document.getElementById('modalNumberCard').value;
+                var modalName = document.getElementById('modalName').value;
+                var modalMonthYear = document.getElementById('modalMonthYear').value;
+                var modalCvc = document.getElementById('modalCvc').value;
 
-    var tipoPago = document.getElementById('tipoPago');
- 
-    // Actualiza el contenido de tipoPago con los datos ingresados
+                tipoPago.innerHTML = "Tarjeta de crédito: " + modalNumberCard + " - " + modalName + " - " + modalMonthYear + " - " + modalCvc;
+            } else if (method === 'transferencia') {
+                var modalNameAcount = document.getElementById('modalNameAcount').value;
+                var modalNumberAcount = document.getElementById('modalNumberAcount').value;
 
-    tipoPago.innerHTML = "Tarjeta de crédito: " + "Numero: " + modalNumberCard + " Nombre: " + modalName + " Vencimiento: " + modalMonthYear + " CVC: " + modalCvc;
- 
-     
-    
-}
-    // Cierra el modal
-    $(button).closest('.modal').modal('hide');
+                tipoPago.innerHTML = "Transferencia bancaria: " + modalNameAcount + " - " + modalNumberAcount;
+            }
 
-    console.log("Función insertPaymentMethod ejecutada"); // Llama a la función y muestra un mensaje en la consola
-
-</script>
+            // Cierra el modal
+            $(button).closest('.modal').modal('hide');
+        }
+    </script>
 
 <!-- fin de la entrega 6 pauta 2 -->
    
