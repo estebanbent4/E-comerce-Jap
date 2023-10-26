@@ -13,21 +13,23 @@ document.addEventListener("DOMContentLoaded", async function () {
     let peogeotYaAgregado = false;
     const usuarioDePrueba = 25801;
     const urlCarritoUsuario = `https://japceibal.github.io/emercado-api/user_cart/${usuarioDePrueba}.json`;
-    const urlCotizacionesBROU = `https://cotizaciones-brou-v2-e449.fly.dev/currency/latest`
+    //const urlCotizacionesBROU = `https://cotizaciones-brou-v2-e449.fly.dev/currency/latest` Da problemas de carga, retirado
     const valorDolarP = document.getElementById("valorDolar")
     const nombreUsuario = document.getElementById("nombUsuario")
     const nombreUsuarioGuardado = localStorage.getItem("username")
     nombreUsuario.textContent = nombreUsuarioGuardado.toString();
+    
+    valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
     // Fetch para traer cotización del dólar actualizada
-    try {
-        const response = await fetch(urlCotizacionesBROU);
-        const currencyData = await response.json();
-        valorDolar = currencyData.rates.USD.buy;
-        valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
-        console.log(valorDolar);
-    } catch (error) {
-        console.error("Error trayendo:", error);
-    }
+    // try {
+    //     const response = await fetch(urlCotizacionesBROU);
+    //     const currencyData = await response.json();
+    //     valorDolar = currencyData.rates.USD.buy;
+    //     valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
+    //     console.log(valorDolar);
+    // } catch (error) {
+    //     console.error("Error trayendo:", error);
+    // }
 
     // Fetch para traer producto ya cargado
     try {
