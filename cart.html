@@ -136,19 +136,19 @@
                                 <div class="row mt-5">
                                   <div class="form-group col-sm-6">
                                     <input class="form-control form-control-rounded" id="modalNumberCard"
-                                      placeholder="Numero de Tarjeta" type="text" name="number" required>
+                                      placeholder="Numero de Tarjeta" type="number" name="number" maxlength="16" required>
                                   </div>
                                   <div class="form-group col-sm-6">
                                     <input class="form-control form-control-rounded" id="modalName"
-                                      placeholder="Nombre Titular" type="text" name="name" required />
+                                      placeholder="Nombre Titular" type="text" name="name" maxlength="20" required />
                                   </div>
                                   <div class="form-group col-sm-3">
                                     <input class="form-control form-control-rounded" id="modalMonthYear"
-                                      placeholder="MM/YY" type="text" name="expiry" required />
+                                      placeholder="MM/YY" type="text" name="expiry"  maxlength="4" required/>
                                   </div>
                                   <div class="form-group col-sm-3">
                                     <input class="form-control form-control-rounded" id="modalCvc" placeholder="CVC"
-                                      type="text" name="cvc" required />
+                                      type="text" name="cvc" maxlength="3" required/>
                                   </div>
                                   <button class="btn btn-outline-info btn-block margin-top-none" id="completarTarjeta"
                                     type="submit" data-dismiss="modal" onclick="insertPaymentMethod(this)">Completar</button>
@@ -173,11 +173,11 @@
                               <div class="row">
                                 <div class="form-group col-sm-6">
                                   <input class="form-control form-control-rounded" id="modalNameAcount"
-                                    placeholder="Nombre" type="text" name="name" required>
+                                    placeholder="Nombre" type="text" name="name" maxlength="20" required />
                                 </div>
                                 <div class="form-group col-sm-6">
                                   <input class="form-control form-control-rounded" id="modalNumberAcount"
-                                    placeholder="Numero de Cuenta" type="text" name="number" required />
+                                    placeholder="Numero de Cuenta" type="text" name="number" maxlength="16" required />
                                 </div>
                                 <div class="col-sm-6">
                                   <button class="btn btn-outline-info btn-block margin-top-none" id="completarCuenta"
@@ -200,29 +200,36 @@
 <!-- Bootstrap JS (asegúrate de que sea la versión adecuada) -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
+
+   <!-- Función para insertar el método de pago y cerrar el modal -->
 <script>
-  // Función para insertar el método de pago y cerrar el modal
+  document.getElementById("validacionMetodoPago").style.display= "none"
+
   function insertPaymentMethod(button) {
+    
     var modalNumberCard = document.getElementById('modalNumberCard').value;
     var modalName = document.getElementById('modalName').value;
     var modalMonthYear = document.getElementById('modalMonthYear').value;
     var modalCvc = document.getElementById('modalCvc').value;
+    var modalNumberAcount = document.getElementById("modalNumberAcount").value;
+    var modalNameAcount = document.getElementById("modalNameAcount").value;
 
     var tipoPago = document.getElementById('tipoPago');
-
-    // Aquí puedes validar los datos si es necesario
-
+ 
     // Actualiza el contenido de tipoPago con los datos ingresados
-    tipoPago.innerHTML = "Tarjeta de crédito: " + modalNumberCard + " - " + modalName + " - " + modalMonthYear + " - " + modalCvc;
 
+    tipoPago.innerHTML = "Tarjeta de crédito: " + "Numero: " + modalNumberCard + " Nombre: " + modalName + " Vencimiento: " + modalMonthYear + " CVC: " + modalCvc;
+ 
+     
+    
+}
     // Cierra el modal
     $(button).closest('.modal').modal('hide');
 
     console.log("Función insertPaymentMethod ejecutada"); // Llama a la función y muestra un mensaje en la consola
-  }
+
 </script>
-
-
 
 <!-- fin de la entrega 6 pauta 2 -->
    
