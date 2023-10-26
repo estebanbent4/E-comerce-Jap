@@ -200,9 +200,16 @@ a.custom-card:hover {
   border: 1px solid #ccc9c9;
   /* Les ponemos un borde */
   margin: 10px;
-  /* Establecemos un margen para separar las imágenes del contenedor donde se encuentran */
-}
 
+}
+@media (max-width: 768px) {
+  .imagen-del-producto {
+  
+    width: 150px;
+    height: 90px;
+ 
+  }
+}
 .container-para-producto {
   border: 1px solid rgb(252, 214, 181);
   /* Ponemos un borde a los contenedores de los productos */
@@ -394,5 +401,5 @@ border: 1px solid rgb(255, 140, 0);
   text-decoration: none;
   color: #000000;
 }
-
+ 
 
