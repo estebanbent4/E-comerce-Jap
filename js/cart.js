@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const nombreUsuario = document.getElementById("nombUsuario")
     const nombreUsuarioGuardado = localStorage.getItem("username")
     nombreUsuario.textContent = nombreUsuarioGuardado.toString();
-    
+
     valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
     // Fetch para traer cotización del dólar actualizada
     // try {
@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
 
-   
-})
+
+
 
     updateTotal();
 
@@ -248,4 +248,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     })
 
 
-});
+
+})
