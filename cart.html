@@ -60,19 +60,125 @@
                 <p id="tipoPago">No se selecciono metodo de pago</p>
             </div>
 
-            <a type="button" class="text-primary" data-toggle="modal" data-target="#modalMetodoPago">
-                Seleccionar metodo de pago
-            </a>
-            <!-- modalMetodoPago -->
-            <div class="modal fade" id="modalMetodoPago" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Seleccione un metodo de pago</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+
+      <!-- Fin entrega 6, pauta 1 -->
+      <p id="valorDolar"></p>
+      <hr/>
+     
+      <div id="tipo-envio">
+        <h4>Tipo de envío</h4>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-premium"
+                value="premium">
+            <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-express"
+                value="express">
+            <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="input-tipo-envio" id="form-tipo-envio-standard"
+                value="standard">
+            <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
+        </div>
+    </div>
+    <br/>
+    <form id="direccion-envio">
+        <h4>Dirección de envío</h4>
+        <div class="form row">
+            <div class="form-group col-md-4">
+                <label for="calle">Calle</label>
+                <input type="text" class="form-control" id="form-envio-calle" placeholder="Nombre de calle">
+                <div class="invalid-feedback">Por favor, ingrese la calle.</div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="numero">Número</label>
+                <input type="number" class="form-control" name="form-envio-numero" id="input-numero"
+                    placeholder="Número de calle">
+                <div class="invalid-feedback">Por favor, ingrese el número de calle.</div>
+            </div>
+        </div>
+        <div class="form row">
+            <div class="form-group col-md-4">
+                <label for="input-esquina">Esquina</label>
+                <input type="text" class="form-control" id="form-envio-esquina" placeholder="Nombre de calle">
+                <div class="invalid-feedback">Por favor, ingrese la esquina.</div>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <button id="confirmarCompraBtn">Confirmar Compra</button>
+    
+
+      <!-- Fin entrega 5, pauta 2 -->
+
+    
+    <!-- comienzo de entrega 6 pauta 2 -->
+   
+    
+    <hr class="mb-4">
+    <h4 class="mb-3">Metodo de pago</h4>
+    <div class="algo" id="contMetodoEnvio">
+        <p id="tipoPago">No se selecciono metodo de pago</p>
+    </div>
+
+    <a type="button" class="text-primary" data-toggle="modal" data-target="#modalMetodoPago">
+        Seleccionar metodo de pago
+    </a>
+    <!-- modalMetodoPago -->
+    <div class="modal fade" id="modalMetodoPago" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Seleccione un metodo de pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0 text-center">
+                                    <button class="btn btn-link text-info" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <i class="fas fa-credit-card"></i> Tarjeta de credito
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+
+                                <div class="card-body">
+                                    <div class='card-wrapper' id="wrapper"></div>
+                                    <form class="needs-validation">
+                                        <div class="row mt-5">
+                                            <div class="form-group col-sm-6">
+                                                <input class="form-control form-control-rounded" id="modalNumberCard"
+                                                    placeholder="Numero de Tarjeta" type="number" name="number" maxlength="16" required>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <input class="form-control form-control-rounded" id="modalName"
+                                                    placeholder="Nombre Titular" type="text" name="name" maxlength="20" required />
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <input class="form-control form-control-rounded" id="modalMonthYear"
+                                                    placeholder="MM/YY" type="date" name="expiry" required />
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                <input class="form-control form-control-rounded" id="modalCvc" placeholder="CVC"
+                                                    type="number" name="cvc"  maxlength="3" required />
+                                            </div>
+                                            <button class="btn btn-outline-info btn-block margin-top-none"
+                                                id="completarTarjeta" type="submit" data-dismiss="modal"
+                                                onclick="insertPaymentMethod(this, 'tarjeta')">Completar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-body">
                             <div class="accordion" id="accordionExample">
@@ -300,7 +406,65 @@
     <script src="js/cart.js"></script>
     <script src="js/navbar.js"></script>
 
-    <script src="js/card.js"></script>
+    <!-- jQuery  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Función para insertar el método de pago y cerrar el modal
+        function insertPaymentMethod(button, method) {
+            var tipoPago = document.getElementById('tipoPago');
+
+            if (method === 'tarjeta') {
+                var modalNumberCard = document.getElementById('modalNumberCard').value;
+                var modalName = document.getElementById('modalName').value;
+                var modalMonthYear = document.getElementById('modalMonthYear').value;
+                var modalCvc = document.getElementById('modalCvc').value;
+
+                tipoPago.innerHTML = "Tarjeta de crédito: " + modalNumberCard + " - " + modalName + " - " + modalMonthYear + " - " + modalCvc;
+            } else if (method === 'transferencia') {
+                var modalNameAcount = document.getElementById('modalNameAcount').value;
+                var modalNumberAcount = document.getElementById('modalNumberAcount').value;
+
+                tipoPago.innerHTML = "Transferencia bancaria: " + modalNameAcount + " - " + modalNumberAcount;
+            }
+
+            // Cierra el modal
+            $(button).closest('.modal').modal('hide');
+        }
+    </script>
+
+<!-- fin de la entrega 6 pauta 2 -->
+   
+
+      <br>
+      
+
+
+  </main>
+
+  <footer>
+    <div id="footer-div"></div>
+  </footer>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/footer.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/navbar.js"></script>
+
+  <script src="js/card.js"></script>
 
 
 
