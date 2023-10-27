@@ -77,3 +77,6 @@ th {
     background-color: #45a049;
 }
 
+.is-invalid{
+    color: red;
+}

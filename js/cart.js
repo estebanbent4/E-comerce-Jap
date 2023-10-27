@@ -202,13 +202,22 @@ document.addEventListener("DOMContentLoaded", async function () {
     //pauta 3- entrega 6
     // validaciones antes de compra
     const confirmarCompraBtn = document.getElementById("confirmarCompraBtn")
+    const tipoPago = document.getElementById("tipoPago");
     confirmarCompraBtn.addEventListener("click", function () {
 
         var calle = document.getElementById('form-envio-calle');
         var numero = document.getElementById('input-numero');
         var esquina = document.getElementById('form-envio-esquina');
         var formaEnvio = document.querySelector('input[name="input-tipo-envio"]:checked');
-
+        const htipoEnvio = document.getElementById("tipo-envio-")
+        if (!formaEnvio) {
+            htipoEnvio.innerHTML = "Debe seleccionar un tipo de envío.";
+            htipoEnvio.classList.add('is-invalid');
+            return;
+        } else {
+            htipoEnvio.classList.remove('is-invalid');
+            htipoEnvio.innerHTML = "Tipo de envío";
+        }
         if (!calle.value) {
             calle.classList.add('is-invalid');
             return;
@@ -230,21 +239,23 @@ document.addEventListener("DOMContentLoaded", async function () {
             esquina.classList.remove('is-invalid');
         }
 
-        if (!formaEnvio) {
-            alert('Debe seleccionar una forma de envío.');
+        // Validación de método de pago
+        const tarjetaCredito = document.getElementById("completarTarjeta");
+        const transferenciaBancaria = document.getElementById("completarCuenta");
+
+        if (!tarjetaCredito.classList.contains("active") && !transferenciaBancaria.classList.contains("active")) {
+            tipoPago.classList.add("is-invalid"); // Marca el título del método de pago
             return;
         }
         // Mostrar un mensaje de éxito (puedes personalizar esto según tus necesidades)
         alert('Compra confirmada. Gracias por tu compra!');
 
-        //FALTA AGREGAR VALIDACION DE TIPO DE PAGO
 
 
         // Limpiar los campos del formulario después de la confirmación
+        tipoPago.innerHTML = "No se ha seleccionado método  de pago"
         document.getElementById('direccion-envio').reset();
         document.getElementById('tipo-envio').reset();
-
-
     })
 
 
