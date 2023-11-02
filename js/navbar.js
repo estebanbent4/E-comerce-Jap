@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-     // Obtener el nombre de usuario del localStorage
+  // Obtener el nombre de usuario del localStorage
   const nombreDeUsuario = localStorage.getItem("username");
+  const imagenDePerfil = localStorage.getItem("perfilImagen") || "img/img_perfil.png";
 
-    const navbar = `
+  const navbar = `
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
         <div class="container">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <li class="nav-item">
                 <a class="nav-link" href="sell.html">Vender</a>
               </li>
-              <li class="nav-item" id="username-nav-item">
+              <li class="nav-item" id="username-nav-item"> 
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,50 +38,54 @@ document.addEventListener("DOMContentLoaded", function () {
                     </label></div></li>
                   </ul>
                 </div>
+               
+              </li>
+              <li class="nav-item">
+              <img src="${imagenDePerfil}" alt="Imagen de Perfil" class="profile-image">
               </li>
             </ul>
           </div>
         </div>
       </nav>
     `;
-  
-    // Agrega el menú de navegación al elemento con el ID "navbar-container"
-    const navbarContainer = document.getElementById("navbar-container");
-    if (navbarContainer) {
-      navbarContainer.innerHTML = navbar;
+ // <i class="fa-solid fa-user"></i>
+  // Agrega el menú de navegación al elemento con el ID "navbar-container"
+  const navbarContainer = document.getElementById("navbar-container");
+  if (navbarContainer) {
+    navbarContainer.innerHTML = navbar;
+  }
+  // funcion para cambiar el color de fondo de la pagina //
+
+  const darkmode = document.getElementById('darkmode'); // creamos una constante que toma el id del boton darkmode
+  const body = document.body; // guardamos en otra variable el body
+  let estadoDarkMode = false;
+
+  // Verificar si el modo oscuro está habilitado en el almacenamiento local
+  const savedStatus = localStorage.getItem('estadoDarkMode');
+  if (savedStatus === 'true') {
+    estadoDarkMode = true;
+    body.classList.add('dark-mode'); // Agrega la clase 'dark-mode' si el modo oscuro está habilitado
+  }
+
+  darkmode.addEventListener('change', function () {
+    // Invierte el estado y actualiza el almacenamiento local
+    estadoDarkMode = !estadoDarkMode;
+    localStorage.setItem('estadoDarkMode', estadoDarkMode);
+
+
+    // Aplica o retira la clase 'dark-mode' según el estado
+
+
+
+    if (estadoDarkMode) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
     }
-    // funcion para cambiar el color de fondo de la pagina //
-
-    const darkmode = document.getElementById('darkmode'); // creamos una constante que toma el id del boton darkmode
-    const body = document.body; // guardamos en otra variable el body
-    let estadoDarkMode = false;
-    
-    // Verificar si el modo oscuro está habilitado en el almacenamiento local
-    const savedStatus = localStorage.getItem('estadoDarkMode');
-    if (savedStatus === 'true') {
-      estadoDarkMode = true;
-        body.classList.add('dark-mode'); // Agrega la clase 'dark-mode' si el modo oscuro está habilitado
-    }
-    
-    darkmode.addEventListener('change', function () {
-        // Invierte el estado y actualiza el almacenamiento local
-        estadoDarkMode = !estadoDarkMode;
-        localStorage.setItem('estadoDarkMode', estadoDarkMode);
-    
-
-        // Aplica o retira la clase 'dark-mode' según el estado
-
- 
-
-        if (estadoDarkMode) {
-            body.classList.add('dark-mode');
-        } else {
-            body.classList.remove('dark-mode');
-        }
-    });
-    
   });
-  
+
+});
+
 // Selecciona todos los elementos <ul> en el documento
 // Selecciona el elemento <ul> que deseas modificar
 

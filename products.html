@@ -11,41 +11,43 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
-<link rel="stylesheet" href="css/filtros.css">
-<link rel="icon" type="image/icon" href="img/Captura.JPG">
-<link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/filtros.css">
+  <link rel="icon" type="image/icon" href="img/Captura.JPG">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
   <div id="navbar-container"></div>
   <main class="pb-5 container">
 
-  <div id="category-info"></div>
+    <div id="category-info"></div>
 
-  <!-- Agregar los botones de orden -->
-  <div class="botones" id="orden">
-    <button id="orden-precio-asc" >Menor precio <i class="fa-solid fa-arrow-down-wide-short"></i></button>
-    <button id="orden-precio-desc" >Mayor precio <i class="fa-solid fa-arrow-up-wide-short"></i></button>
-    <button id="orden-relevancia" >Relevante <i class="fa-solid fa-fire"></i></button>
-  </div>
-
-<div id="buscador-y-filtro">
-  <!-- seccion desafiate-entrega2 -->
-  <input type="search" id="buscador-productos" class="filtros-num-name" placeholder="Buscar productos">
-
-  <!-- Agregar los elementos para los filtros de precio -->
-  <div id="filtro-precio">
-    <label for="precio-min">Precio</label>
-    <input type="number" id="precio-min" class="filtros-num-name"  placeholder="Min." inputmode="decimal" pattern="[0-9]*" step="1">
-    <input type="number" id="precio-max" class="filtros-num-name"  placeholder="Máx." inputmode="decimal" pattern="[0-9]*" step="1">
-    <div class="botones">
-      <button id="aplicar-filtro">Filtrar</button><button id="limpiar">Limpiar</button>
+    <!-- Agregar los botones de orden -->
+    <div class="botones" id="orden">
+      <button id="orden-precio-asc">Menor precio <i class="fa-solid fa-arrow-down-wide-short"></i></button>
+      <button id="orden-precio-desc">Mayor precio <i class="fa-solid fa-arrow-up-wide-short"></i></button>
+      <button id="orden-relevancia">Relevante <i class="fa-solid fa-fire"></i></button>
     </div>
-  </div>
-</div> 
+
+    <div id="buscador-y-filtro">
+      <!-- seccion desafiate-entrega2 -->
+      <input type="search" id="buscador-productos" class="filtros-num-name" placeholder="Buscar productos">
+
+      <!-- Agregar los elementos para los filtros de precio -->
+      <div id="filtro-precio">
+        <label for="precio-min">Precio</label>
+        <input type="number" id="precio-min" class="filtros-num-name" placeholder="Min." inputmode="decimal"
+          pattern="[0-9]*" step="1">
+        <input type="number" id="precio-max" class="filtros-num-name" placeholder="Máx." inputmode="decimal"
+          pattern="[0-9]*" step="1">
+        <div class="botones">
+          <button id="aplicar-filtro">Filtrar</button><button id="limpiar">Limpiar</button>
+        </div>
+      </div>
+    </div>
     <div class="container-de-productos"></div>
   </main>
- 
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -54,14 +56,17 @@
       <div></div>
     </div>
   </div>
-  <footer><div id="footer-div"></div></footer>
+  <footer>
+    <div id="footer-div"></div>
+  </footer>
+  <script src="js/navbar.js"></script>
   <script src="js/footer.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
   <script src="js/product-info.js"></script>
-  <script src="js/navbar.js"></script>
+
 </body>
 
 </html>
