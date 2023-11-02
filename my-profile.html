@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/perfil.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
   <link rel="icon" type="image/icon" href="img/Captura.JPG">
   <style>
@@ -32,9 +33,15 @@
   <div id="navbar-container"></div>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <label for="imagen">Imagen de perfil:</label>
+      <input type="file" id="imagen" name="imagen" accept="image/*">
+    
+      <div class="imagen-container">
+        <img id="imagen-preview" src="img/img_perfil.png" alt="Imagen de perfil">
       </div>
+      
+      <button type="submit">Guardar</button>
+    
     </div>
   </main>
   <footer><div id="footer-div"></div></footer>

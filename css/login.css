@@ -43,7 +43,7 @@ input {
     font-weight: 700;
 }
 
-.login-container input[type="text"],
+.login-container input[type="email"],
 input[type="password"] {
     outline:none;
     margin-top: 15px;

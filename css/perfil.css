@@ -1,0 +1,13 @@
+.imagen-container {
+    position: relative;
+    width: 100px; /* Ancho deseado para la imagen */
+    height: 100px; /* Alto deseado para la imagen */
+  }
+  
+  #imagen-preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+  }
