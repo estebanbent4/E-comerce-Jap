@@ -2,7 +2,13 @@
     from { background-color: #ffffff; }
     to { background-color: #a8a8a8; }
 }
-
+@media (max-width: 768px){
+    footer{
+        display: none;
+    }
+ 
+    
+}
 
 body {
     animation: backgroundAnimation 4s alternate infinite;
