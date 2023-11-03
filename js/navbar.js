@@ -41,14 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
                
               </li>
               <li class="nav-item">
-              <img src="${imagenDePerfil}" alt="Imagen de Perfil" class="profile-image">
-              </li>
+  <a href="my-profile.html">
+    <img src="${imagenDePerfil}" alt="Imagen de Perfil" class="profile-image">
+  </a>
+</li>
+
             </ul>
           </div>
         </div>
       </nav>
     `;
- // <i class="fa-solid fa-user"></i>
+  // <i class="fa-solid fa-user"></i>
   // Agrega el menú de navegación al elemento con el ID "navbar-container"
   const navbarContainer = document.getElementById("navbar-container");
   if (navbarContainer) {
