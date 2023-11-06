@@ -31,4 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.removeItem("perfilImagen");
     }
   });
+  
+  // mostramos el mismo correo que el login del usuario
+  const emailLocal = document.getElementById("email-local");
+  const userLocal = localStorage.getItem("username");
+
+   emailLocal.value = userLocal;
+
 });
