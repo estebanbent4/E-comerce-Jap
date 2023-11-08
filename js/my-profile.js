@@ -67,8 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
-<<<<<<< Updated upstream
-=======
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const profileForm = document.getElementById("profile-form");
