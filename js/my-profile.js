@@ -37,8 +37,38 @@ document.addEventListener("DOMContentLoaded", function () {
   const userLocal = localStorage.getItem("username");
 
    emailLocal.value = userLocal;
+//mostramos el mismo nombre que el perfil del usuario
+   const nombreLocal = document.getElementById("nombre");
+    const nombre = localStorage.getItem("nombre");
+    nombreLocal.value = nombre;
+
+    const segundoNombreLocal = document.getElementById("segundo-nombre");
+    const segundoNombre = localStorage.getItem("segundo-nombre");
+    segundoNombreLocal.value = segundoNombre;
+
+
+    const apellidoLocal = document.getElementById("apellido");
+    const apellido = localStorage.getItem("apellido");
+    apellidoLocal.value = apellido;
+
+    
+
+    const segundoApellidoLocal = document.getElementById("segundo-apellido");
+    const segundoApellido = localStorage.getItem("segundo-apellido");
+    segundoApellidoLocal.value = segundoApellido;
+
+
+    
+
+
+      const telefonoLocal = document.getElementById("telefono");
+    const telefono = localStorage.getItem("telefono");
+    telefonoLocal.value = telefono;
+
 
 });
+<<<<<<< Updated upstream
+=======
 
 document.addEventListener("DOMContentLoaded", function () {
   const profileForm = document.getElementById("profile-form");
@@ -68,14 +98,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Convertir el objeto a JSON y guardarlo en el localStorage
       localStorage.setItem("perfilUsuario", JSON.stringify(perfilUsuario));
+      localStorage.setItem("nombre", nombre);
+      localStorage.setItem("segundo-nombre", segundoNombre);
+      localStorage.setItem("apellido", apellido);
+      localStorage.setItem("segundo-apellido", segundoApellido);
+      localStorage.setItem("telefono", telefono);
+
+
 
       // Redirigir al usuario o mostrar un mensaje de éxito
       alert("Cambios guardados correctamente.");
     } else {
       // Si el formulario no es válido, mostrar mensajes de error de Bootstrap
       profileForm.classList.add("was-validated");
+
+    
     }
   });
 });
+
 
 
