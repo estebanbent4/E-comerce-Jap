@@ -11,7 +11,31 @@
     max-width: 100%;
     max-height: 100%;
   }
+  .container-img-select {
+    display: flex; /* Utiliza flexbox para colocar los divs en la misma fila */
+    align-items: start;
+    margin: 10px;
+  }
 
+  
+  .imagen-container {
+    flex: 1; /* Ocupa todo el espacio disponible en el contenedor */
+  }
+  h1{
+    text-align: center;
+   
+    margin: 30px;
+  }
+  
+  .container-button {
+    text-align: left;
+    flex: 1; 
+    margin-left: 20%;/* Ocupa todo el espacio disponible en el contenedor */
+  }
+  form button{
+    margin-top: 10px
+  }
+  
   .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
