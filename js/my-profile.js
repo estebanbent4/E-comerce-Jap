@@ -66,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
         telefono: telefono
       };
 
+      
+
       // Convertir el objeto a JSON y guardarlo en el localStorage
       localStorage.setItem("perfilUsuario", JSON.stringify(perfilUsuario));
 
