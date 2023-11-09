@@ -16,62 +16,61 @@
 
 <body>
   <div id="navbar-container"></div>
-  
-    <div class="container">
+  <h1>Perfil de Usuario</h1>
+  <div class="container-img-select">
+    <div class="imagen-container">
+      <img id="imagen-preview" src="img/img_perfil.png" alt="Imagen de perfil">
+    </div>
+    <div class="container-button">
       <label for="imagen">Imagen de perfil:</label>
       <input type="file" id="imagen" name="imagen" accept="image/*">
-    
-      <div class="imagen-container">
-        <img id="imagen-preview" src="img/img_perfil.png" alt="Imagen de perfil">
-      </div>
-      
-      <button type="submit">Guardar</button>
-    
+      <button type="submit" class="btn btn-primary">Guardar Imagen</button>
     </div>
-
-    <div class="container mt-5">
-      <h1>Perfil de Usuario</h1>
-      <form id="profile-form" class="needs-validation" novalidate>
-          <div class="form-row">
-              <div class="form-group col-md-6">
-                  <label for="nombre">Nombre*</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre" required>
-              </div>
-              <div class="form-group col-md-6">
-                  <label for="segundo-nombre">Segundo nombre</label>
-                  <input type="text" class="form-control" id="segundo-nombre" name="segundo-nombre">
-              </div>
-          </div>
-          <div class="form-row">
-              <div class="form-group col-md-6">
-                  <label for="apellido">Apellido*</label>
-                  <input type="text" class="form-control" id="apellido" name="apellido" required>
-              </div>
-              <div class="form-group col-md-6">
-                  <label for="segundo-apellido">Segundo apellido</label>
-                  <input type="text" class="form-control" id="segundo-apellido" name="segundo-apellido">
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="email">E-mail*</label>
-              <input type="email" class="form-control" id="email-local" name="email" required>
-          </div>
-          <div class="form-group">
-              <label for="telefono">Teléfono de contacto</label>
-              <input type="tel" class="form-control" id="telefono" name="telefono">
-          </div>
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-      </form>
   </div>
-  
+
+  <div class=" container mt-5">
+
+    <form id="profile-form" class="needs-validation" novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nombre">Nombre*</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="segundo-nombre">Segundo nombre</label>
+          <input type="text" class="form-control" id="segundo-nombre" name="segundo-nombre">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="apellido">Apellido*</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="segundo-apellido">Segundo apellido</label>
+          <input type="text" class="form-control" id="segundo-apellido" name="segundo-apellido">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail*</label>
+        <input type="email" class="form-control" id="email-local" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono de contacto</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+
+  </div>
+
   <script src="js/navbar.js"></script>
-  <footer><div id="footer-div"></div></footer>
-  <script src="js/footer.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
- 
+
 </body>
 
 </html>
