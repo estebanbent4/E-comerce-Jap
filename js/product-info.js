@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 score: puntos,
                 description: comentario,
                 dateTime: formatDateTime(new Date()) // Fecha y hora actual formateada con la funcion formatDateTime
-
             };
 
             // Mostrar el nuevo comentario en el mismo formato que los existentes usando la funcion showComments
@@ -198,13 +197,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
         const seconds = String(date.getSeconds()).padStart(2, '0');
-
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 
 
 
-    //Carrusel
+    // Carrusel
 
     // Obtén la referencia al elemento del carrusel
     const carousel = document.querySelector("#product-images");

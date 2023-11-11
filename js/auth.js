@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
-  
+
   const usernameNavItem = document.getElementById("username-nav-item");
   const userUsername = document.getElementById("user-username");
   const logoutLink = document.getElementById("logout-link");

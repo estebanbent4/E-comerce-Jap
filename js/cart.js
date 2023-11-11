@@ -192,14 +192,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         totalAmountElement.textContent = `USD ${totalFinal}`;
     }
 
-
-
-
-
     updateTotal();
 
-
-    //pauta 3- entrega 6
     // validaciones antes de compra
     const confirmarCompraBtn = document.getElementById("confirmarCompraBtn")
     const tipoPago = document.getElementById("tipoPago");
@@ -249,8 +243,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         // Mostrar un mensaje de éxito (puedes personalizar esto según tus necesidades)
         alert('Compra confirmada. Gracias por tu compra!');
-
-
 
         // Limpiar los campos del formulario después de la confirmación
         tipoPago.innerHTML = "No se ha seleccionado método  de pago"

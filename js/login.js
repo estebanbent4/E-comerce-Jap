@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Guardar autenticación en localStorage
         localStorage.setItem("isAuthenticated", "true");
 
-        // al loguear guardamos en localstore el nombre de usuario
+        // Al loguear guardamos en localstore el nombre de usuario
         localStorage.setItem("username", username); 
 
         // Redireccionar a la página de portada

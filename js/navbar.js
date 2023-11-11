@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+  
   // Obtener el nombre de usuario del localStorage
   const nombreDeUsuario = localStorage.getItem("username");
   const imagenDePerfil = localStorage.getItem("perfilImagen") || "img/img_perfil.png";
-
   const navbar = `
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
         <div class="container">
@@ -37,27 +37,24 @@ document.addEventListener("DOMContentLoaded", function () {
                       <span class="slider"></span>
                     </label></div></li>
                   </ul>
-                </div>
-               
+                </div>          
               </li>
               <li class="nav-item">
   <a href="my-profile.html">
     <img src="${imagenDePerfil}" alt="Imagen de Perfil" class="profile-image">
   </a>
 </li>
-
             </ul>
           </div>
         </div>
       </nav>
     `;
-  // <i class="fa-solid fa-user"></i>
+  
   // Agrega el menú de navegación al elemento con el ID "navbar-container"
   const navbarContainer = document.getElementById("navbar-container");
   if (navbarContainer) {
     navbarContainer.innerHTML = navbar;
   }
-  // funcion para cambiar el color de fondo de la pagina //
 
   const darkmode = document.getElementById('darkmode'); // creamos una constante que toma el id del boton darkmode
   const body = document.body; // guardamos en otra variable el body
@@ -70,16 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
     body.classList.add('dark-mode'); // Agrega la clase 'dark-mode' si el modo oscuro está habilitado
   }
 
+  // Función para cambiar el color de fondo de la pagina
   darkmode.addEventListener('change', function () {
+
     // Invierte el estado y actualiza el almacenamiento local
     estadoDarkMode = !estadoDarkMode;
     localStorage.setItem('estadoDarkMode', estadoDarkMode);
 
-
     // Aplica o retira la clase 'dark-mode' según el estado
-
-
-
     if (estadoDarkMode) {
       body.classList.add('dark-mode');
     } else {
@@ -88,7 +83,3 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
-
-// Selecciona todos los elementos <ul> en el documento
-// Selecciona el elemento <ul> que deseas modificar
-

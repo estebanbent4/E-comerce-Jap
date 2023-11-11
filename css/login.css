@@ -20,6 +20,9 @@ input {
     font-family: 'Poppins', sans-serif;
 }
 
+#text-muted-log {
+    margin-top: 20px;
+}
 
 .container, 
 .username,

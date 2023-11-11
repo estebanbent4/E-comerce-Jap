@@ -1,82 +1,93 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link rel="icon" type="image/icon" href="img/Captura.JPG">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/filtros.css">
-  <script src="https://kit.fontawesome.com/242a8f5c81.js" crossorigin="anonymous" defer></script>
-  <link rel="stylesheet" href="css/responsive.css">
-</head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link rel="icon" type="image/icon" href="img/Captura.JPG">
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/filtros.css">
+    <script src="https://kit.fontawesome.com/242a8f5c81.js"
+      crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
 
-<body>
-  <div id="navbar-container"></div>
-  <main class="pb-5">
-    <div class="text-center p-4">
-      <h2>Categorías</h2>
-      <p class="lead">Verás aquí todas las categorías del sitio.</p>
-    </div>
-    <div class="container">
-      <!-- Agregar los botones de orden -->
-      <div class="botones" id="orden">
-        <button id="sortAsc">A-Z <i class="fa-solid fa-arrow-down-wide-short"></i></button>
-        <button id="sortDesc">Z-A <i class="fa-solid fa-arrow-up-wide-short"></i></button>
-        <button id="sortByCount">Relevante <i class="fa-solid fa-fire"></i></button>
+  <body>
+
+    <!-- Barra de navegación -->
+    <div id="navbar-container"></div>
+
+    <main class="pb-5">
+
+      <!-- Cabecera -->
+      <div class="text-center p-4">
+        <h2>Categorías</h2>
+        <p class="lead">Verás aquí todas las categorías del sitio.</p>
       </div>
 
-      <div id="buscador-y-filtro">
-        <!-- seccion desafiate-entrega2 -->
-        <input type="search" class="filtros-num-name" id="buscadorInput" placeholder="Buscar por nombre o descripción">
+      <!-- Barra de búsqueda y filtros -->
+      <div class="container">
 
-        <!-- Agregar los elementos para los filtros de precio -->
-        <div id="filtro-precio">
-          <label for="precio-min" id="pre-filtro">Cant.</label>
-          <input type="number" id="rangeFilterCountMin" class="filtros-num-name" placeholder="Min." inputmode="decimal"
-            pattern="[0-9]*" step="1">
-          <input type="number" id="rangeFilterCountMax" class="filtros-num-name" placeholder="Máx." inputmode="decimal"
-            pattern="[0-9]*" step="1">
-          <div class="botones" title="Botones para filtrar por precio minimo o maximo">
-            <button id="rangeFilterCount">Filtrar</button><button id="clearRangeFilter">Limpiar</button>
+        <div class="botones" id="orden">
+          <button id="sortAsc">A-Z <i class="fa-solid fa-arrow-down-wide-short"></i></button>
+          <button id="sortDesc">Z-A <i class="fa-solid fa-arrow-up-wide-short"></i></button>
+          <button id="sortByCount">Relevante <i class="fa-solid fa-fire"></i></button>
+        </div>
+
+        <div id="buscador-y-filtro">
+          <input type="search" class="filtros-num-name" id="buscadorInput"
+            placeholder="Buscar por nombre o descripción">
+          <div id="filtro-precio">
+            <label for="precio-min" id="pre-filtro">Cant.</label>
+            <input type="number" id="rangeFilterCountMin"
+              class="filtros-num-name" placeholder="Min." inputmode="decimal"
+              pattern="[0-9]*" step="1">
+            <input type="number" id="rangeFilterCountMax"
+              class="filtros-num-name" placeholder="Máx." inputmode="decimal"
+              pattern="[0-9]*" step="1">
+            <div class="botones"
+              title="Botones para filtrar por precio minimo o maximo">
+              <button id="rangeFilterCount">Filtrar</button><button
+                id="clearRangeFilter">Limpiar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-
-
-
-        </div>
         <div class="row">
-          <div class="list-group" id="cat-list-container">
+          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+          </div>
+          <div class="row">
+            <div class="list-group" id="cat-list-container">
+            </div>
           </div>
         </div>
-      </div>
-  </main>
-  
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  
-  <footer><div id="footer-div"></div></footer>
- 
-  <script src="js/footer.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/categories.js"></script>
-  <script src="js/navbar.js"></script>
-</body>
+        
+      </main>
 
-</html>
+      <div id="spinner-wrapper">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <footer><div id="footer-div"></div></footer>
+
+      <script src="js/footer.js"></script>
+      <script src="js/auth.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/init.js"></script>
+      <script src="js/categories.js"></script>
+      <script src="js/navbar.js"></script>
+    </body>
+
+  </html>

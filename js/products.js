@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const containerDeProductos = document.querySelector(".pb-5.container .container-de-productos");
   const botonLimpiar = document.querySelector("#limpiar");
 
-  //FUNCIONALIDAD PARA FILTROS:
+  // FUNCIONALIDAD PARA FILTROS:
   const precioMinInput = document.getElementById("precio-min");
   const precioMaxInput = document.getElementById("precio-max");
   const aplicarFiltroBtn = document.getElementById("aplicar-filtro");
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const ordenarAsc = document.getElementById("orden-precio-asc")
 
   let originalData;
+  
   // Función para el botón limpiar, limpia los campos de input
   botonLimpiar.addEventListener("click", function () {
     document.querySelector("#precio-min").value = "";
@@ -23,8 +24,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   const buscadorInput = document.getElementById("buscador-productos");
-
-
 
   buscadorInput.addEventListener("input", function () {
     const searchText = buscadorInput.value.toLowerCase();
@@ -37,7 +36,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     containerDeProductos.innerHTML = "";
     showData({ catName: originalData.catName, products: productosFiltrados });
   });
-
 
   aplicarFiltroBtn.addEventListener("click", function () {
     const precioMin = parseFloat(precioMinInput.value);
@@ -108,7 +106,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       containerParaProducto.appendChild(datosDelProducto);
       containerDeProductos.appendChild(containerParaProducto);
 
-      //pauta 1 entrega3
       containerParaProducto.addEventListener("click", function () {
         // Guardar el identificador del producto en el almacenamiento local
         localStorage.setItem("ProductoID", item.id);

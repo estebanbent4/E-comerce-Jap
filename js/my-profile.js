@@ -26,44 +26,37 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       // Si no se selecciona ninguna imagen, muestra la imagen por defecto
       imagenPreview.src = "imagen-por-defecto.jpg";
-
       // Elimina la imagen del localStorage
       localStorage.removeItem("perfilImagen");
     }
   });
-  
-  // mostramos el mismo correo que el login del usuario
+
+  // Mostramos el mismo correo que el login del usuario
   const emailLocal = document.getElementById("email-local");
   const userLocal = localStorage.getItem("username");
 
-   emailLocal.value = userLocal;
-//mostramos el mismo nombre que el perfil del usuario
-   const nombreLocal = document.getElementById("nombre");
-    const nombre = localStorage.getItem("nombre");
-    nombreLocal.value = nombre;
+  // Mostramos el mismo nombre que el perfil del usuario
+  emailLocal.value = userLocal;
+  
+  const nombreLocal = document.getElementById("nombre");
+  const nombre = localStorage.getItem("nombre");
+  nombreLocal.value = nombre;
 
-    const segundoNombreLocal = document.getElementById("segundo-nombre");
-    const segundoNombre = localStorage.getItem("segundo-nombre");
-    segundoNombreLocal.value = segundoNombre;
+  const segundoNombreLocal = document.getElementById("segundo-nombre");
+  const segundoNombre = localStorage.getItem("segundo-nombre");
+  segundoNombreLocal.value = segundoNombre;
 
+  const apellidoLocal = document.getElementById("apellido");
+  const apellido = localStorage.getItem("apellido");
+  apellidoLocal.value = apellido;
 
-    const apellidoLocal = document.getElementById("apellido");
-    const apellido = localStorage.getItem("apellido");
-    apellidoLocal.value = apellido;
+  const segundoApellidoLocal = document.getElementById("segundo-apellido");
+  const segundoApellido = localStorage.getItem("segundo-apellido");
+  segundoApellidoLocal.value = segundoApellido;
 
-    
-
-    const segundoApellidoLocal = document.getElementById("segundo-apellido");
-    const segundoApellido = localStorage.getItem("segundo-apellido");
-    segundoApellidoLocal.value = segundoApellido;
-
-
-    
-
-
-      const telefonoLocal = document.getElementById("telefono");
-    const telefono = localStorage.getItem("telefono");
-    telefonoLocal.value = telefono;
+  const telefonoLocal = document.getElementById("telefono");
+  const telefono = localStorage.getItem("telefono");
+  telefonoLocal.value = telefono;
 
 
 });
@@ -95,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         telefono: telefono
       };
 
-      
+
 
       // Convertir el objeto a JSON y guardarlo en el localStorage
       localStorage.setItem("perfilUsuario", JSON.stringify(perfilUsuario));
@@ -113,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Si el formulario no es válido, mostrar mensajes de error de Bootstrap
       profileForm.classList.add("was-validated");
 
-    
+
     }
   });
 });
