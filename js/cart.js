@@ -10,47 +10,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     let subTotalFinal = 0;
     let cartItems = JSON.parse(localStorage.getItem("cartItems"));
     let valorDolar = 38.8 // Este es un valor predeterminado que se ajusta con la info del Fetch
-    let peogeotYaAgregado = false;
-    const usuarioDePrueba = 25801;
-    const urlCarritoUsuario = `https://japceibal.github.io/emercado-api/user_cart/${usuarioDePrueba}.json`;
-    //const urlCotizacionesBROU = `https://cotizaciones-brou-v2-e449.fly.dev/currency/latest` Da problemas de carga, retirado
     const valorDolarP = document.getElementById("valorDolar")
     const nombreUsuario = document.getElementById("nombUsuario")
     const nombreUsuarioGuardado = localStorage.getItem("username")
     nombreUsuario.textContent = nombreUsuarioGuardado.toString();
-
     valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
-    // Fetch para traer cotización del dólar actualizada
-    // try {
-    //     const response = await fetch(urlCotizacionesBROU);
-    //     const currencyData = await response.json();
-    //     valorDolar = currencyData.rates.USD.buy;
-    //     valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
-    //     console.log(valorDolar);
-    // } catch (error) {
-    //     console.error("Error trayendo:", error);
-    // }
-
-    // Fetch para traer producto ya cargado
-    try {
-        if (!peogeotYaAgregado) { // Verificar si aún no se ha agregado el artículo
-            const response = await fetch(urlCarritoUsuario);
-            const data = await response.json();
-            const peugeot = data.articles[0]; // Tomar el primer artículo de los datos
-
-            // Verificar si el artículo ya existe en el carrito antes de agregarlo
-            const itemExists = cartItems.some(item => item.id === peugeot.id);
-
-            if (!itemExists) {
-                cartItems.push(peugeot);
-                peogeotYaAgregado = true; // Marcar que el artículo se ha agregado
-                localStorage.setItem("cartItems", JSON.stringify(cartItems));
-            }
-        }
-    } catch (error) {
-        console.error("Error trayendo:", error);
-    }
-
+  
     // Bucle para visualizar los productos del carrito
     cartItems.forEach((cartItem) => {
 
