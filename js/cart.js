@@ -1,21 +1,57 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
+
+    // ELEMENTOS DE LA TABLA DE COSTOS
     const totalAmountElement = document.getElementById("total-amount");
     const subtotalAmountElement = document.getElementById("subtotal-amount");
     const shippingCostElement = document.getElementById("shipping-cost");
     const cartTableBody = document.getElementById("cartTableBody");
-    let totalDelCarrito = 0;
-    let subtotalDelCarrito = 0;
+
+    // VARIABLES PARA CALCULAR COSTOS
     let totalFinal = 0;
     let costoEnvio = 0;
     let subTotalFinal = 0;
-    let cartItems = JSON.parse(localStorage.getItem("cartItems"));
-    let valorDolar = 38.8 // Este es un valor predeterminado que se ajusta con la info del Fetch
-    const valorDolarP = document.getElementById("valorDolar")
-    const nombreUsuario = document.getElementById("nombUsuario")
-    const nombreUsuarioGuardado = localStorage.getItem("username")
+    let valorDolar = 38.8
+
+    // VARIABLES PARA MOSTRAR ARTÍCULOS
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || []; // Acá si no hay nada guardado, se inicializa vacío
+    let peugeotYaAgregado = JSON.parse(localStorage.getItem("peugeotYaAgregado")) || false; // Acá si no hay nada guardado, se falso
+    
+    // ELEMENTOS DEL ENCABEZADO
+    const nombreUsuario = document.getElementById("nombUsuario");
+    const nombreUsuarioGuardado = localStorage.getItem("username");
+    // Muestra el nombre del usuario en el encabezado
     nombreUsuario.textContent = nombreUsuarioGuardado.toString();
+    
+    // COTIZACIÓN DEL DOLAR
+    const valorDolarP = document.getElementById("valorDolar");
     valorDolarP.textContent += `Valor del dolar hoy: $${valorDolar}`;
-  
+
+    // Fetch para traer producto ya cargado
+    const usuarioDePrueba = 25801;
+    const urlCarritoUsuario = `https://japceibal.github.io/emercado-api/user_cart/${usuarioDePrueba}.json`;
+
+    try {
+        if (!peugeotYaAgregado) { // Verificar si aún no se ha agregado el artículo
+            const response = await fetch(urlCarritoUsuario);
+            const data = await response.json();
+            const peugeot = data.articles[0]; // Tomar el primer artículo de los datos
+    
+            // Verificar si el artículo ya existe en el carrito antes de agregarlo
+            const itemExists = cartItems.some(item => item.id === peugeot.id);
+    
+            // Verificar si el artículo no existe en el carrito y tampoco ha sido agregado ya, si se cumple añadirlo
+            if (!itemExists && !peugeotYaAgregado) {
+                cartItems.push(peugeot);
+                peugeotYaAgregado = true; // Marcar que el artículo se ha agregado
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                localStorage.setItem("peugeotYaAgregado", JSON.stringify(peugeotYaAgregado));
+            }
+        }
+    } catch (error) {
+        console.error("Error trayendo:", error);
+    }
+
     // Bucle para visualizar los productos del carrito
     cartItems.forEach((cartItem) => {
 
@@ -37,28 +73,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         const itemSubtotalElement = newRow.querySelector(".itemSubtotal");
         const deleteButton = newRow.querySelector(".btnEliminar");
 
-        //  Función para actualizar el subtotal del carrito al cargar la página
-        function updateSubtotal() {
+        //  Función para actualizar el subtotal de cada elemento del carrito al cargar la página
+        function updateSubTotalesItems() {
             let newQuantity = parseInt(itemQuantityElement.value);
-
-            // Validar que el valor no sea menor que 1
-            if (newQuantity < 1) {
-                newQuantity = 1;
-                itemQuantityElement.value = 1;
-            }
-
             const newSubtotal = newQuantity * cartItem.unitCost;
             itemSubtotalElement.textContent = `${newSubtotal}`;
-
             cartItem.count = newQuantity;
-            updateSubTotal(); // Actualizar el subTotal del carrito cuando cambia la cantidad
-            updateTotal()
+            updateSubTotal(); // Actualizar el subTotal general del carrito cuando cambia la cantidad
+            updateTotal() // Actualizar el total general del carrito cuando cambia la cantidad
         }
 
+        //  Función para eliminar un item con el botón eliminar
         deleteButton.addEventListener("click", () => {
             newRow.remove();
-            totalDelCarrito -= cartItem.unitCost * cartItem.count;
-            totalAmountElement.textContent = totalDelCarrito;
 
             const index = cartItems.indexOf(cartItem);
             if (index !== -1) {
@@ -66,18 +93,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                 localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Actualizar localStorage al eliminar un producto
             }
 
-
-            updateSubTotal(); // Actualizar el total del carrito al eliminar un producto
-            updateTotal()
+            updateSubTotal(); // Actualizar el subTotal general del carrito al eliminar un producto
+            updateTotal() // Actualizar el total general del carrito al eliminar un producto
         });
 
-        itemQuantityElement.addEventListener("input", updateSubtotal);
+        itemQuantityElement.addEventListener("input", updateSubTotalesItems);
     });
 
-    // Llamada a la función para actualizar el subtotal del carrito al cargar la página
-    updateSubTotal();
-
-    // Actualizar el subtotal
+    // Función para actualizar el subtotal
     function updateSubTotal() {
         let totalUSD = 0;
         let totalUYU = 0;
@@ -96,15 +119,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         let totalUYUenUSD = Math.round(totalUYU / valorDolar);
 
         subTotalFinal = totalUYUenUSD + totalUSD;
-        const subTotalFinalString = subTotalFinal !== 0 ? `USD ${subTotalFinal}` : "";
-        const subTotalCarritoEsCero = totalUYU === 0 && totalUSD === 0 ? "0" : "";
-        console.log(valorDolar)
+        const subTotalFinalString = subTotalFinal !== 0 ? `USD ${subTotalFinal}` : "USD 0";
 
         // Mostrar el total
-        subtotalAmountElement.textContent = `${subTotalFinalString} ${subTotalCarritoEsCero}`;
+        subtotalAmountElement.textContent = `${subTotalFinalString}`;
     }
 
-    // Actualizar el costo de envío
+    // Función para actualizar el costo de envío
     const envioPremium = document.getElementById("form-tipo-envio-premium");
     const envioExpress = document.getElementById("form-tipo-envio-express");
     const envioStandard = document.getElementById("form-tipo-envio-standard");
@@ -157,11 +178,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         totalAmountElement.textContent = `USD ${totalFinal}`;
     }
 
+    // Llamadas a las funciones para actualizar el subTotal y Total del carrito al cargar la página
+    updateSubTotal();
     updateTotal();
 
-    // validaciones antes de compra
+    // Validaciones antes de compra
     const confirmarCompraBtn = document.getElementById("confirmarCompraBtn")
     const tipoPago = document.getElementById("tipoPago");
+
     confirmarCompraBtn.addEventListener("click", function () {
 
         var calle = document.getElementById('form-envio-calle');
@@ -169,6 +193,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         var esquina = document.getElementById('form-envio-esquina');
         var formaEnvio = document.querySelector('input[name="input-tipo-envio"]:checked');
         const htipoEnvio = document.getElementById("tipo-envio-")
+        
         if (!formaEnvio) {
             htipoEnvio.innerHTML = "Debe seleccionar un tipo de envío.";
             htipoEnvio.classList.add('is-invalid');
@@ -177,6 +202,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             htipoEnvio.classList.remove('is-invalid');
             htipoEnvio.innerHTML = "Tipo de envío";
         }
+
         if (!calle.value) {
             calle.classList.add('is-invalid');
             return;
@@ -214,7 +240,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById('direccion-envio').reset();
         document.getElementById('tipo-envio').reset();
     })
-
-
 
 })
