@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const deleteButton = newRow.querySelector(".btnEliminar");
 
         //  Función para actualizar el subtotal de cada elemento del carrito al cargar la página
-        function updateSubtotal() {
+        function updateSubTotalesItems() {
             let newQuantity = parseInt(itemQuantityElement.value);
             const newSubtotal = newQuantity * cartItem.unitCost;
             itemSubtotalElement.textContent = `${newSubtotal}`;
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             updateTotal() // Actualizar el total general del carrito al eliminar un producto
         });
 
-        itemQuantityElement.addEventListener("input", updateSubtotal);
+        itemQuantityElement.addEventListener("input", updateSubTotalesItems);
     });
 
     // Función para actualizar el subtotal
